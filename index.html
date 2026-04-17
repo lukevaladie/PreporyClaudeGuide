@@ -1,0 +1,1723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Using Claude at Prepory. Team Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --primary:#0B473B;
+  --primary-dk:#083329;
+  --primary-lt:#e8f1ee;
+  --primary-soft:#f3f8f6;
+  --accent:#25D36B;
+  --accent-dk:#1ab057;
+  --accent-lt:#e9fbf1;
+  --accent-glow:rgba(37,211,107,0.22);
+  --ink:#0a1f1a;
+  --ink-2:#1d332c;
+  --ink-3:#3a524a;
+  --muted:#6b7f78;
+  --muted-2:#94a59f;
+  --line:#e3ebe7;
+  --line-2:#ced8d3;
+  --bg:#fafbf9;
+  --bg-2:#f3f6f3;
+  --card:#ffffff;
+  --amber:#fef3c7;
+  --amber-bd:#fde68a;
+  --amber-txt:#78350f;
+  --red:#fef2f2;
+  --red-bd:#fecaca;
+  --red-txt:#991b1b;
+  --sky:#eff8ff;
+  --sky-bd:#bfdbfe;
+  --sky-txt:#0c4a6e;
+  --violet:#f5f3ff;
+  --violet-bd:#ddd6fe;
+  --violet-txt:#5b21b6;
+  --shadow-sm:0 1px 3px rgba(11,71,59,.05);
+  --shadow-md:0 4px 16px rgba(11,71,59,.07);
+  --shadow-lg:0 12px 40px rgba(11,71,59,.10);
+  --radius:14px;
+  --radius-lg:20px;
+}
+
+*{box-sizing:border-box;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+html,body{margin:0;padding:0}
+body{
+  font-family:'Montserrat',system-ui,-apple-system,sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  line-height:1.6;
+  overflow:hidden;
+  height:100vh;
+  letter-spacing:-.005em;
+}
+a{color:var(--primary);text-decoration:none;font-weight:500;border-bottom:1px solid transparent;transition:all .15s}
+a:hover{color:var(--accent-dk);border-bottom-color:var(--accent)}
+p{margin:10px 0;color:var(--ink-2);font-size:15px;line-height:1.75}
+ul{margin:10px 0;padding-left:22px}
+li{margin:6px 0;color:var(--ink-2);line-height:1.75;font-size:15px}
+strong{color:var(--ink);font-weight:600}
+button{font-family:inherit;cursor:pointer}
+::-webkit-scrollbar{width:8px;height:8px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--line-2);border-radius:4px}
+::-webkit-scrollbar-thumb:hover{background:var(--muted)}
+
+/* ═══════════════════ LAYOUT ═══════════════════ */
+.app{height:100vh;display:flex;flex-direction:column}
+
+.topbar{
+  background:rgba(255,255,255,0.85);
+  backdrop-filter:saturate(180%) blur(16px);
+  -webkit-backdrop-filter:saturate(180%) blur(16px);
+  border-bottom:1px solid var(--line);
+  flex-shrink:0;
+  position:relative;
+  z-index:50;
+}
+.topbar-inner{
+  max-width:1040px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 28px;height:64px;gap:16px;
+}
+.brand{
+  display:flex;align-items:center;gap:10px;font-weight:700;color:var(--primary);font-size:14px;letter-spacing:-.2px;
+}
+.brand-mark{
+  width:28px;height:28px;border-radius:8px;
+  background:linear-gradient(135deg,var(--primary),var(--accent));
+  display:flex;align-items:center;justify-content:center;color:white;font-weight:800;font-size:13px;
+  box-shadow:0 2px 8px rgba(11,71,59,.25);
+}
+.breadcrumb{display:flex;align-items:center;gap:10px;font-size:13px;min-width:0;flex:1;margin:0 20px}
+.breadcrumb-group{color:var(--muted);white-space:nowrap;flex-shrink:0}
+.breadcrumb-sep{color:var(--line-2);font-size:11px}
+.breadcrumb-current{font-weight:600;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pill-highlight{
+  background:linear-gradient(135deg,#fef3c7,#fde68a);
+  color:var(--amber-txt);
+  font-size:10px;font-weight:700;padding:3px 10px;border-radius:999px;
+  letter-spacing:.4px;text-transform:uppercase;white-space:nowrap;flex-shrink:0;
+}
+.contents-btn{
+  display:flex;align-items:center;gap:8px;
+  padding:8px 16px;border-radius:10px;
+  border:1px solid var(--line);background:white;color:var(--ink-2);
+  font-size:13px;font-weight:600;
+  box-shadow:var(--shadow-sm);
+  transition:all .2s;
+}
+.contents-btn:hover{border-color:var(--accent);color:var(--primary);box-shadow:var(--shadow-md)}
+.contents-btn .dots{display:flex;flex-direction:column;gap:3px}
+.contents-btn .dots span{width:14px;height:2px;background:currentColor;border-radius:1px;display:block}
+
+.progress-track{height:3px;background:var(--line);overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--primary),var(--accent));transition:width .5s cubic-bezier(.4,0,.2,1)}
+
+.main{flex:1;overflow-y:auto;padding:0 28px 120px;scroll-behavior:smooth}
+.main-inner{max-width:760px;margin:0 auto;padding-top:48px}
+
+/* ═══════════════════ TYPE ═══════════════════ */
+.sh{
+  font-size:11.5px;font-weight:700;color:var(--primary);
+  margin:36px 0 14px;letter-spacing:1.4px;text-transform:uppercase;
+  display:flex;align-items:center;gap:12px;
+}
+.sh::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--accent) 0,transparent 100%)}
+h1.display{
+  font-family:'Montserrat',sans-serif;
+  font-size:44px;font-weight:800;line-height:1.08;letter-spacing:-1.6px;
+  margin:0 0 18px;color:white;
+}
+h2.display{
+  font-family:'Montserrat',sans-serif;
+  font-size:30px;font-weight:800;line-height:1.15;letter-spacing:-.9px;margin:0 0 12px;
+}
+h3.subhead{font-size:18px;font-weight:700;margin:24px 0 10px;color:var(--ink);letter-spacing:-.2px}
+
+/* ═══════════════════ HERO ═══════════════════ */
+.hero{
+  position:relative;overflow:hidden;
+  background:
+    radial-gradient(circle at 15% 20%,rgba(37,211,107,.18),transparent 55%),
+    radial-gradient(circle at 85% 80%,rgba(37,211,107,.10),transparent 50%),
+    linear-gradient(135deg,var(--primary-dk) 0%,var(--primary) 100%);
+  border-radius:var(--radius-lg);
+  padding:56px 48px;
+  margin-bottom:36px;
+  color:white;
+  box-shadow:var(--shadow-lg);
+}
+.hero::before{
+  content:"";position:absolute;inset:0;
+  background-image:
+    radial-gradient(circle at 20% 30%,rgba(255,255,255,.03) 1px,transparent 1px),
+    radial-gradient(circle at 70% 70%,rgba(255,255,255,.02) 1px,transparent 1px);
+  background-size:40px 40px,60px 60px;
+  opacity:.6;pointer-events:none;
+}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(37,211,107,.15);
+  border:1px solid rgba(37,211,107,.3);
+  border-radius:999px;padding:5px 14px;
+  font-size:10.5px;font-weight:700;letter-spacing:1.4px;
+  color:var(--accent);text-transform:uppercase;margin-bottom:22px;position:relative;
+}
+.hero-eyebrow::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent)}
+.hero p{font-size:17px;line-height:1.65;opacity:.78;max-width:540px;margin:0;position:relative;color:rgba(255,255,255,.88)}
+
+/* ═══════════════════ CARDS ═══════════════════ */
+.card{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:22px 24px;
+  margin-bottom:14px;
+  box-shadow:var(--shadow-sm);
+  transition:all .25s;
+}
+.card:hover{border-color:var(--line-2);box-shadow:var(--shadow-md)}
+
+.tool-card{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:22px 24px;
+  margin-bottom:14px;
+  box-shadow:var(--shadow-sm);
+  transition:all .25s;
+  position:relative;
+  overflow:hidden;
+}
+.tool-card::before{
+  content:"";position:absolute;left:0;top:0;bottom:0;width:3px;
+  background:linear-gradient(180deg,var(--primary),var(--accent));
+  opacity:0;transition:opacity .25s;
+}
+.tool-card:hover{border-color:var(--accent);box-shadow:var(--shadow-md);transform:translateY(-1px)}
+.tool-card:hover::before{opacity:1}
+.tool-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:6px}
+.tool-name{font-weight:700;font-size:16px;color:var(--ink);letter-spacing:-.2px}
+.tool-where{
+  background:var(--primary-soft);color:var(--primary);
+  font-size:10.5px;font-weight:600;padding:4px 11px;border-radius:999px;
+  flex-shrink:0;white-space:nowrap;letter-spacing:.3px;
+}
+.tool-how{
+  background:linear-gradient(135deg,var(--accent-lt),#dcfce7);
+  border:1px solid #bbf7d0;
+  border-radius:10px;padding:12px 14px;margin-top:12px;
+  font-size:13.5px;color:var(--primary-dk);line-height:1.65;
+}
+
+.resource-card{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:16px 18px;box-shadow:var(--shadow-sm);transition:all .2s;
+}
+.resource-card:hover{border-color:var(--accent);box-shadow:var(--shadow-md)}
+.resource-title{font-weight:700;color:var(--ink);margin-bottom:4px;font-size:14.5px}
+.resource-desc{font-size:13.5px;color:var(--ink-3);line-height:1.65}
+
+/* ═══════════════════ CALLOUTS ═══════════════════ */
+.callout{
+  display:flex;gap:14px;align-items:flex-start;
+  border-radius:var(--radius);
+  padding:14px 18px;margin:18px 0;
+  font-size:14px;line-height:1.7;
+  border:1px solid;
+  box-shadow:var(--shadow-sm);
+}
+.callout-icon{flex-shrink:0;font-size:16px;margin-top:1px}
+.callout-tip{background:linear-gradient(135deg,var(--accent-lt),#dcfce7);border-color:#a7f3d0;color:var(--primary-dk)}
+.callout-warn{background:linear-gradient(135deg,var(--red),#fee2e2);border-color:var(--red-bd);color:var(--red-txt)}
+.callout-note{background:linear-gradient(135deg,var(--amber),#fef3c7);border-color:var(--amber-bd);color:var(--amber-txt)}
+.callout-info{background:linear-gradient(135deg,var(--sky),#dbeafe);border-color:var(--sky-bd);color:var(--sky-txt)}
+.callout-link{background:linear-gradient(135deg,var(--violet),#ede9fe);border-color:var(--violet-bd);color:var(--violet-txt)}
+
+/* ═══════════════════ PROMPT BLOCK ═══════════════════ */
+.prompt-wrap{margin:16px 0}
+.prompt-label{
+  font-size:10.5px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;
+  color:var(--muted);margin-bottom:8px;
+}
+.prompt{
+  background:linear-gradient(135deg,#0a2520 0%,#0f3c32 100%);
+  border:1px solid rgba(37,211,107,.2);
+  border-radius:var(--radius);
+  padding:18px 20px;
+  box-shadow:0 4px 16px rgba(10,37,32,.2);
+  display:flex;gap:14px;align-items:flex-start;
+  position:relative;
+}
+.prompt-rail{
+  width:3px;border-radius:2px;flex-shrink:0;align-self:stretch;
+  background:linear-gradient(180deg,var(--accent),var(--accent-dk));
+  box-shadow:0 0 10px var(--accent-glow);
+}
+.prompt-text{
+  flex:1;white-space:pre-wrap;
+  font-family:'JetBrains Mono','Fira Code',monospace;
+  font-size:12.5px;line-height:1.75;color:#a5e9c4;
+  margin:0;word-break:break-word;
+}
+.copy-btn{
+  padding:6px 12px;border-radius:8px;border:none;
+  background:rgba(255,255,255,.06);color:#a5e9c4;
+  font-size:10.5px;font-weight:700;letter-spacing:.6px;
+  text-transform:uppercase;cursor:pointer;flex-shrink:0;
+  transition:all .2s;backdrop-filter:blur(4px);
+  font-family:'Montserrat',sans-serif;
+}
+.copy-btn:hover{background:rgba(255,255,255,.12);color:#d1f7e2}
+.copy-btn.ok{background:rgba(37,211,107,.25);color:#6ee7a7}
+
+/* ═══════════════════ GOOD / BAD ═══════════════════ */
+.good,.bad{
+  border-radius:10px;padding:11px 15px;margin:8px 0;
+  font-size:13.5px;font-family:'JetBrains Mono',monospace;
+  line-height:1.6;box-shadow:var(--shadow-sm);
+}
+.good{background:linear-gradient(135deg,var(--accent-lt),#dcfce7);color:var(--primary-dk);border-left:3px solid var(--accent)}
+.bad{background:linear-gradient(135deg,var(--red),#fee2e2);color:var(--red-txt);border-left:3px solid #fca5a5}
+
+/* ═══════════════════ ACCORDION ═══════════════════ */
+.acc{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  margin-bottom:10px;
+  overflow:hidden;
+  box-shadow:var(--shadow-sm);
+  transition:all .25s;
+}
+.acc[open]{border-color:rgba(11,71,59,.25);box-shadow:var(--shadow-md)}
+.acc summary{
+  list-style:none;cursor:pointer;
+  padding:16px 20px;
+  display:flex;align-items:center;justify-content:space-between;gap:14px;
+  font-size:14.5px;font-weight:600;color:var(--ink);line-height:1.45;
+  transition:background .2s;
+}
+.acc summary::-webkit-details-marker{display:none}
+.acc[open] summary{background:var(--primary-soft)}
+.acc summary:hover{background:var(--bg-2)}
+.acc-chev{
+  width:26px;height:26px;border-radius:8px;
+  background:rgba(11,71,59,.06);
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;transition:all .25s;
+  font-size:10px;color:var(--muted);
+}
+.acc[open] .acc-chev{background:rgba(37,211,107,.18);color:var(--primary);transform:rotate(180deg)}
+.acc-body{padding:4px 20px 22px;color:var(--ink-2);font-size:14px;line-height:1.75}
+
+/* ═══════════════════ STEPS ═══════════════════ */
+.steps{position:relative;margin:20px 0;padding-left:0}
+.steps::before{
+  content:"";position:absolute;left:14px;top:18px;bottom:18px;
+  width:2px;background:linear-gradient(180deg,var(--accent),transparent);
+  border-radius:1px;
+}
+.step{display:flex;gap:16px;margin-bottom:16px;position:relative}
+.step-num{
+  width:28px;height:28px;border-radius:10px;flex-shrink:0;
+  background:linear-gradient(135deg,var(--primary),var(--accent));
+  color:white;font-size:12px;font-weight:700;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 3px 10px rgba(11,71,59,.25);
+  margin-top:1px;
+}
+.step-text{flex:1;font-size:14px;line-height:1.75;color:var(--ink-2);padding-top:3px}
+
+/* ═══════════════════ NAV BUTTONS ═══════════════════ */
+.footer-nav{
+  display:flex;justify-content:space-between;align-items:center;
+  margin-top:64px;padding-top:28px;
+  border-top:2px solid var(--accent-lt);gap:14px;
+}
+.btn-prev,.btn-next{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:12px 20px;border-radius:12px;
+  font-size:13px;font-weight:600;
+  border:none;transition:all .2s;
+}
+.btn-prev{background:white;color:var(--ink-3);border:1px solid var(--line);box-shadow:var(--shadow-sm)}
+.btn-prev:hover{border-color:var(--accent);color:var(--primary);box-shadow:var(--shadow-md)}
+.btn-next{
+  background:linear-gradient(135deg,var(--primary),var(--accent-dk));
+  color:white;
+  box-shadow:0 6px 18px rgba(11,71,59,.25);
+}
+.btn-next:hover{transform:translateY(-1px);box-shadow:0 10px 24px rgba(11,71,59,.3)}
+.progress-text{font-size:11.5px;color:var(--muted);font-weight:500;flex-shrink:0}
+.complete-badge{font-size:15px;font-weight:700;color:var(--primary);display:flex;align-items:center;gap:6px}
+
+/* ═══════════════════ DRAWER ═══════════════════ */
+.overlay{
+  position:fixed;inset:0;background:rgba(10,31,26,.55);
+  backdrop-filter:blur(4px);z-index:200;
+  opacity:0;pointer-events:none;transition:opacity .3s;
+}
+.overlay.open{opacity:1;pointer-events:auto}
+.drawer{
+  position:fixed;right:0;top:0;bottom:0;width:320px;max-width:88vw;
+  background:white;z-index:201;
+  overflow-y:auto;
+  box-shadow:-16px 0 40px rgba(10,31,26,.15);
+  transform:translateX(100%);transition:transform .35s cubic-bezier(.4,0,.2,1);
+}
+.drawer.open{transform:translateX(0)}
+.drawer-head{
+  position:sticky;top:0;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);
+  display:flex;justify-content:space-between;align-items:center;
+  padding:22px 24px 18px;border-bottom:1px solid var(--line);z-index:2;
+}
+.drawer-title{font-family:'Montserrat',sans-serif;font-weight:800;font-size:20px;color:var(--ink);letter-spacing:-.4px}
+.drawer-close{
+  background:rgba(11,71,59,.06);border:none;border-radius:8px;
+  width:32px;height:32px;font-size:15px;color:var(--muted);
+  display:flex;align-items:center;justify-content:center;transition:all .15s;
+}
+.drawer-close:hover{background:rgba(11,71,59,.12);color:var(--ink)}
+.drawer-progress{padding:14px 24px 18px;border-bottom:1px solid var(--line)}
+.drawer-prog-row{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin-bottom:8px;font-weight:500}
+.drawer-prog-bar{height:4px;background:var(--line);border-radius:4px;overflow:hidden}
+.drawer-prog-fill{height:100%;background:linear-gradient(90deg,var(--primary),var(--accent));border-radius:4px;transition:width .5s cubic-bezier(.4,0,.2,1)}
+.drawer-group{padding:18px 24px 6px}
+.drawer-group-label{font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:1.2px;color:var(--ink);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.dg-num{background:var(--primary);color:white;padding:2px 8px;border-radius:999px;font-size:9.5px;letter-spacing:1px;font-weight:800;flex-shrink:0}
+.drawer-group.essentials .dg-num{background:linear-gradient(135deg,var(--primary),var(--accent-dk))}
+.drawer-group.skills .dg-num{background:linear-gradient(135deg,var(--primary),#105244)}
+.drawer-group.workflows .dg-num{background:linear-gradient(135deg,var(--primary-dk),var(--primary))}
+.drawer-group-hint{font-size:12px;color:var(--muted);line-height:1.5;margin-bottom:10px;background:var(--bg-2);border-radius:10px;padding:9px 12px;border:1px solid var(--line)}
+.drawer-item{
+  width:100%;text-align:left;padding:10px 14px;border-radius:10px;
+  background:transparent;color:var(--ink-3);border:1px solid transparent;
+  font-size:13.5px;font-weight:500;margin-bottom:4px;
+  display:flex;align-items:center;gap:12px;transition:all .2s;
+}
+.drawer-item:hover{background:var(--bg-2);color:var(--ink)}
+.drawer-item.active{
+  background:linear-gradient(135deg,var(--accent-lt),#dcfce7);
+  border-color:rgba(37,211,107,.3);
+  color:var(--primary-dk);font-weight:700;
+}
+.drawer-item-emoji{width:22px;text-align:center;flex-shrink:0;font-size:15px}
+.drawer-item-label{flex:1;line-height:1.4}
+.drawer-star{
+  font-size:9.5px;background:linear-gradient(135deg,#fef3c7,#fde68a);
+  color:var(--amber-txt);padding:2px 8px;border-radius:999px;font-weight:700;
+}
+.drawer-active-dot{
+  width:7px;height:7px;border-radius:50%;flex-shrink:0;
+  background:linear-gradient(135deg,var(--primary),var(--accent));
+  box-shadow:0 0 8px var(--accent-glow);
+}
+
+/* ═══════════════════ UTILITIES ═══════════════════ */
+.grid-cards{display:grid;gap:10px;margin:18px 0}
+.section{display:none;animation:fadeIn .3s ease}
+.section.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+
+.use-case-card{
+  background:var(--card);border:1px solid var(--line);border-radius:12px;
+  padding:14px 18px;box-shadow:var(--shadow-sm);transition:all .2s;
+}
+.use-case-card:hover{border-color:var(--line-2)}
+.use-case-task{color:var(--muted);font-size:12.5px;margin-bottom:5px}
+.use-case-task strong{color:var(--ink);font-weight:600}
+.use-case-tool{color:var(--primary);font-weight:600;font-size:14px}
+
+.feature-pill{
+  display:inline-flex;align-items:center;gap:6px;
+  background:var(--primary-soft);color:var(--primary);
+  font-size:12px;font-weight:600;padding:4px 12px;border-radius:999px;
+  margin:3px 4px 3px 0;border:1px solid rgba(11,71,59,.1);
+}
+
+.warn-banner{
+  background:linear-gradient(135deg,var(--red),#fee2e2);
+  border:1px solid var(--red-bd);
+  border-radius:var(--radius);
+  padding:18px 22px;margin-bottom:22px;
+}
+
+/* ═══════════════════ CHAPTER COVER ═══════════════════ */
+.chapter-cover{
+  position:relative;overflow:hidden;
+  border-radius:var(--radius-lg);
+  padding:38px 40px 34px;
+  margin-bottom:36px;
+  color:white;
+  box-shadow:var(--shadow-lg);
+}
+.chapter-cover::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(circle at 90% 0%,rgba(37,211,107,.25),transparent 45%),
+    radial-gradient(circle at 10% 100%,rgba(37,211,107,.12),transparent 45%);
+}
+.chapter-cover.essentials{background:linear-gradient(135deg,#0a3a31 0%,#0B473B 60%,#125a4a 100%)}
+.chapter-cover.skills{background:linear-gradient(135deg,#0B473B 0%,#105244 100%)}
+.chapter-cover.workflows{background:linear-gradient(135deg,#083329 0%,#0B473B 100%)}
+.chapter-label{
+  display:inline-flex;align-items:center;gap:10px;position:relative;
+  font-size:10.5px;font-weight:800;letter-spacing:2px;text-transform:uppercase;
+  color:var(--accent);margin-bottom:18px;
+}
+.chapter-label::before{
+  content:"";width:28px;height:2px;background:linear-gradient(90deg,var(--accent),transparent);border-radius:1px;
+}
+.chapter-num{
+  background:rgba(37,211,107,.15);border:1px solid rgba(37,211,107,.3);
+  padding:3px 10px;border-radius:999px;letter-spacing:1.2px;
+}
+.chapter-title{
+  font-family:'Montserrat',sans-serif;
+  font-size:36px;font-weight:800;line-height:1.08;letter-spacing:-1.4px;
+  margin:0 0 12px;position:relative;color:white;
+}
+.chapter-desc{
+  font-size:15px;line-height:1.7;color:rgba(255,255,255,.75);
+  max-width:560px;margin:0;position:relative;
+}
+.chapter-meta{
+  display:flex;gap:10px;flex-wrap:wrap;margin-top:18px;position:relative;
+}
+.chapter-chip{
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);
+  color:rgba(255,255,255,.88);
+  padding:5px 12px;border-radius:999px;font-size:11.5px;font-weight:600;letter-spacing:.2px;
+  backdrop-filter:blur(4px);
+}
+
+/* group separator in drawer */
+.drawer-group + .drawer-group{
+  margin-top:4px;padding-top:22px;
+  border-top:1px solid var(--line);
+}
+.drawer-group-label{position:relative;padding-left:0}
+.drawer-group.essentials .drawer-group-label,
+.drawer-group.skills .drawer-group-label,
+.drawer-group.workflows .drawer-group-label{color:var(--primary)}
+.warn-banner-title{font-weight:800;font-size:14.5px;color:var(--red-txt);margin-bottom:6px;display:flex;align-items:center;gap:8px}
+
+.ext-link::after{content:"↗";font-size:10px;opacity:.6;margin-left:3px}
+
+@media (max-width:640px){
+  .main{padding:0 18px 80px}
+  .hero{padding:40px 28px;border-radius:var(--radius)}
+  h1.display{font-size:34px}
+  .topbar-inner{padding:0 18px;height:58px}
+  .breadcrumb-group{display:none}
+  .footer-nav{flex-direction:column;align-items:stretch;gap:10px}
+  .btn-prev,.btn-next{justify-content:center}
+}
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <div class="brand-mark">P</div>
+        <span>Prepory × Claude</span>
+      </div>
+      <div class="breadcrumb">
+        <span class="breadcrumb-group" id="bc-group">Start Here</span>
+        <span class="breadcrumb-sep">›</span>
+        <span class="breadcrumb-current" id="bc-current">👋 Welcome</span>
+        <span class="pill-highlight" id="bc-pill" style="display:none">Read first</span>
+      </div>
+      <button class="contents-btn" id="contents-btn">
+        <span class="dots"><span></span><span></span><span></span></span>
+        Contents
+      </button>
+    </div>
+    <div class="progress-track"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
+  </header>
+
+  <main class="main" id="main">
+    <div class="main-inner" id="main-inner">
+      <!-- sections injected below -->
+    </div>
+  </main>
+</div>
+
+<div class="overlay" id="overlay"></div>
+<aside class="drawer" id="drawer">
+  <div class="drawer-head">
+    <span class="drawer-title">Contents</span>
+    <button class="drawer-close" id="drawer-close" aria-label="Close">✕</button>
+  </div>
+  <div class="drawer-progress">
+    <div class="drawer-prog-row"><span>Progress</span><span id="drawer-prog-text">1 of 17</span></div>
+    <div class="drawer-prog-bar"><div class="drawer-prog-fill" id="drawer-prog-fill" style="width:6%"></div></div>
+  </div>
+  <nav id="drawer-nav"></nav>
+</aside>
+
+<script>
+const L = {
+  claude: "https://claude.ai",
+  curriculum: "https://docs.google.com/spreadsheets/d/1LNQTXvEZfy40JnFuktSo_OJL22wTRw2E9G1tc8mvPS8/edit?usp=sharing",
+  exemplars: "https://drive.google.com/drive/folders/1b6V-5e2NR2Xq97TswQTq_OpBd9DW8mdk?usp=sharing",
+  briefs: "https://drive.google.com/drive/folders/1VFU1fY7VlLMeKgmke3BB-YYTrDA9kRVd?usp=sharing"
+};
+
+const SECTIONS = [
+/* SEC_WELCOME */
+{id:"welcome",label:"Welcome",group:"Start Here",emoji:"👋",html:`
+<div class="hero">
+  <div class="hero-eyebrow">Prepory AI Guide · v1</div>
+  <h1 class="display">Using Claude at Prepory.</h1>
+  <p>A step-by-step guide for everyone on the team. No tech background needed. Start at the top and work your way through, it takes about 30 minutes, and by the end you'll know exactly how to use Claude for admissions work.</p>
+</div>
+
+<div class="warn-banner" style="background:linear-gradient(135deg,#fef3c7,#fef9e7);border-color:var(--amber-bd)">
+  <div class="warn-banner-title" style="color:var(--amber-txt)">⭐ Don't skip Prompting 101</div>
+  <p style="margin:0;color:var(--amber-txt);font-size:14px;line-height:1.65">Right after you install the desktop app in Step 0 below, head to Prompting 101. It takes about 10 minutes and covers the handful of principles that determine whether Claude gives you something genuinely useful or something you have to throw away and redo. Everything else in this guide builds on it.</p>
+</div>
+
+<div class="sh">Step 0. Install the Claude desktop app</div>
+<p>Before you go any further, install the Claude desktop app. It's free, takes about 60 seconds, and unlocks the <strong>best version of Claude for real work</strong>, the browser version (Chat at claude.ai) is fine for quick questions, but almost every important workflow in this guide assumes you're in the desktop app.</p>
+<div class="steps">
+  <div class="step"><div class="step-num">1</div><div class="step-text">Go to <a href="https://claude.ai/download" target="_blank" rel="noopener" class="ext-link">claude.ai/download</a> and download the installer for your computer (Mac or Windows).</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-text">Run the installer and open the app.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-text">Sign in with your <strong>Prepory email</strong> so you're on the team account, that's what gives you access to our connectors, projects, and higher usage limits.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-text">Keep it open. You'll come back to it once you finish Prompting 101.</div></div>
+</div>
+<div class="callout callout-info"><span class="callout-icon">ℹ️</span><span><strong>Why the desktop app?</strong> It unlocks Cowork mode.</span></div>
+
+<div class="sh">How this guide works</div>
+<p>The guide is split into four parts. Do them in order, each one builds on the last.</p>
+
+<div class="sh" style="font-size:11px;color:var(--amber-txt);margin-top:28px">Part 01 · Start Here</div>
+<div class="grid-cards">
+  <div class="use-case-card" style="display:flex;gap:14px;background:linear-gradient(135deg,#fef3c7,#fef9e7);border-color:var(--amber-bd)">
+    <span style="font-size:20px">⭐</span>
+    <div><div style="font-weight:700;color:var(--ink);font-size:14px">Prompting 101</div><div style="font-size:13px;color:var(--muted);margin-top:3px">The foundation. Seven principles that determine the quality of everything Claude gives you. Read this before anything else.</div></div>
+  </div>
+</div>
+
+<div class="sh" style="font-size:11px;margin-top:28px">Part 02 · Claude Essentials</div>
+<p style="margin:-4px 0 10px;color:var(--muted);font-size:13px">The features and tools that make Claude actually useful for Prepory work.</p>
+<div class="grid-cards">
+  ${[['🧑‍💻','Cowork','The desktop app experience that runs files, connectors, skills, and projects together. Where most real work happens.'],['💬','Chat (Claude.ai)','Quick Q&A, drafting, and research in the browser. Great for fast one-offs.'],['🧠','Skills','Pre-built playbooks that make Claude way better at specific tasks like writing Word docs or decks. Also: how to create your own.'],['🔌','Connectors','Plug Claude directly into Monday, Google Drive, Gmail, Calendar, and Claude in Chrome for real browser actions.'],['📁','Projects','Reusable workspaces with custom instructions and files, including our school-specific coach projects.'],['⚡','Working within usage limits','A handful of small habits that keep you from hitting the ceiling.']].map(([e,t,d])=>`<div class="use-case-card" style="display:flex;gap:14px"><span style="font-size:18px">${e}</span><div><div style="font-weight:700;color:var(--ink);font-size:14px">${t}</div><div style="font-size:13px;color:var(--muted);margin-top:3px">${d}</div></div></div>`).join('')}
+</div>
+
+<div class="sh" style="font-size:11px;margin-top:28px">Part 03 · Core Skills</div>
+<p style="margin:-4px 0 10px;color:var(--muted);font-size:13px">Five things Claude is great at that apply to everyone regardless of role.</p>
+<div class="grid-cards">
+  ${[['💡','Brainstorming & Ideation','Generating ideas, angles, and options quickly.'],['✍️','Writing & Editing','Drafting, refining, and repurposing content.'],['🔍','Research & Explanation','Breaking down complex topics; sounding board.'],['📋','Summarizing & Distilling','Condensing long docs, threads, and notes.'],['📁','Process Documentation','Turning scattered notes into clear SOPs.']].map(([e,t,d])=>`<div class="use-case-card" style="display:flex;gap:14px"><span style="font-size:18px">${e}</span><div><div style="font-weight:700;color:var(--ink);font-size:14px">${t}</div><div style="font-size:13px;color:var(--muted);margin-top:3px">${d}</div></div></div>`).join('')}
+</div>
+
+<div class="sh" style="font-size:11px;margin-top:28px">Part 04 · Specific Workflows</div>
+<p style="margin:-4px 0 10px;color:var(--muted);font-size:13px">Admissions-specific playbooks for recurring Prepory work.</p>
+<div class="grid-cards">
+  ${[['✍️','Admissions Essays','Brainstorm angles, decode prompts, give structured feedback.'],['🏫','School Research','Fast, on-brand briefs and comparisons.'],['👤','Student Profiles & Lists','Activity descriptions, narrative threading, resumes.'],['📊','Presentations & Decks','Webinar outlines, real .pptx files, handouts.']].map(([e,t,d])=>`<div class="use-case-card" style="display:flex;gap:14px"><span style="font-size:18px">${e}</span><div><div style="font-weight:700;color:var(--ink);font-size:14px">${t}</div><div style="font-size:13px;color:var(--muted);margin-top:3px">${d}</div></div></div>`).join('')}
+</div>
+
+<div class="sh">The two ways you'll use Claude</div>
+<div class="tool-card">
+  <div class="tool-head">
+    <span class="tool-name">Cowork <span style="font-size:10.5px;background:var(--accent);color:white;padding:2px 8px;border-radius:999px;margin-left:6px;letter-spacing:.4px">PRIMARY</span></span>
+    <span class="tool-where">Claude Desktop App</span>
+  </div>
+  <p style="margin:6px 0">A desktop experience built for real work, not just chat. Cowork can read from a folder on your computer, create Word docs and slide decks, talk to your connectors (Monday, Gmail, Drive, Calendar, Claude in Chrome), run skills, and use your projects. This is where coaches, ops, and most of the team will spend their time.</p>
+  <div class="tool-how"><strong>How to open:</strong> You already installed the desktop app in Step 0 above. Inside the app, click the Cowork icon, select a folder to work in (e.g., a student's folder), and you're ready.</div>
+</div>
+<div class="tool-card">
+  <div class="tool-head">
+    <span class="tool-name">Chat</span>
+    <span class="tool-where">Desktop app, browser, or mobile</span>
+  </div>
+  <p style="margin:6px 0">The standard conversation experience. You can use Chat inside the desktop app (it's right next to Cowork), in a browser at claude.ai, or on your phone. Best for quick questions, writing help, research, and short one-offs on any device. Projects, skills, and cloud connectors (Monday, Drive, Gmail, Calendar) all work in Chat too; the thing you can't do is have Claude read or write files on your computer. That's Cowork.</p>
+  <div class="tool-how"><strong>How to open:</strong> open the desktop app and click the Chat tab, or go to <a href="${L.claude}" target="_blank" rel="noopener" class="ext-link">claude.ai</a> in a browser.</div>
+</div>
+
+<div class="callout callout-info">
+  <span class="callout-icon">ℹ️</span>
+  <span><strong>One important mental model:</strong> by default, each new Claude conversation starts fresh. But there are two ways to give Claude long-term context: <strong>Memory</strong> (an account-level feature that lets Claude carry across chats things like your role, how you prefer to work, and ongoing themes) and <strong>Projects</strong> (reusable workspaces with custom instructions and reference files, the right tool for durable, file-backed context you want to share with your team). Both are covered later in the guide.</span>
+</div>
+
+<div class="sh">Prepory resources you'll use alongside Claude</div>
+<div class="grid-cards">
+  <div class="resource-card">
+    <div class="resource-title">Curriculum Guides & Resources, <a href="${L.curriculum}" target="_blank" rel="noopener" class="ext-link">Open</a></div>
+    <div class="resource-desc">Centralized curriculum materials. Give Claude these documents to help it understand Prepory's approach, not just generic admissions advice.</div>
+  </div>
+  <div class="resource-card">
+    <div class="resource-title">Exemplars Directory, <a href="${L.exemplars}" target="_blank" rel="noopener" class="ext-link">Open</a></div>
+    <div class="resource-desc">Strong student essays organized by prompt and school. Upload these into Projects to give Claude a concrete benchmark for what "good" looks like.</div>
+  </div>
+  <div class="resource-card">
+    <div class="resource-title">Insider Briefs, <a href="${L.briefs}" target="_blank" rel="noopener" class="ext-link">Open</a></div>
+    <div class="resource-desc">School-specific notes written by Prepory coaches: culture, what committees actually value, what essays work. The single best thing you can feed Claude on school-specific tasks.</div>
+  </div>
+</div>
+
+<div class="callout callout-warn">
+  <span class="callout-icon">⚠️</span>
+  <span>For anything student-facing: Claude supports your work. It doesn't replace your judgment. A student's voice is never Claude's to write. More in the Admissions Essays section.</span>
+</div>
+`},
+
+/* SEC_PROMPTING */
+{id:"prompting",label:"Prompting 101",group:"Start Here",emoji:"⭐",highlight:true,html:`
+<div class="warn-banner" style="background:linear-gradient(135deg,#fef3c7,#fef9e7);border-color:var(--amber-bd)">
+  <div class="warn-banner-title" style="color:var(--amber-txt);font-size:22px;font-family:'Montserrat',sans-serif;font-weight:800;letter-spacing:-.6px">⭐ Prompting 101</div>
+  <p style="margin:0;color:var(--amber-txt);font-size:14.5px;line-height:1.7">Seven principles. If Claude ever gives you something generic, off-tone, or just wrong, the fix is almost always in one of these. Read all seven before you open any tool.</p>
+</div>
+
+<details class="acc" open>
+  <summary><span>Principle 1. Vague input gets vague output</span><span class="acc-chev">▼</span></summary>
+  <div class="acc-body">
+    <p>The biggest factor in Claude's output quality is how much context you give it. Look at the difference:</p>
+    <div class="bad">❌ Write a blog post about college admissions.</div>
+    <div class="good">✅ Write an 800-word blog post for parents of high school juniors about why starting the Common App in June (not August) leads to better essays. Include 3 specific things they can do this month. Tone: warm, like a knowledgeable friend. Not alarming.</div>
+    <p>The second prompt specifies the audience, length, angle, what to include, and tone. That's the difference between getting a generic 5-paragraph essay and getting something you can actually use.</p>
+    <p><strong>Every prompt should answer at least three of these:</strong></p>
+    <ul>
+      <li><strong>Who is this for?</strong>, "a parent who just found out about Common App" vs. "an admissions counselor"</li>
+      <li><strong>What format?</strong>, email, bullet list, 150-character activity description, slide outline?</li>
+      <li><strong>How long?</strong>, word count, character limit, number of items</li>
+      <li><strong>What tone?</strong>, warm, direct, professional, reassuring?</li>
+      <li><strong>What to include or avoid?</strong>, specific topics, constraints, things that are off-limits</li>
+    </ul>
+  </div>
+</details>
+
+<details class="acc">
+  <summary><span>Principle 2. Tell Claude who you are</span><span class="acc-chev">▼</span></summary>
+  <div class="acc-body">
+    <p>Claude doesn't know you're a Prepory counselor writing to a junior who just got a 1480 and is targeting Emory and Wake Forest. If you don't say that, it answers for a generic user asking a generic question.</p>
+    <p>One sentence at the start of your prompt changes everything:</p>
+    <div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">I'm a college admissions counselor at Prepory. I'm working with a high school junior, strong stats, applying to schools like Georgetown, Emory, and Tufts, who is struggling to find an essay topic that doesn't feel cliché. Help me...</pre><button class="copy-btn" data-text="I'm a college admissions counselor at Prepory. I'm working with a high school junior, strong stats, applying to schools like Georgetown, Emory, and Tufts, who is struggling to find an essay topic that doesn't feel cliché. Help me...">Copy</button></div></div>
+    <div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">I'm on Prepory's sales team. I'm following up with a parent who attended our 'College Admissions 101' webinar last Tuesday but hasn't booked a consultation. Help me draft a follow-up email that...</pre><button class="copy-btn" data-text="I'm on Prepory's sales team. I'm following up with a parent who attended our 'College Admissions 101' webinar last Tuesday but hasn't booked a consultation. Help me draft a follow-up email that...">Copy</button></div></div>
+    <p style="margin-top:12px"><strong>Pro tip:</strong> If you find yourself repeating the same context ("I'm a Prepory coach working with a Stanford applicant...") in every conversation, that's a signal to turn it into a <strong>Project</strong> (covered later in the guide). Projects hold that context automatically so you never have to re-type it.</p>
+  </div>
+</details>
+
+<details class="acc">
+  <summary><span>Principle 3. Give Claude a role to play</span><span class="acc-chev">▼</span></summary>
+  <div class="acc-body">
+    <p>Just like telling Claude who <em>you</em> are helps, telling Claude who to <em>be</em> shapes the output. Modern Claude doesn't need this as much as older models, but assigning a role still genuinely improves responses when you want a specific perspective, tone, or level of expertise.</p>
+    <p>One sentence at the top of a prompt shifts the whole response:</p>
+    <div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">You are a veteran Ivy League admissions officer. I'm sharing a student's supplemental essay draft. Give me the three sharpest pieces of feedback, the kind you'd flag in committee, not surface-level grammar notes.</pre><button class="copy-btn">Copy</button></div></div>
+    <div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">You are a senior brand strategist who's run marketing for education companies. Review this landing page copy and tell me what's weak, what's working, and what you'd test first.</pre><button class="copy-btn">Copy</button></div></div>
+    <div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">You are a skeptical parent who already has doubts about paying for college consulting. Read this follow-up email and tell me every reason you'd ignore it or unsubscribe.</pre><button class="copy-btn">Copy</button></div></div>
+    <p><strong>Roles help most when you want:</strong></p>
+    <ul>
+      <li>A specific <strong>tone or voice</strong> ("Write like a warm older sibling, not a corporate brand.")</li>
+      <li><strong>Domain expertise</strong> ("You're a financial aid officer who's reviewed thousands of appeals.")</li>
+      <li>An <strong>adversarial read</strong> ("You're a critical admissions reader looking for reasons to reject.")</li>
+    </ul>
+    <p>Roles help less when the task is concrete and mechanical (summarize this, reformat as bullets, count the words). In those cases a persona just adds noise. And a role is not a substitute for context: pair it with the specifics from Principles 1 and 2.</p>
+  </div>
+</details>
+
+<details class="acc">
+  <summary><span>Principle 4. Show it what 'good' looks like</span><span class="acc-chev">▼</span></summary>
+  <div class="acc-body">
+    <p>Claude produces dramatically better output when you give it a reference before asking it to create something. This is the most underused technique in the guide.</p>
+    <p><strong>The pattern: show the standard, then ask it to meet that standard.</strong></p>
+    <div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">Here's a strong 'Why Stanford?' essay from our exemplars folder: [paste essay]. Here's a student's current draft: [paste draft]. Using the exemplar as a benchmark, what specific feedback would help this student close the gap?</pre><button class="copy-btn">Copy</button></div></div>
+    <p>Without the exemplar, you get generic essay advice that could apply to anyone. With it, you get specific, calibrated feedback tied to what actually works for that prompt at that school.</p>
+    <p>Where to find references:</p>
+    <ul>
+      <li>Strong student essays → <a href="${L.exemplars}" target="_blank" rel="noopener" class="ext-link">Exemplars Directory</a></li>
+      <li>School-specific intel → <a href="${L.briefs}" target="_blank" rel="noopener" class="ext-link">Insider Briefs</a></li>
+      <li>Prepory's approach → <a href="${L.curriculum}" target="_blank" rel="noopener" class="ext-link">Curriculum Guides</a></li>
+      <li>Brand voice → paste existing Prepory copy you like into the conversation</li>
+    </ul>
+    <p>Even better: in <strong>Cowork</strong>, point Claude at the folder that holds your exemplars and it can read them itself. In <strong>Projects</strong>, upload them once and they're always available.</p>
+  </div>
+</details>
+
+<details class="acc">
+  <summary><span>Principle 5. Ask for options, not one answer</span><span class="acc-chev">▼</span></summary>
+  <div class="acc-body">
+    <p>Don't ask for one thing and go with it. Ask for several and pick the best, or combine elements from multiple options.</p>
+    <div class="bad">❌ Write a subject line for this email.</div>
+    <div class="good">✅ Write 5 subject line options. Mix: question-based, direct, curiosity-driven, stat-based. All under 55 characters. One should reference the August 1st Common App deadline.</div>
+    <p>This applies to everything: essay topic angles, activity descriptions, email openers, social post hooks, slide titles. Options give you choices, and choices give you the best final product.</p>
+  </div>
+</details>
+
+<details class="acc">
+  <summary><span>Principle 6. Iterate. Push back. Don't accept the first thing.</span><span class="acc-chev">▼</span></summary>
+  <div class="acc-body">
+    <p>The first output is a draft. Your job is to shape it. Talk to Claude like a colleague helping you draft something. Give it specific feedback, not vague dissatisfaction.</p>
+    <div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">The tone is too formal. This is going to a parent, not a law firm. Make it warmer and more conversational.</pre><button class="copy-btn">Copy</button></div></div>
+    <div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">The second paragraph is vague. Rewrite it with a specific example, maybe a student who started counseling in junior year vs. one who waited until senior fall.</pre><button class="copy-btn">Copy</button></div></div>
+    <div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">Good structure, but it's running too long. Cut it to under 180 words without losing the core message.</pre><button class="copy-btn">Copy</button></div></div>
+    <p>Each follow-up gets you closer because Claude has more context about what you want. The best results usually come after 2–4 rounds of refinement. As long as you stay in the same chat, Claude remembers everything you've said, so you don't need to repeat yourself.</p>
+  </div>
+</details>
+
+<details class="acc">
+  <summary><span>Principle 7. Always review before it goes anywhere</span><span class="acc-chev">▼</span></summary>
+  <div class="acc-body">
+    <p>Non-negotiable. Claude can be confidently, fluently wrong. Every output needs a human read before it reaches a student, parent, client, or your social feed.</p>
+    <p><strong>What to check:</strong></p>
+    <ul>
+      <li><strong>Accuracy</strong>. If there's a specific number or claim you didn't provide, verify it.</li>
+      <li><strong>Tone</strong>. Does it sound like Prepory? Like you? Or like a generic AI assistant?</li>
+      <li><strong>Inflation</strong>. Claude can overstate. "Led a team of cross-functional stakeholders" might mean "sent a Slack message to three people." Scale it to reality.</li>
+      <li><strong>Filler phrases</strong>, "In today's competitive landscape," "a passion for making a difference." Cut these on sight.</li>
+      <li><strong>Hallucinations</strong>. Claude occasionally invents programs, scholarships, or quotes. If something sounds suspiciously specific and you didn't provide it, look it up.</li>
+    </ul>
+    <div class="callout callout-tip"><span class="callout-icon">💡</span><span>Quick test: read it out loud. If any sentence could appear in any college admissions blog anywhere on the internet, it's too generic. Rewrite with one specific, true detail and it'll immediately be better.</span></div>
+  </div>
+</details>
+`},
+
+/* SEC_COWORK */
+{id:"cowork",label:"Cowork",group:"Claude Essentials",emoji:"🧑‍💻",html:`
+<div class="chapter-cover essentials">
+  <div class="chapter-label"><span class="chapter-num">Part 02</span> Claude Essentials</div>
+  <h2 class="chapter-title">The features that make Claude actually useful for Prepory.</h2>
+  <p class="chapter-desc">Cowork, Chat, Skills, Connectors, Projects, and how to stay within usage limits. These are the building blocks, everything in the later chapters assumes you know what's in here.</p>
+  <div class="chapter-meta">
+    <span class="chapter-chip">🧑‍💻 Cowork</span>
+    <span class="chapter-chip">💬 Chat</span>
+    <span class="chapter-chip">🧠 Skills</span>
+    <span class="chapter-chip">🔌 Connectors</span>
+    <span class="chapter-chip">📁 Projects</span>
+    <span class="chapter-chip">⚡ Usage limits</span>
+  </div>
+</div>
+<h2 class="display">Cowork, the main way you'll use Claude.</h2>
+<p>Cowork is Claude's desktop app experience, and it's where most of the real work at Prepory will happen. Unlike the browser, Cowork can read the files on your computer, write new files directly into a folder you choose (Word docs, slide decks, spreadsheets), talk to your connectors (Monday, Drive, Gmail, Calendar), use skills, and use projects, all in one place.</p>
+
+<div class="callout callout-tip"><span class="callout-icon">💡</span><span><strong>The shift from Chat to Cowork is the biggest unlock in this guide.</strong> Chat is great for quick questions, but Cowork is where Claude becomes a real teammate that can actually do things for you, like creating a full prep packet for a student, updating a Monday board after a session, or building a polished deck from your rough notes.</span></div>
+
+<div class="sh">What Cowork can do that Chat can't</div>
+<p>A lot of Claude features, skills, projects, and cloud connectors like Monday, Drive, Gmail, and Calendar, work in the browser too. What makes Cowork distinct is <strong>direct access to a folder on your computer</strong>. That single capability changes everything downstream.</p>
+<div class="grid-cards">
+  ${[['📂','Read a folder from your computer','Point Claude at a student\'s folder and it can read every file in there, session notes, drafts, activity lists, parent emails, and reason across all of them, without you dragging anything in. Chat in the browser can accept file uploads, but it can\'t read or write directly to a folder on your computer.'],['📄','Create real files into that folder','Claude can write .docx, .pptx, .xlsx, and .pdf files directly into your folder. These aren\'t copy-paste outputs, they\'re real, formatted, shareable documents you can open in Word, PowerPoint, Excel, etc.'],['🛠️','Run tools that live on your computer','Local extensions (MCP servers) that read local files, launch local apps, or control Claude in Chrome only run via the desktop app. The browser connects to cloud services; Cowork does both.'],['🧵','Keep everything in one place','Because Cowork combines folder access + skills + projects + connectors in one surface, you stop bouncing between tabs, downloads, and copy-paste. That integration is the real win, not any single feature.']].map(([e,t,d])=>`<div class="use-case-card" style="display:flex;gap:14px"><span style="font-size:18px">${e}</span><div><div style="font-weight:700;color:var(--ink);font-size:14px">${t}</div><div style="font-size:13px;color:var(--muted);margin-top:3px;line-height:1.6">${d}</div></div></div>`).join('')}
+</div>
+
+<div class="sh">Getting started with Cowork, step by step</div>
+<p style="margin-top:-4px">Assuming you already installed the desktop app (Step 0 in the Welcome section), here's the rest:</p>
+<div class="steps">
+  <div class="step"><div class="step-num">1</div><div class="step-text"><strong>Open the desktop app and find the Cowork tab.</strong> Once you're signed in with your Prepory email, look for the <strong>Cowork</strong> option (the app has a mode selector with both Chat and Cowork). Click it to enter Cowork mode. If you don't see it, make sure you're fully signed in and on the latest version of the desktop app.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-text"><strong>Select a folder to work in.</strong> Cowork will ask which folder on your computer to use. This is the folder Claude can read from and write to, nothing else on your computer is visible. For student work, pick (or create) a folder per student, something like <em>Students/Maya-Rodriguez</em>. You can change the folder any time.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-text"><strong>Start a new conversation.</strong> Just like Chat, you'll see a message box. The difference is that Claude now has eyes on your folder and can use tools. Try a small first prompt like: <em>"What files do you see in this folder?"</em>, a quick sanity check that everything is wired up.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-text"><strong>Ask Claude to do something that uses the folder.</strong> For example: <em>"Read Maya's activity list and her Common App draft, and flag which activities aren't being leveraged in the essay yet."</em> Claude will open the files, read them, and answer, no copy-paste needed.</div></div>
+  <div class="step"><div class="step-num">5</div><div class="step-text"><strong>Let Claude produce files for you.</strong> Ask for something like: <em>"Create a one-page brief summarizing where Maya stands on each of her target schools, with next steps for our session tomorrow."</em> Claude will write a real Word doc into the folder and give you a link to open it. You click it and the doc opens on your computer.</div></div>
+  <div class="step"><div class="step-num">6</div><div class="step-text"><strong>Turn on tools when you need them.</strong> Near the message composer you'll see a <strong>+ button</strong>. This is where you enable connectors (Monday, Drive, Gmail, Calendar, Claude in Chrome) and skills for the current conversation. Click it, toggle what you want, and Claude can use those tools in your next message.</div></div>
+</div>
+
+<div class="sh">Real Prepory examples of Cowork in action</div>
+
+<details class="acc" open>
+  <summary><span>Pre-session prep packet for a student</span><span class="acc-chev">▼</span></summary>
+  <div class="acc-body">
+    <p>You have a 4pm session with a student tomorrow and 15 minutes to prep. Instead of reading through three months of session notes, you ask Cowork:</p>
+    <div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">Read everything in this folder about Priya. Create a one-page prep brief for tomorrow's session with: (1) where she stands on each target school, (2) the 2-3 open action items she still owes us, (3) anything from last session I specifically said I'd follow up on. Save it as "Priya-prep-2026-04-17.docx" in this folder.</pre><button class="copy-btn">Copy</button></div></div>
+    <p>Claude reads the session notes, drafts, and any other files, then writes a formatted .docx prep brief into the folder. You open it, skim, and walk into the session ready.</p>
+  </div>
+</details>
+
+<details class="acc">
+  <summary><span>Drafting session follow-up emails</span><span class="acc-chev">▼</span></summary>
+  <div class="acc-body">
+    <p>Right after a session, ask Cowork:</p>
+    <div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">Using my session notes from today in this folder, draft a follow-up email to Priya and her parents. Recap what we covered, list the 3 action items she agreed to, and mention our next session is next Thursday at 4pm. Warm and encouraging tone. Then save it as a Gmail draft.</pre><button class="copy-btn">Copy</button></div></div>
+    <p>With the Gmail connector enabled, Cowork creates a draft in your Gmail ready for you to review and send. You never leave the app.</p>
+  </div>
+</details>
+
+<details class="acc">
+  <summary><span>Building a slide deck from rough notes</span><span class="acc-chev">▼</span></summary>
+  <div class="acc-body">
+    <p>You dump your messy notes for a parent webinar into a doc, then ask:</p>
+    <div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">Turn my notes in timeline-webinar-notes.md into a 15-slide presentation for parents of rising juniors. Use the pptx skill so the deck looks polished. Tone: warm and reassuring, not scary. Include speaker notes for each slide. Save as "Timeline-Webinar-Draft.pptx" in this folder.</pre><button class="copy-btn">Copy</button></div></div>
+    <p>Claude uses the pptx skill to produce a real PowerPoint file in your folder. You open it in PowerPoint or Keynote, apply Prepory branding, and you're 80% there.</p>
+  </div>
+</details>
+
+<div class="callout callout-info"><span class="callout-icon">ℹ️</span><span><strong>Cowork doesn't see anything you don't give it.</strong> It only reads the folders you've connected. Your other files, desktop, and documents stay completely private. If you want Claude to see a new file, move it into a connected folder.</span></div>
+`},
+
+/* SEC_CHAT */
+{id:"chat",label:"Chat (Claude.ai)",group:"Claude Essentials",emoji:"💬",html:`
+<h2 class="display">Chat for quick questions and content work.</h2>
+<p>Chat is the standard Claude conversation experience. You can use it in the browser at claude.ai, on mobile, or right inside the desktop app (the desktop app has both Chat and Cowork). It's fast, lightweight, and perfect for things you don't need a folder for. Chat can use projects, skills, and cloud connectors (Monday, Drive, Gmail, Calendar) just like Cowork. The one thing it can't do is read or write files on your computer; that's what Cowork is for.</p>
+
+<div class="sh">When to use Chat vs. Cowork</div>
+<div class="grid-cards">
+  <div class="use-case-card">
+    <div class="use-case-task"><strong>Quick question:</strong> "What's the current WashU neuroscience Common App prompt?"</div>
+    <div class="use-case-tool">→ Chat. Takes 3 seconds.</div>
+  </div>
+  <div class="use-case-card">
+    <div class="use-case-task"><strong>Draft a LinkedIn post:</strong> "Help me write a 150-word post about the August 1 deadline."</div>
+    <div class="use-case-tool">→ Chat. Copy the output into LinkedIn.</div>
+  </div>
+  <div class="use-case-card">
+    <div class="use-case-task"><strong>A quick Monday or Gmail check from your phone:</strong> "What's my next student session?"</div>
+    <div class="use-case-tool">→ Chat works. Connectors follow your account.</div>
+  </div>
+  <div class="use-case-card">
+    <div class="use-case-task"><strong>Work with a student's actual files on your computer:</strong> session notes, drafts, activity list.</div>
+    <div class="use-case-tool">→ Cowork. It can read the folder directly. Chat can't.</div>
+  </div>
+  <div class="use-case-card">
+    <div class="use-case-task"><strong>Produce a real document on your computer:</strong> .docx, .pptx, .xlsx saved to a folder.</div>
+    <div class="use-case-tool">→ Cowork. Chat can generate file contents but can't save to your disk.</div>
+  </div>
+  <div class="use-case-card">
+    <div class="use-case-task"><strong>Use Claude in Chrome to drive your browser:</strong> publish a WP page, fill a form, use a site that needs login.</div>
+    <div class="use-case-tool">→ Cowork (with the Chrome extension + toggled on).</div>
+  </div>
+</div>
+
+<div class="sh">Getting started with Chat</div>
+<div class="steps">
+  <div class="step"><div class="step-num">1</div><div class="step-text">Go to <a href="${L.claude}" target="_blank" rel="noopener" class="ext-link">claude.ai</a> and sign in with your Prepory email.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-text">You'll see a chat box. Type your prompt using the principles from Prompting 101, context, audience, format, tone.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-text">Iterate in the same conversation. Claude remembers everything you've said within a single chat.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-text">When you're done, copy the output into wherever it needs to go, email, doc, social post.</div></div>
+</div>
+
+<div class="callout callout-note"><span class="callout-icon">📌</span><span><strong>By default, each new Chat starts fresh.</strong> Two exceptions worth knowing: if you have <strong>Memory</strong> enabled on your account, Claude can carry your preferences and ongoing context across conversations. And if you're inside a <strong>Project</strong>, all of its custom instructions and files are loaded automatically every time. If you find yourself re-explaining the same context every day (your role, a student, a school), that's the signal to either turn on memory or build a project.</span></div>
+
+<div class="sh">Two hidden-gem features in Chat</div>
+
+<details class="acc" open>
+  <summary><span>Artifacts, for content you'll reuse</span><span class="acc-chev">▼</span></summary>
+  <div class="acc-body">
+    <p>When Claude produces something substantial like an email template, a checklist, or a chunk of HTML, it often appears as an <strong>artifact</strong> in a panel on the right. You can edit it, download it, or keep refining it with Claude, which is much nicer than scrolling back through the chat to find the latest version.</p>
+    <p>Try this: <em>"Write a parent-facing one-pager about Prepory's approach to senior fall. Put it in an artifact so I can refine it."</em></p>
+  </div>
+</details>
+
+<details class="acc">
+  <summary><span>File uploads</span><span class="acc-chev">▼</span></summary>
+  <div class="acc-body">
+    <p>You can drag PDFs, images, Word docs, or spreadsheets directly into a Chat conversation. Claude will read them and answer questions about them. Useful for one-off analysis, "summarize this research paper," "pull the key dates out of this school's policy PDF."</p>
+    <p>For ongoing work with the same files, use Cowork (pointed at a folder) or a Project (files stay uploaded forever) instead of re-uploading each time.</p>
+  </div>
+</details>
+`},
+
+/* SEC_SKILLS */
+{id:"skills",label:"Skills",group:"Claude Essentials",emoji:"🧠",html:`
+<h2 class="display">Skills, specialized playbooks for better outputs.</h2>
+<p>Skills are folders of instructions and examples that make Claude dramatically better at specific kinds of work. Think of them as specialized playbooks: when Claude is about to make a Word doc, the <strong>docx skill</strong> kicks in and Claude follows a well-tested recipe for making a polished, properly formatted document. Without the skill, you'd get a rough draft. With it, you get something much closer to ready-to-send.</p>
+
+<div class="callout callout-info"><span class="callout-icon">ℹ️</span><span>Skills work across Claude, Cowork, the desktop app, and claude.ai in the browser. They're often triggered automatically based on what you ask for, so you usually don't have to think about them. But knowing they exist helps you ask for the right things.</span></div>
+
+<div class="sh">Skills you'll use at Prepory</div>
+<div class="grid-cards">
+  ${[['📄','docx','Polished Word documents, session notes, parent one-pagers, coaching briefs, letters. Formatting, headings, and structure look professional out of the box.'],['📊','pptx','Slide decks for webinars, internal training, and family presentations. Proper layouts, speaker notes, and slide hygiene.'],['📈','xlsx','Spreadsheets, college list comparisons, application tracking, budget models. Formulas and formatting, not just flat data.'],['📑','pdf','Reading existing PDFs (school policy docs, Common Data Sets) and producing new ones (final handouts, read-only one-pagers).']].map(([e,t,d])=>`<div class="use-case-card" style="display:flex;gap:14px"><span style="font-size:18px">${e}</span><div><div style="font-weight:700;color:var(--ink);font-size:14px">${t}</div><div style="font-size:13px;color:var(--muted);margin-top:3px;line-height:1.6">${d}</div></div></div>`).join('')}
+</div>
+
+<div class="sh">How to actually use a skill</div>
+<p>Most of the time, just ask Claude for what you want and it'll pick the right skill on its own. If you want to be explicit, mention the skill by name. For skills that drive other tools (for example, a skill that uses Claude in Chrome to do something in the browser), make sure the underlying tool is also toggled on via the <strong>+ button</strong> near the message composer before you send.</p>
+
+<div class="prompt-wrap"><div class="prompt-label">Example prompts that trigger skills</div><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">Use the docx skill to create a polished session notes document for my 3pm with Priya today. Include: summary, feedback given, action items, next-session focus. Save to this folder.</pre><button class="copy-btn">Copy</button></div></div>
+
+<div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">Build a 12-slide deck for parents of rising sophomores on "when to start thinking about college." Use the pptx skill so it looks clean. Include speaker notes.</pre><button class="copy-btn">Copy</button></div></div>
+
+<div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">Create an xlsx college list tracker for this student with columns: School, Reach/Target/Safety, Deadline Type, Supplementals Required, Draft Status, Last Updated. Pre-fill rows for each of her 10 target schools.</pre><button class="copy-btn">Copy</button></div></div>
+
+<div class="sh">Creating your own custom skills with skill-creator</div>
+<p>You don't have to wait for the AI team to build a skill for you. The desktop app ships with a special skill for building skills, called <strong>skill-creator</strong>. It walks you through turning a repeated workflow into a reusable recipe that Claude can trigger automatically, in plain English, no coding.</p>
+<p><strong>The best candidates for a custom skill:</strong></p>
+<ul>
+  <li>Something you ask Claude for <em>the same way every time</em> (e.g., "format my weekly coaching recap using this exact structure").</li>
+  <li>Something where Claude's default output isn't hitting and you always give the same corrections.</li>
+  <li>A Prepory-specific piece of writing or process that needs a consistent voice and shape (parent intro emails, post-consult follow-ups, school-fit summaries).</li>
+</ul>
+<p><strong>How to use skill-creator, step by step:</strong></p>
+<div class="steps">
+  <div class="step"><div class="step-num">1</div><div class="step-text">Open a Cowork conversation. Click the <strong>+ button</strong> near the message composer and toggle on <strong>skill-creator</strong>.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-text">Tell Claude what you want the new skill to do, in plain English. The more specific, the better: <em>"I want a skill that takes rough coaching session notes and turns them into a structured parent follow-up email with a recap, action items, and next-session date."</em></div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-text"><strong>Give it examples.</strong> Paste 2–3 real inputs (your rough notes) and the exact outputs you'd want. Examples are the single biggest lever, skills with good examples are dramatically better than ones without.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-text"><strong>Answer Claude's questions.</strong> skill-creator will ask clarifying questions, tone, length, edge cases, what to avoid. Answer carefully. These become the skill's guardrails.</div></div>
+  <div class="step"><div class="step-num">5</div><div class="step-text"><strong>Let Claude write and save the skill.</strong> It'll appear in your + menu afterwards, and you (or anyone you share it with) can trigger it by name.</div></div>
+  <div class="step"><div class="step-num">6</div><div class="step-text"><strong>Test and iterate.</strong> Run the skill on a fresh input, see what it produces, and if it's off, go back into skill-creator and refine. A skill gets good over 3–4 rounds of use-and-adjust, don't expect perfect on the first pass.</div></div>
+</div>
+<div class="callout callout-tip"><span class="callout-icon">💡</span><span>If your custom skill would be useful for the whole team, share it with the Prepory AI team. We can promote it to a company-wide skill so every coach gets it automatically.</span></div>
+
+<div class="sh">We'll keep building more Prepory-specific skills</div>
+<p>The AI team is also building skills centrally. As we learn which tasks get repeated (and where Claude's default output isn't quite hitting), we'll ship skills tuned for Prepory's voice, style, and workflow. If you notice yourself giving the same instructions to Claude over and over, <strong>that's a signal, either build it yourself with skill-creator, or flag it so we can build it for everyone</strong>.</p>
+
+<div class="callout callout-tip"><span class="callout-icon">💡</span><span>Skills compose with projects. Example: the school-specific Stanford project has Stanford's Insider Brief loaded, and the docx skill makes sure the output is a polished, properly formatted Word doc. Together, they produce advice that's both Stanford-specific and ready to send.</span></div>
+`},
+
+/* SEC_CONNECTORS */
+{id:"connectors",label:"Connectors",group:"Claude Essentials",emoji:"🔌",html:`
+<h2 class="display">Connectors, plug Claude into our tools.</h2>
+<p>Connectors give Claude secure access to the apps we already use every day. Once connected, Claude can read from and (where allowed) update these tools directly in the conversation, no copy-paste, no switching windows.</p>
+
+<div class="sh">The five connectors that matter most at Prepory</div>
+
+<div class="tool-card">
+  <div class="tool-head"><span class="tool-name">Monday</span><span class="tool-where">Coach ops</span></div>
+  <p style="margin:6px 0">Claude can reach into Monday to help with pipeline work, pulling information about your boards and items so you don't have to dig through them manually. Exact capabilities depend on how the connector is set up for your workspace, so try a small ask first and see what's available.</p>
+  <div class="tool-how"><strong>Try asking Cowork:</strong> "Look at my Monday workspace and summarize where each of my students stands right now."</div>
+</div>
+
+<div class="tool-card">
+  <div class="tool-head"><span class="tool-name">Google Drive</span><span class="tool-where">Shared resources</span></div>
+  <p style="margin:6px 0">Claude can search across Drive, open docs, and pull specific passages from them. Great for surfacing the right Insider Brief, curriculum doc, or exemplar without manually hunting for it.</p>
+  <div class="tool-how"><strong>Try asking:</strong> "Find the Stanford Insider Brief in Google Drive and summarize what it says about what the Stanford committee values most in the 'What matters most to you?' essay."</div>
+</div>
+
+<div class="tool-card">
+  <div class="tool-head"><span class="tool-name">Gmail</span><span class="tool-where">Client comms</span></div>
+  <p style="margin:6px 0">Claude can search your inbox, summarize long threads, and draft replies directly into your Gmail as drafts (never sent automatically, you always review). Perfect for catching up after PTO or drafting post-session recap emails.</p>
+  <div class="tool-how"><strong>Try asking:</strong> "Find the most recent thread with Priya's mom. Summarize what she's asked for, and draft a reply addressing each of her questions. Save as a draft in Gmail."</div>
+</div>
+
+<div class="tool-card">
+  <div class="tool-head"><span class="tool-name">Google Calendar</span><span class="tool-where">Scheduling</span></div>
+  <p style="margin:6px 0">Claude can see your upcoming sessions, find times that work, create events, and prep you for what's next on your calendar.</p>
+  <div class="tool-how"><strong>Try asking:</strong> "What do I have on my calendar tomorrow? For each student session, pull their file and give me a 2-sentence heads-up on what we're supposed to cover."</div>
+</div>
+
+<div class="tool-card">
+  <div class="tool-head"><span class="tool-name">Claude in Chrome <span style="font-size:10.5px;background:var(--accent);color:white;padding:2px 8px;border-radius:999px;margin-left:6px;letter-spacing:.4px">POWERFUL</span></span><span class="tool-where">Real browser actions</span></div>
+  <p style="margin:6px 0">Claude in Chrome is a browser agent. Instead of just fetching a page, it can actually <strong>drive your Chrome browser</strong>, open tabs, fill forms, click buttons, log into WordPress, navigate Common App, publish a page, or pull data from a site that needs you to be signed in. Think of it as "Claude can use the web the way you would."</p>
+  <div class="tool-how"><strong>Try asking:</strong> "Open the WordPress admin for staging2.prepory.com and create a new page called 'Executive Coaching for CMOs.' Use the body copy in this folder and save it as a draft."</div>
+</div>
+
+<div class="sh">Setting up the standard connectors (Monday, Drive, Gmail, Calendar)</div>
+<div class="steps">
+  <div class="step"><div class="step-num">1</div><div class="step-text">Open the Claude desktop app and head to the <strong>Connectors</strong> area (look under Settings or Customize, the exact spot can vary by app version).</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-text">Click <strong>Connect</strong> next to Monday, Google Drive, Gmail, and Google Calendar. You'll be prompted to sign in and approve the permissions Claude needs. Use your Prepory account whenever it asks.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-text">Once connected, Claude can use the tool from any conversation. You don't need to re-authorize every time.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-text"><strong>Enable the connector in your conversation.</strong> Open a Cowork chat and click the <strong>+ button</strong> near the message composer. You'll see a list of connectors and skills, toggle on the ones you want Claude to use for this chat.</div></div>
+  <div class="step"><div class="step-num">5</div><div class="step-text"><strong>Test it.</strong> Ask Claude "What's on my calendar this week?" or "What are my 3 most recent Monday items?", if it returns real data, you're connected.</div></div>
+</div>
+
+<div class="sh">Setting up Claude in Chrome, step by step</div>
+<p>Claude in Chrome takes three separate pieces: a Chrome extension, a desktop app setting, and a per-conversation toggle. Here's the full walkthrough.</p>
+<div class="steps">
+  <div class="step"><div class="step-num">1</div><div class="step-text"><strong>Install the Chrome extension.</strong> In Google Chrome, go to the <a href="https://chromewebstore.google.com/" target="_blank" rel="noopener" class="ext-link">Chrome Web Store</a> and search for <em>"Claude"</em>, you're looking for the official Anthropic extension (sometimes called "Claude in Chrome"). Click <strong>Add to Chrome</strong> and approve the permissions. You'll see a small Claude icon appear near your Chrome toolbar. That means it's installed.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-text"><strong>Sign the extension in to your Prepory account.</strong> Click the extension icon and sign in with the same email you use for the desktop app. This links the browser to your team account.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-text"><strong>Enable Claude in Chrome inside the desktop app.</strong> Open the Claude desktop app, go to the <strong>Connectors</strong> area in settings, find <em>Claude in Chrome</em>, and switch it on. You may be asked to confirm that the extension is installed.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-text"><strong>Turn it on for a conversation using the + button.</strong> Open a Cowork chat and click the <strong>+ button</strong> near the message composer. A panel will pop up with available tools and connectors. Find <strong>Claude in Chrome</strong> and toggle it on. That plus button is the real "on switch." Without it, Claude won't drive the browser, even if the extension is installed.</div></div>
+  <div class="step"><div class="step-num">5</div><div class="step-text"><strong>Give it a first task.</strong> Make sure Chrome is open, then ask something like: <em>"Open Common App and tell me what the current personal statement prompts are."</em> You'll see Chrome pop into focus, Claude will open a new tab, and it'll narrate what it's doing as it navigates.</div></div>
+</div>
+<div class="callout callout-tip"><span class="callout-icon">💡</span><span><strong>Keep an eye on the window while it works.</strong> Claude in Chrome tells you every click and navigation in real time. If it's about to do something you don't want, you can cancel. For anything that submits a form or sends data, it'll pause and ask for confirmation.</span></div>
+
+<div class="callout callout-warn"><span class="callout-icon">⚠️</span><span><strong>Claude will check in before doing something destructive.</strong> Things like sending an email, deleting a Monday item, declining a calendar invite, or submitting a form in Chrome typically require your explicit confirmation. Reading, searching, and drafting happen more freely. How often Claude asks for permission can be adjusted in your connector settings, so if you've loosened it, pay extra attention to what's about to happen.</span></div>
+
+<div class="callout callout-info"><span class="callout-icon">ℹ️</span><span>More connectors will be added over time (Slack, HubSpot, and others are likely candidates). If there's a tool you use daily that would be game-changing if Claude could reach it, flag it.</span></div>
+`},
+
+/* SEC_PROJECTS */
+{id:"projects",label:"Projects",group:"Claude Essentials",emoji:"📁",html:`
+<h2 class="display">Projects, reusable workspaces for recurring work.</h2>
+<p>A Project is a permanent workspace inside Claude with two superpowers: <strong>custom instructions</strong> (a system prompt that's always active) and <strong>reference files</strong> (documents Claude can always read). Every conversation you start inside a project automatically has both loaded. No re-uploading, no re-explaining.</p>
+
+<div class="callout callout-tip"><span class="callout-icon">💡</span><span><strong>Rule of thumb:</strong> if you've caught yourself typing the same context into Claude three or more times, turn it into a Project. It'll save you hours over a year.</span></div>
+
+<div class="sh">What projects unlock</div>
+<div class="grid-cards">
+  ${[['🎓','A project per student','All their drafts, notes, activity list, and target-school intel in one place. Claude has full context every time you ask about them.'],['🏫','A project per school','Insider Brief + Common Data Set + great exemplars. Ask school-specific questions and get calibrated, on-brand answers.'],['✍️','A project per recurring deliverable','Webinar scripts, parent newsletter, LinkedIn posts, with Prepory brand voice and past examples pre-loaded.']].map(([e,t,d])=>`<div class="use-case-card" style="display:flex;gap:14px"><span style="font-size:18px">${e}</span><div><div style="font-weight:700;color:var(--ink);font-size:14px">${t}</div><div style="font-size:13px;color:var(--muted);margin-top:3px;line-height:1.6">${d}</div></div></div>`).join('')}
+</div>
+
+<div class="sh">School-specific coach projects, the flagship use case</div>
+<p>The Prepory AI team is building a set of <strong>school-specific Projects</strong> for coaches. Each one is tuned for a single school and designed to give coaches fast, on-brand, on-strategy advice for that school, grounded in Prepory's insider knowledge rather than the generic public information you'd get from a web search.</p>
+
+<div class="card" style="background:linear-gradient(135deg,var(--primary-soft),#f9fbf9);border-color:rgba(11,71,59,.12)">
+  <div style="font-size:11px;font-weight:700;color:var(--accent-dk);letter-spacing:1.4px;text-transform:uppercase;margin-bottom:8px">Example project · First one rolling out</div>
+  <h3 class="subhead" style="margin:0 0 8px">🌲 Stanford Coach Project</h3>
+  <p style="margin:0">A dedicated project loaded with Stanford's Insider Brief, exemplar essays that have worked in past cycles, Prepory's Stanford-specific coaching playbook, and the current year's prompts. Any coach working with a Stanford applicant can open this project and ask questions like:</p>
+  <ul style="margin-top:10px">
+    <li><em>"What does Stanford's committee actually want to see in the 'What matters most to you?' essay, and what are 3 common ways students miss the mark?"</em></li>
+    <li><em>"Here's my student's draft of the 'roommate letter' supplemental, how does it compare to the exemplars in this project, and what's the single biggest gap?"</em></li>
+    <li><em>"Based on my student's profile [paste notes], which angle for the short-answer questions would likely resonate most with Stanford specifically?"</em></li>
+  </ul>
+  <p style="margin-top:10px">The answers are grounded in Prepory's intel, not a generic Google search, and reflect what actually wins with Stanford admissions, not what a random AI thinks wins.</p>
+  <div class="feature-pill" style="margin-top:10px">More school projects coming</div>
+  <span style="font-size:12.5px;color:var(--muted);margin-left:6px">We're starting with Stanford and rolling out additional school-specific projects as we build them. Coaches will get access as each one launches.</span>
+</div>
+
+<div class="sh">Creating your own project, step by step</div>
+<div class="steps">
+  <div class="step"><div class="step-num">1</div><div class="step-text">In the Claude desktop app or at <a href="${L.claude}" target="_blank" rel="noopener" class="ext-link">claude.ai</a>, click <strong>Projects</strong> in the sidebar, then <strong>New Project</strong>.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-text"><strong>Give it a clear name.</strong> "Maya Rodriguez, Class of 2026" or "Stanford Applicants" or "Prepory Blog Drafts." Specific beats clever.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-text"><strong>Write custom instructions.</strong> This is the "always-on" system prompt. Tell Claude who it's helping, what context to assume, what Prepory's voice sounds like, and what to avoid. A good instruction block is 4–10 sentences.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-text"><strong>Upload reference files.</strong> Drag in the Insider Brief, exemplars, session notes, activity lists, or anything else Claude should always be able to reference. Claude will cite which file it's drawing from.</div></div>
+  <div class="step"><div class="step-num">5</div><div class="step-text"><strong>Use the project.</strong> Start a new conversation from inside the project. Every message you send now has the custom instructions and files as context automatically.</div></div>
+</div>
+
+<div class="sh">Example custom instructions for a student project</div>
+<div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">You are helping a Prepory college admissions counselor work with Maya Rodriguez, a high school senior from Chicago applying to Stanford (REA), Northwestern, UChicago, and UMich. She's interested in cognitive science and creative writing.
+
+When I ask questions about Maya, use the session notes, draft essays, and activity list in this project as your primary context. If something isn't in the files, say so rather than guessing.
+
+Voice: coach-to-coach. Direct, specific, actionable. No filler. Never write prose that would go directly into Maya's essays, your job is to support my coaching, not replace Maya's voice. If I ask for draft language, offer it as "options for Maya to consider" rather than finished text.
+
+Always flag places where something is worth verifying against the school's official site or the Insider Brief.</pre><button class="copy-btn">Copy</button></div></div>
+
+<div class="callout callout-tip"><span class="callout-icon">💡</span><span>The more specific your custom instructions, the more useful the project. "Help me with college stuff" gives you generic output. "Help me coach Maya, who's applying REA to Stanford for cognitive science, using the files in this project" gives you output you can actually act on.</span></div>
+`},
+
+/* SEC_LIMITS */
+{id:"limits",label:"Working within usage limits",group:"Claude Essentials",emoji:"⚡",html:`
+<h2 class="display">Working within usage limits.</h2>
+<p>Every Claude account has usage limits that reset on a rolling basis. For most Prepory work you'll never notice them, but a handful of habits stretch your budget significantly, and a few small mistakes can burn through it fast. This section is short. Read it once and you'll be set.</p>
+
+<div class="sh">The habits that save usage</div>
+
+<div class="grid-cards">
+  ${[
+    ['🧵','Start a new chat when you switch topics','Long conversations keep the entire history in play every turn, which costs more and also dilutes Claude\'s focus. When you move from "draft a parent email" to "help me build a webinar outline," start a new chat.'],
+    ['📁','Put repeat context in a Project, not every prompt','If you\'re pasting the same Insider Brief, activity list, or exemplar into three different chats a day, stop. Put it in a project once. Every conversation inside the project references it for free.'],
+    ['📂','Use Cowork folder access instead of pasting giant files','Pasting a 10-page student file into a chat uses far more budget than pointing Cowork at the folder and asking Claude to read what it needs. Same outcome, a fraction of the cost.'],
+    ['🎯','Pick the right model for the task','Opus is the most powerful but uses the most budget. For quick drafts, copy edits, summaries, and simpler work, switch to Sonnet or Haiku, you\'ll get the job done with way less usage. Save Opus for the hard stuff: nuanced strategy, complex synthesis, high-stakes writing.'],
+    ['✂️','Keep prompts focused','A clear, specific 2-sentence prompt generates less usage than a rambling 10-paragraph one, and almost always produces better output anyway. Prompting 101, Principle 1 lives here too.'],
+    ['📦','Batch related questions in one conversation','If you have five questions about a single student, ask them in one chat (so Claude only loads the context once) instead of five separate chats.'],
+    ['⛔','Stop runaway loops fast','If Claude seems to be spinning, producing walls of repeated output, or stuck re-asking for files, cancel it. Waiting it out burns usage for nothing.']
+  ].map(([e,t,d])=>`<div class="use-case-card" style="display:flex;gap:14px"><span style="font-size:18px">${e}</span><div><div style="font-weight:700;color:var(--ink);font-size:14px">${t}</div><div style="font-size:13px;color:var(--muted);margin-top:4px;line-height:1.65">${d}</div></div></div>`).join('')}
+</div>
+
+<div class="sh">If you hit a limit</div>
+<p>Claude will tell you when your limit resets, it's usually a short wait, not catastrophic. You can keep working in lighter models, switch to Chat if you were in Cowork, or just come back when the reset lands. This isn't a reason to worry, just a reason to build good habits now so you stay ahead of it.</p>
+
+<div class="callout callout-tip"><span class="callout-icon">💡</span><span><strong>The 80/20 rule:</strong> the single biggest usage-saver is using Projects and Cowork folder access instead of re-pasting the same context into Chat every day. If you only take one habit from this section, make it that one.</span></div>
+
+<div class="callout callout-info"><span class="callout-icon">ℹ️</span><span>Limits are set at the account level by Anthropic and vary by plan. If you're running into them frequently despite using these habits, flag it. We may be able to adjust your team's plan.</span></div>
+`},
+
+/* SEC_BRAINSTORM */
+{id:"brainstorm",label:"Brainstorming & Ideation",group:"Core Skills",emoji:"💡",html:`
+<div class="chapter-cover skills">
+  <div class="chapter-label"><span class="chapter-num">Part 03</span> Core Skills</div>
+  <h2 class="chapter-title">Five things Claude is great at that apply to everyone.</h2>
+  <p class="chapter-desc">These aren't tools, they're skills that transfer across roles. A coach, a marketer, and an ops lead all use brainstorming, writing, research, summarizing, and documentation. Each section shows which Claude tool fits best.</p>
+  <div class="chapter-meta">
+    <span class="chapter-chip">💡 Brainstorming</span>
+    <span class="chapter-chip">✍️ Writing</span>
+    <span class="chapter-chip">🔍 Research</span>
+    <span class="chapter-chip">📋 Summarizing</span>
+    <span class="chapter-chip">📁 Documentation</span>
+  </div>
+</div>
+<p>Generating ideas fast is one of Claude's strongest skills. What might take you 45 minutes of staring at a blank doc takes about 90 seconds. The key: treat the output as raw material, not finished product. You filter, refine, and decide. Claude just gets you past the blank page.</p>
+
+<div class="sh">Which tool to use</div>
+<div class="use-case-card" style="margin-bottom:10px">
+  <div class="use-case-task"><strong>Pure idea generation with no files involved:</strong> blog topics, email hooks, essay angles.</div>
+  <div class="use-case-tool">→ Chat is faster.</div>
+</div>
+<div class="use-case-card">
+  <div class="use-case-task"><strong>Brainstorming with a student's actual context:</strong> their activities, drafts, notes.</div>
+  <div class="use-case-tool">→ Cowork (pointed at their folder) or a student Project.</div>
+</div>
+
+<div class="sh">Brainstorming essay topics with a student, step by step</div>
+<p>You're working with Priya, rural Georgia, first-gen, robotics captain, weekend hardware store job, applying for mechanical engineering. She keeps wanting to write about robotics. You think it's too predictable.</p>
+<div class="steps">
+  <div class="step"><div class="step-num">1</div><div class="step-text">Open Claude (Chat or Cowork). If you have a Priya project, use that. Claude already knows her. Otherwise, spend 60 seconds writing out what you know about her before typing anything else.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-text">Ask for a handful of options with a specific ask:</div></div>
+</div>
+
+<div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">I'm a Prepory admissions counselor working with Priya. She grew up in rural Georgia, is first-gen, captains the robotics team, and works at her family's hardware store on weekends. She's applying to Georgia Tech, Purdue, and Clemson for mechanical engineering. She keeps wanting to write about robotics but I think the topic is too predictable for her.
+
+Suggest 5 different essay angles she could explore instead. Focus on angles that would feel specific and fresh, not Common App clichés. For each, write one sentence on what the essay might explore and why it could be compelling.</pre><button class="copy-btn">Copy</button></div></div>
+
+<div class="steps">
+  <div class="step"><div class="step-num">3</div><div class="step-text"><strong>Read the results and react.</strong> Some will feel off, that's fine. Maybe one suggests the time she fixed a broken pipe at the hardware store using robotics logic. That sparks something.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-text"><strong>Go deeper on what clicks.</strong> Stay in the same conversation. Ask: "I like the hardware store angle. What are 4 specific scenes or moments she could write about to make this feel vivid and concrete?"</div></div>
+  <div class="step"><div class="step-num">5</div><div class="step-text"><strong>Use the output as conversation fuel in your next session.</strong> Don't read the list to Priya. Instead: "What if instead of robotics, you wrote about that moment at the store when you figured out the pipe?" Claude gave you the seed. Your coaching makes it personal.</div></div>
+</div>
+
+<div class="sh">More brainstorming prompts</div>
+
+<details class="acc">
+  <summary><span>Content ideas for marketing</span><span class="acc-chev">▼</span></summary>
+  <div class="acc-body">
+    <div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">I'm on Prepory's marketing team. Common App opens August 1st and families are starting to panic about the timeline. Give me 5 content ideas for our blog and social channels that would be useful and timely for parents of rising seniors right now.
+
+For each: a working title, one-sentence description, and which platform it's best for (blog, LinkedIn, Instagram, or email). We've recently published about essay topic selection and test-optional policies, avoid those.</pre><button class="copy-btn">Copy</button></div></div>
+    <p>Follow up with: "Expand on ideas #2 and #4. For each, give me a more detailed outline: key points, strong opening hook, and a CTA."</p>
+  </div>
+</details>
+
+<details class="acc">
+  <summary><span>Angles for a sales or outreach challenge</span><span class="acc-chev">▼</span></summary>
+  <div class="acc-body">
+    <div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">I'm on Prepory's sales team. A parent attended our 'Ivy League Admissions Myths' webinar three weeks ago, opened our follow-up email, but never booked a consultation. Her daughter is a rising senior applying to Brown, Dartmouth, and Northwestern.
+
+Give me 5 different angles for a re-engagement email. For each, explain what emotional trigger or practical concern it addresses and suggest a one-sentence hook.</pre><button class="copy-btn">Copy</button></div></div>
+  </div>
+</details>
+
+<details class="acc">
+  <summary><span>Structuring a session with a stuck student</span><span class="acc-chev">▼</span></summary>
+  <div class="acc-body">
+    <div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">I'm trying to figure out how to structure a 60-minute 'college list building' session with a student who has a 3.6 GPA, 1350 SAT, and wants to study environmental science. She has no schools on her list yet and is getting paralyzed by the number of options.
+
+Give me 5 different ways I could structure this conversation, each one prioritizing a different starting point. For each, explain the tradeoff.</pre><button class="copy-btn">Copy</button></div></div>
+  </div>
+</details>
+
+<div class="callout callout-tip"><span class="callout-icon">💡</span><span>If ideas feel generic, your prompt is probably too vague. Add a real constraint: a specific student, deadline, or thing you want to avoid. The output will sharpen immediately.</span></div>
+`},
+
+/* SEC_WRITING */
+{id:"writing",label:"Writing & Editing",group:"Core Skills",emoji:"✍️",html:`
+<p>Writing is what most people think of first when they think of Claude. Whether it's an email to an anxious parent, a blog post about FAFSA changes, or a follow-up sequence for prospective families, Claude can give you a strong first draft in minutes. Know which tool to use, and always edit before it goes anywhere.</p>
+
+<div class="sh">Which tool, and when</div>
+<div class="grid-cards">
+  <div class="use-case-card">
+    <div class="use-case-task"><strong>Emails to clients, based on your notes and past threads:</strong></div>
+    <div class="use-case-tool">→ Cowork with the Gmail connector. Ask it to draft directly into Gmail.</div>
+  </div>
+  <div class="use-case-card">
+    <div class="use-case-task"><strong>A session notes doc, one-pager, or internal memo:</strong></div>
+    <div class="use-case-tool">→ Cowork + docx skill. Real Word doc in your folder.</div>
+  </div>
+  <div class="use-case-card">
+    <div class="use-case-task"><strong>Social copy, subject lines, quick marketing iterations:</strong></div>
+    <div class="use-case-tool">→ Chat. Fast back-and-forth, copy out when you're happy.</div>
+  </div>
+</div>
+
+<div class="sh">Drafting a parent email in Cowork</div>
+<div class="steps">
+  <div class="step"><div class="step-num">1</div><div class="step-text">Open Cowork with the student's folder selected. If you have the Gmail connector set up, Claude can read recent threads and write drafts directly into Gmail.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-text">Ask for what you need with full context:</div></div>
+</div>
+
+<div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">I need to follow up with Karen (Priya's mom) after today's session. Read my session notes in this folder and the latest thread with Karen in Gmail. Draft an email that: (1) recaps what Priya and I decided on for her essay direction, (2) addresses Karen's concern from her last email about timeline, (3) confirms our next session.
+
+Warm, reassuring tone. Karen is nervous about this cycle. Under 200 words. Save as a Gmail draft, don't send.</pre><button class="copy-btn">Copy</button></div></div>
+
+<div class="steps">
+  <div class="step"><div class="step-num">3</div><div class="step-text">Open Gmail, review the draft, add anything missing, and send.</div></div>
+</div>
+
+<div class="sh">Repurposing content across channels</div>
+<p>You just published a blog post and need versions for LinkedIn, Instagram, and email. Don't rewrite three times, feed it to Claude:</p>
+
+<div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">Prepory's brand voice: warm, knowledgeable, mentor-like. We don't talk down to families and never use scare tactics about admissions odds. We're the confident, reassuring expert in the room.
+
+Turn this blog post into:
+- 3 LinkedIn posts: each a distinct angle, 150-200 words, thought-leadership tone. Don't start all three the same way.
+- 3 Instagram captions: under 90 words, hook in the first line, conversational.
+- 1 email subject line (under 50 chars).
+
+Blog post: [paste your post here]</pre><button class="copy-btn">Copy</button></div></div>
+
+<div class="sh">Tightening existing drafts</div>
+<details class="acc">
+  <summary><span>Sharpen a draft without restructuring</span><span class="acc-chev">▼</span></summary>
+  <div class="acc-body">
+    <div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">Edit this for clarity and concision. Cut filler words, tighten sentences, and flag anywhere it sounds like AI wrote it. Don't change the structure, just make the writing sharper. Here: [paste]</pre><button class="copy-btn">Copy</button></div></div>
+  </div>
+</details>
+<details class="acc">
+  <summary><span>Hit a specific word count</span><span class="acc-chev">▼</span></summary>
+  <div class="acc-body">
+    <div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">This draft is running too long. I need it under 200 words. Cut what's least essential while keeping the core message and the specific Stanford reference. Here: [paste]</pre><button class="copy-btn">Copy</button></div></div>
+  </div>
+</details>
+
+<div class="callout callout-warn"><span class="callout-icon">⚠️</span><span>Always review AI-written copy for accuracy before it goes anywhere. If there's a stat or specific claim you didn't provide, verify it.</span></div>
+`},
+
+/* SEC_RESEARCH */
+{id:"research",label:"Research & Explanation",group:"Core Skills",emoji:"🔍",html:`
+<p>Claude is a powerful research tool. It can explain complicated topics in plain language, help you get up to speed on schools or programs quickly, and serve as a sounding board when you're thinking through a decision.</p>
+
+<div class="sh">Four research modes, four setups</div>
+<div class="grid-cards">
+  <div class="use-case-card">
+    <div class="use-case-task"><strong>Broad public research:</strong> a school's culture, current trends, what's changed with Common App.</div>
+    <div class="use-case-tool">→ Chat (or Cowork) with <strong>web search</strong>. Fast, wide-net. Verify specific stats.</div>
+  </div>
+  <div class="use-case-card">
+    <div class="use-case-task"><strong>Sites that need a login, a form, or can't be pulled with a plain search:</strong> the Common App portal, your WordPress admin, a school's internal portal, a page behind a paywall you subscribe to.</div>
+    <div class="use-case-tool">→ Cowork with <strong>Claude in Chrome</strong>. It drives your browser the way you would.</div>
+  </div>
+  <div class="use-case-card">
+    <div class="use-case-task"><strong>Source-grounded research:</strong> questions about documents you've uploaded (Insider Brief, Common Data Set, student file).</div>
+    <div class="use-case-tool">→ A school Project, or Cowork with the folder.</div>
+  </div>
+  <div class="use-case-card">
+    <div class="use-case-task"><strong>Private internal research:</strong> Monday data, Drive docs, Gmail threads.</div>
+    <div class="use-case-tool">→ Cowork with connectors.</div>
+  </div>
+</div>
+
+<div class="sh">Web search vs. Claude in Chrome, how to choose</div>
+<p>Both tools reach the web, but they do very different things. The short version: <strong>web search</strong> is Claude reading the public internet quickly. <strong>Claude in Chrome</strong> is Claude actually <em>using</em> your browser, clicking, scrolling, signing in, filling things out. Pick based on whether the task is "read" or "do."</p>
+<div class="grid-cards">
+  <div class="use-case-card">
+    <div class="use-case-task"><strong>Use web search when:</strong></div>
+    <div class="use-case-tool" style="color:var(--ink-2);font-weight:500;font-size:13.5px">
+      • You just need facts, context, or a quick scan of a topic.<br>
+      • The info is on public pages (school sites, news articles, blog posts).<br>
+      • You're fine with Claude summarizing rather than reading the exact page.<br>
+      • Speed matters and you want a 10-second answer, not a multi-step browser flow.
+    </div>
+  </div>
+  <div class="use-case-card">
+    <div class="use-case-task"><strong>Use Claude in Chrome when:</strong></div>
+    <div class="use-case-tool" style="color:var(--ink-2);font-weight:500;font-size:13.5px">
+      • You need to <em>do</em> something, publish a WordPress page, fill a form, submit a request.<br>
+      • The site requires a login (Common App, WordPress admin, CRM).<br>
+      • The content is dynamic, behind tabs, accordions, or JS, where search summaries come up thin.<br>
+      • You want Claude to read the <strong>exact</strong> current page, not a cached or summarized version.<br>
+      • You want to watch and confirm before anything is saved or sent.
+    </div>
+  </div>
+</div>
+<div class="callout callout-tip"><span class="callout-icon">💡</span><span><strong>Default to web search first.</strong> It's faster and cheaper. Only reach for Claude in Chrome when search can't get what you need, or when the task is actually a <em>browser action</em>, not a lookup.</span></div>
+
+<div class="sh">Quick school overview before a session</div>
+<p>You have a session in an hour with a student interested in Tulane for public health. You want to go in prepared without 45 minutes of website reading.</p>
+<div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">I have a coaching session in an hour with a student interested in Tulane for public health. She's also drawn to New Orleans culture and community engagement.
+
+Give me a concise coaching brief: academic strengths in public health, what makes Tulane's culture distinctive, notable experiential learning or community engagement opportunities, and what their admissions committee tends to value. Only the things I'd use in conversation. Flag anything I should verify on their website.</pre><button class="copy-btn">Copy</button></div></div>
+
+<div class="callout callout-note"><span class="callout-icon">📌</span><span>Want this even better? Drop Tulane's Insider Brief and Common Data Set into a school Project. Every answer from that project is grounded in Prepory's intel plus the official data, not just what's floating around the web.</span></div>
+
+<div class="sh">Using Claude as a thinking partner</div>
+<p>One of the most underused modes: asking Claude to help you think through a decision, not just look things up.</p>
+<div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">I'm building a college list for a student with a 3.7 GPA, 1480 SAT, interested in film production, first-gen, from Texas. She wants to be in or near a city. Strong emotional pull to NYU but worried about cost.
+
+Help me think through a balanced list of ~10 schools (3 reach, 4 target, 3 safety) with brief reasoning for each. Note where financial aid may be a key factor. Then recommend whether she should burn her ED shot on NYU or save it for a school likely to give better aid.</pre><button class="copy-btn">Copy</button></div></div>
+
+<div class="sh">Comparing schools for a student</div>
+<div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">A student interested in political science and potentially law school is comparing Georgetown, Tufts, and William & Mary. She cares most about: (1) political science faculty quality, (2) DC internship access, (3) campus social culture.
+
+Compare these three across those dimensions. Note any meaningful differences in their admissions profiles for a student with a 3.8 GPA and 1450 SAT.</pre><button class="copy-btn">Copy</button></div></div>
+<p>If the comparison feels surface-level, push deeper: "You mentioned Georgetown's DC proximity is an advantage. Specifically, what internship pipelines does Georgetown offer for poli sci students that the other two don't?"</p>
+
+<div class="callout callout-warn"><span class="callout-icon">⚠️</span><span>Claude can search the web but still makes factual errors on school-specific data. Acceptance rates, score ranges, and financial aid figures change yearly. <strong>Always verify hard numbers</strong> against the school's website or current Common Data Set before sharing with families.</span></div>
+`},
+
+/* SEC_SUMMARIZE */
+{id:"summarize",label:"Summarizing & Distilling",group:"Core Skills",emoji:"📋",html:`
+<p>Condensing long information is one of Claude's fastest, most reliable wins. A 40-email thread. Eight pages of meeting notes. Five school documents you need to synthesize before a session. Claude cuts through all of it, and this is a great first thing to try if you've never used these tools.</p>
+
+<div class="sh">Which tool, by situation</div>
+<div class="grid-cards">
+  <div class="use-case-card">
+    <div class="use-case-task"><strong>Summarize a long email thread:</strong></div>
+    <div class="use-case-tool">→ Cowork with Gmail connector, or forward the thread to Chat and ask.</div>
+  </div>
+  <div class="use-case-card">
+    <div class="use-case-task"><strong>Summarize a single document:</strong></div>
+    <div class="use-case-tool">→ Drag it into Chat, or ask Cowork to read it from your folder.</div>
+  </div>
+  <div class="use-case-card">
+    <div class="use-case-task"><strong>Synthesize across multiple docs:</strong></div>
+    <div class="use-case-tool">→ A Project with all files uploaded, or Cowork on a folder containing them.</div>
+  </div>
+</div>
+
+<div class="sh">Summarizing an email thread via Cowork</div>
+<div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">Open my most recent thread with Priya's parents in Gmail. Summarize in 5 sentences: (1) key context, (2) any decisions that were made, (3) any open asks from them I haven't responded to yet.</pre><button class="copy-btn">Copy</button></div></div>
+
+<div class="sh">Summarizing a single doc</div>
+<div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">Summarize the session-notes doc in my folder. Pull out: (1) the student's top school preferences, (2) any concerns the parents raised, (3) agreed-upon next steps with owners.</pre><button class="copy-btn">Copy</button></div></div>
+
+<div class="sh">Synthesizing across multiple docs</div>
+<p>This is where Projects shine. Drop five sets of session notes into a student project, then ask:</p>
+<div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">Across all my session notes with Maya from the past month: what themes keep coming up in her concerns about the process? What action items were agreed on that haven't been revisited? What's the current state of her college list?</pre><button class="copy-btn">Copy</button></div></div>
+
+<div class="callout callout-tip"><span class="callout-icon">💡</span><span>The most useful summaries are specific. "Summarize this" gives you a generic overview. "What action items were agreed on and who owns each?" gives you something you can act on immediately.</span></div>
+`},
+
+/* SEC_PROCESS */
+{id:"process",label:"Process Documentation",group:"Core Skills",emoji:"📁",html:`
+<p>Most institutional knowledge at Prepory lives in people's heads or in scattered notes that only make sense to whoever wrote them. Claude is excellent at taking disorganized, messy knowledge and turning it into something structured that anyone can follow, quickly, without requiring you to be a good writer.</p>
+
+<div class="sh">The ideal setup: Cowork + docx skill</div>
+<p>Open Cowork, point it at a folder where you want to keep your SOPs, and ask Claude to use the <strong>docx skill</strong> so the output is a polished Word doc you can share with the team.</p>
+
+<div class="sh">Turning rough notes into a structured SOP</div>
+<div class="steps">
+  <div class="step"><div class="step-num">1</div><div class="step-text"><strong>Dump everything you know</strong> into a text file or directly into Cowork. Bullet points, fragments, whatever. 5–10 minutes of brain dump is enough.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-text"><strong>Ask Claude to structure it</strong> using the docx skill:</div></div>
+</div>
+
+<div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">Use the docx skill. Turn these rough notes into a structured SOP (Standard Operating Procedure). For each step:
+1. Number + short action title
+2. Exactly what to do, assume the reader has never done this and knows nothing about Prepory
+3. Who's responsible
+4. Common mistakes or edge cases to flag
+
+Plain, direct language. Checklists where possible. Save as "SOP-new-student-onboarding.docx" in this folder.
+
+Here are my notes: [paste your notes]</pre><button class="copy-btn">Copy</button></div></div>
+
+<div class="steps">
+  <div class="step"><div class="step-num">3</div><div class="step-text"><strong>Review carefully.</strong> Don't just skim. Claude can misorder steps or infer things from incomplete notes. Fix anything that doesn't match reality.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-text"><strong>Have one teammate who actually does the process</strong> read through and flag anything confusing, wrong, or missing. SOPs are only useful if accurate.</div></div>
+</div>
+
+<div class="sh">More documentation prompts</div>
+
+<details class="acc">
+  <summary><span>Updating an existing SOP</span><span class="acc-chev">▼</span></summary>
+  <div class="acc-body">
+    <div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">Here's our current SOP for [process]: [paste doc]. These things have changed: [list changes]. Update the doc to reflect them. Also flag any steps that seem unclear, outdated, or could be simplified without losing important detail.</pre><button class="copy-btn">Copy</button></div></div>
+  </div>
+</details>
+
+<details class="acc">
+  <summary><span>Turning a meeting into action items</span><span class="acc-chev">▼</span></summary>
+  <div class="acc-body">
+    <div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">Here are my notes from a team meeting: [paste]. Do three things:
+1. Write a 2-sentence summary of what was decided
+2. List every action item with owner and deadline
+3. Flag any open questions that didn't get resolved</pre><button class="copy-btn">Copy</button></div></div>
+  </div>
+</details>
+
+<details class="acc">
+  <summary><span>Building a session-notes template</span><span class="acc-chev">▼</span></summary>
+  <div class="acc-body">
+    <div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">Use the docx skill. Create a structured template for documenting a 1-hour college counseling session at Prepory. Fields: student background, current college list status, session focus, feedback given, action items for the student, action items for the counselor, notes for next session. Scannable, a coach should be able to fill it in within 10 minutes after a session.</pre><button class="copy-btn">Copy</button></div></div>
+  </div>
+</details>
+
+<div class="callout callout-tip"><span class="callout-icon">💡</span><span>Process documentation is one of the highest-leverage Claude tasks at Prepory. A SOP you write once can be followed by anyone. Thirty minutes documenting a process now saves hundreds of hours re-explaining it later.</span></div>
+`},
+
+/* SEC_ESSAYS */
+{id:"essays",label:"Admissions Essays",group:"Specific Workflows",emoji:"✍️",html:`
+<div class="chapter-cover workflows">
+  <div class="chapter-label"><span class="chapter-num">Part 04</span> Specific Workflows</div>
+  <h2 class="chapter-title">Admissions-specific playbooks for recurring Prepory work.</h2>
+  <p class="chapter-desc">Now we get role-specific. Each of these workflows is built on the Essentials and Core Skills chapters, if something here feels unclear, chances are the answer is in an earlier section.</p>
+  <div class="chapter-meta">
+    <span class="chapter-chip">✍️ Essays</span>
+    <span class="chapter-chip">🏫 School Research</span>
+    <span class="chapter-chip">👤 Profiles & Lists</span>
+    <span class="chapter-chip">📊 Presentations</span>
+  </div>
+</div>
+<div class="warn-banner">
+  <div class="warn-banner-title">⚠️ The one rule that overrides everything else in this section</div>
+  <p style="margin:0;color:var(--red-txt);font-size:14px;line-height:1.65">A student's voice is the most important thing in their application. Claude is never a ghostwriter here. It brainstorms angles and gives structural feedback. The student does all the actual writing. If you ever find yourself about to paste Claude-written prose into a student's essay document, stop. That's not what any of this is for.</p>
+</div>
+
+<details class="acc" open>
+  <summary><span>Brainstorming essay topics with a student</span><span class="acc-chev">▼</span></summary>
+  <div class="acc-body">
+    <p><strong>When to use:</strong> A student can't figure out what to write about, or keeps defaulting to a topic that feels too broad or clichéd.</p>
+    <p><strong>Best setup:</strong> A student Project in Claude. It'll already have her activity list, past sessions, and background loaded, so you don't need to re-explain.</p>
+    <div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">Based on everything in this project about Priya, suggest 5 different essay angles she could explore for her Common App personal statement. Focus on angles that would feel specific and fresh, not clichés. For each angle, write one sentence on what the essay might explore and why it could be compelling for a mechanical engineering applicant to schools like Georgia Tech and Purdue.</pre><button class="copy-btn">Copy</button></div></div>
+    <p>When something clicks, go deeper in the same conversation:</p>
+    <div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">Priya responded to the angle about explaining engineering to her parents. What are 4-5 specific scenes, moments, or details from her life (based on what's in this project) that could make this essay concrete and vivid rather than abstract?</pre><button class="copy-btn">Copy</button></div></div>
+    <div class="callout callout-note"><span class="callout-icon">📌</span><span>Pull exemplars from the <a href="${L.exemplars}" target="_blank" rel="noopener" class="ext-link">Exemplars Directory</a> into the project. Seeing real examples alongside Claude's suggestions gives the conversation a concrete anchor.</span></div>
+  </div>
+</details>
+
+<details class="acc">
+  <summary><span>Decoding what a supplemental prompt is really asking</span><span class="acc-chev">▼</span></summary>
+  <div class="acc-body">
+    <p><strong>When to use:</strong> A school has a tricky or multi-part prompt and the student isn't sure what the committee actually wants.</p>
+    <p><strong>Best setup:</strong> The school-specific Project (for example, the Stanford Coach Project). It already has the Insider Brief + exemplars, no paste, no context-setting.</p>
+    <div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">Here's Stanford's "What matters most to you, and why?" prompt. Using the Stanford Insider Brief and exemplars in this project:
+
+1. Break down what this prompt is really asking. What is Stanford's committee hoping to learn?
+2. What are the 3 most common ways students miss the mark on this one?
+3. What would make a response genuinely stand out vs. blend in?
+4. Given the Insider Brief, what does Stanford value here that a student wouldn't know from just reading the question?</pre><button class="copy-btn">Copy</button></div></div>
+    <div class="callout callout-tip"><span class="callout-icon">💡</span><span>This is exactly the kind of two-step analysis (public prompt + insider intel) that school-specific Projects are designed for. Without the project, you'd have to paste the brief every time. With the project, it's baked in.</span></div>
+  </div>
+</details>
+
+<details class="acc">
+  <summary><span>Giving structured feedback on a draft</span><span class="acc-chev">▼</span></summary>
+  <div class="acc-body">
+    <p><strong>When to use:</strong> A student submitted a draft and you want a structured first-pass analysis before adding your own coaching comments.</p>
+    <p><strong>Best setup:</strong> Student project, or Cowork pointed at the student's folder so Claude can compare to exemplars and past drafts.</p>
+    <div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">Review this student's Common App personal statement (latest draft in this folder) and analyze for:
+
+1. Clarity of the central narrative, is there a clear, specific story?
+2. Specificity, does it show or just tell? Flag vague passages.
+3. Voice, does this sound like a real person, or generic?
+4. Growth and self-awareness, does the student show reflection?
+5. Prompt alignment, does it actually answer what was asked?
+
+Constructive, actionable feedback. Quote specific passages when flagging issues.</pre><button class="copy-btn">Copy</button></div></div>
+    <div class="callout callout-warn"><span class="callout-icon">⚠️</span><span><strong>Never send Claude's feedback directly to a student.</strong> Review, add your own expertise, personalize. Claude is the structural first pass. Your coaching is the layer on top.</span></div>
+  </div>
+</details>
+
+<details class="acc">
+  <summary><span>Mechanical copy-editing pass</span><span class="acc-chev">▼</span></summary>
+  <div class="acc-body">
+    <p><strong>When to use:</strong> The essay is solid content-wise but needs a clean read for grammar, flow, and wordiness before final submission.</p>
+    <div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">Do a mechanical copy-editing pass on this essay. For each issue: quote the exact sentence, identify the problem (grammar error / awkward phrasing / unnecessary wordiness / repeated word), and suggest a cleaner alternative. Present as a numbered list so the student can review each suggestion individually.
+
+Do NOT rewrite whole paragraphs. Flag specific sentences only. Essay: [paste]</pre><button class="copy-btn">Copy</button></div></div>
+    <div class="callout callout-warn"><span class="callout-icon">⚠️</span><span>Present suggestions as a list for the student to review. They (or you in suggesting mode) should apply each change manually, the student owns the final text.</span></div>
+  </div>
+</details>
+`},
+
+/* SEC_SCHOOL_RESEARCH */
+{id:"schoolresearch",label:"School Research",group:"Specific Workflows",emoji:"🏫",html:`
+<p>Whether you need a quick school overview, a comparison for a student weighing offers, or scholarship research for a specific profile, Claude can meaningfully cut your research time. Just verify specific numbers against official sources before sharing with families.</p>
+
+<div class="callout callout-tip"><span class="callout-icon">💡</span><span><strong>The single biggest upgrade to school research at Prepory is using school-specific Projects.</strong> The Stanford project (and the ones that follow) will have the Insider Brief, exemplars, and common strategies already loaded, so every answer reflects real coaching intel, not just public information.</span></div>
+
+<details class="acc" open>
+  <summary><span>Quick school overview before a session</span><span class="acc-chev">▼</span></summary>
+  <div class="acc-body">
+    <p><strong>When to use:</strong> You have a coaching session in an hour with a student interested in a school you're less familiar with.</p>
+    <div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">I have a coaching session in an hour with a student interested in Tulane as a target school. She wants to study public health and is drawn to New Orleans culture and community engagement.
+
+Give me a concise coaching brief on Tulane: academic strengths in public health, what makes the culture distinctive, notable experiential learning or community engagement opportunities, and what their admissions committee tends to value. Keep it to things I'd actually use in conversation. Flag anything I should verify.</pre><button class="copy-btn">Copy</button></div></div>
+    <p>For a school we don't have a Project for yet, add depth by uploading the Insider Brief and Common Data Set into a new conversation or ad-hoc project.</p>
+    <div class="callout callout-warn"><span class="callout-icon">⚠️</span><span>Verify acceptance rates, score ranges, and financial aid deadlines directly on the school's website before sharing with families. These change every cycle.</span></div>
+  </div>
+</details>
+
+<details class="acc">
+  <summary><span>Comparing schools for a decision</span><span class="acc-chev">▼</span></summary>
+  <div class="acc-body">
+    <p><strong>When to use:</strong> A student received multiple acceptances, or is building a list and trying to differentiate between similar schools.</p>
+    <div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">A Prepory student interested in communications and media studies is comparing Boston University, American University, and Syracuse. She cares most about: (1) strength of the communications program and faculty access, (2) internship and industry connections, (3) campus social life and sense of community.
+
+Compare these three across those dimensions. Flag anything distinctly different about each one, not just brochure language.</pre><button class="copy-btn">Copy</button></div></div>
+    <div class="callout callout-tip"><span class="callout-icon">💡</span><span>Drop the <a href="${L.briefs}" target="_blank" rel="noopener" class="ext-link">Insider Briefs</a> for each school into the conversation. You'll get a comparison that reflects real coaching intel, not just public sites.</span></div>
+  </div>
+</details>
+
+<details class="acc">
+  <summary><span>Scholarship and financial aid research</span><span class="acc-chev">▼</span></summary>
+  <div class="acc-body">
+    <p><strong>When to use:</strong> You need to help a student identify merit scholarship options, or a parent is asking about affordability.</p>
+    <div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">Find merit-based scholarship opportunities for a student with this profile: first-gen college student from Georgia, 3.9 GPA, 1490 SAT, interested in pre-law, identifies as Latina. Applying to schools in the Southeast and mid-Atlantic.
+
+For each scholarship: award amount, key eligibility criteria, deadline, direct application link if available. Prioritize scholarships she could realistically compete for, not only the most prestigious. Flag anywhere I should verify deadlines or criteria.</pre><button class="copy-btn">Copy</button></div></div>
+    <div class="callout callout-warn"><span class="callout-icon">⚠️</span><span><strong>Always verify scholarship details on the official source before sharing.</strong> Deadlines and eligibility change. Claude's output is a starting list, not a definitive resource.</span></div>
+  </div>
+</details>
+`},
+
+/* SEC_PROFILES */
+{id:"profiles",label:"Student Profiles & Lists",group:"Specific Workflows",emoji:"👤",html:`
+<p>The essay isn't the only part of the application. The activity list, resume, and overall narrative connecting everything matter just as much. Claude can help sharpen and structure all of it, especially when working inside a student Project or Cowork session pointed at their folder.</p>
+
+<details class="acc" open>
+  <summary><span>Writing activity list descriptions</span><span class="acc-chev">▼</span></summary>
+  <div class="acc-body">
+    <p><strong>When to use:</strong> A student needs to describe extracurriculars within tight character limits (Common App: 150 characters per activity).</p>
+    <div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">Help me write a 150-character-or-fewer Common App activity description. Action-oriented, specific, and strong, no filler phrases like "helped with" or "participated in." Give me 5 options.
+
+Activity: Student co-founded a nonprofit providing free SAT prep to low-income high schoolers in Atlanta. Personally tutored 23 students, coordinated 4 volunteer tutors, raised $3,200 for materials.</pre><button class="copy-btn">Copy</button></div></div>
+    <div class="callout callout-tip"><span class="callout-icon">💡</span><span>The best descriptions are hyper-specific. "Tutored 23 students, raised $3,200, led 4 volunteers" is 10x stronger than "founded nonprofit to help underprivileged students." Push Claude for specificity if the first pass is vague.</span></div>
+  </div>
+</details>
+
+<details class="acc">
+  <summary><span>Identifying the narrative thread across a student's profile</span><span class="acc-chev">▼</span></summary>
+  <div class="acc-body">
+    <p><strong>When to use:</strong> You're trying to figure out the big-picture story the student's application tells, the thread connecting activities, essays, and background into something coherent.</p>
+    <p><strong>Best setup:</strong> A student Project. Claude reasons across all of Maya's files at once, grounded in her actual profile rather than guessing.</p>
+    <div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">Based on everything in this project (Maya's activities, essays, background, and our session notes), what are the 3 strongest narrative threads connecting her profile? For each:
+- Which parts of her application support it
+- Why an admissions committee would find it distinctive
+- Where it could be stronger
+
+Also: are there any aspects of her profile that feel disconnected from the main narrative?</pre><button class="copy-btn">Copy</button></div></div>
+    <div class="callout callout-tip"><span class="callout-icon">💡</span><span>Use this as a brainstorming aid, not a strategy generator. The best themes always emerge from real conversation with the student. Use Claude to surface patterns you might have missed, then validate them directly.</span></div>
+  </div>
+</details>
+
+<details class="acc">
+  <summary><span>Resume and CV drafting (grad and professional programs)</span><span class="acc-chev">▼</span></summary>
+  <div class="acc-body">
+    <div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">Restructure this resume for a student applying to Georgetown's Master of Science in Foreign Service (MSFS). She wants to highlight international experience, policy research, and leadership in student orgs.
+
+Make every bullet action-oriented and specific. Cut vague language like "assisted with" or "was involved in." Where she has quantifiable impact (people, budget, scale), flag where she should add that data.
+
+Current resume: [paste]</pre><button class="copy-btn">Copy</button></div></div>
+    <div class="callout callout-warn"><span class="callout-icon">⚠️</span><span>Claude inflates language. Review every bullet. "Spearheaded a cross-functional initiative" only belongs if that's actually what happened. The final resume must accurately represent real experience.</span></div>
+  </div>
+</details>
+`},
+
+/* SEC_PRESENTATIONS */
+{id:"presentations",label:"Presentations & Decks",group:"Specific Workflows",emoji:"📊",html:`
+<p>Claude can meaningfully speed up presentation work: planning structure, drafting slide content, and writing speaker notes. In Cowork with the <strong>pptx skill</strong>, Claude can produce a real PowerPoint file directly into your folder, not just slide text you have to paste somewhere.</p>
+
+<div class="callout callout-info"><span class="callout-icon">ℹ️</span><span><strong>The ideal workflow:</strong> Plan structure in Chat → build the real deck in Cowork using the pptx skill → apply Prepory branding manually. Claude handles words and structure; you handle visual polish.</span></div>
+
+<div class="sh">Step 1: Plan the deck in Chat</div>
+<p>Before building anything, figure out what you're saying. Chat is better for back-and-forth planning than working directly in a deck.</p>
+<div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">I'm building a 45-minute Prepory webinar called "The College Application Timeline: When to Start, What to Do, and How to Stay Sane." Audience: parents of high school sophomores and juniors, most feeling overwhelmed.
+
+Give me a slide-by-slide outline for a 15-slide deck. For each slide: title, 3-4 bullet points of content, and a note on the best visual or data point. Tone: reassuring and clear, not panic-inducing.</pre><button class="copy-btn">Copy</button></div></div>
+<p>Iterate until the structure is right. "The first five slides are all background, move the actionable advice earlier." Claude will restructure.</p>
+
+<div class="sh">Step 2: Build the deck in Cowork</div>
+<p>Once your outline is solid, switch to Cowork with your pptx skill and a folder selected:</p>
+<div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">Use the pptx skill. Build the 15-slide "College Application Timeline" deck based on the outline I just created (paste it here). Include speaker notes for each slide, 3-4 sentences per slide, conversational, like the presenter is talking to parents in a room. Save as "Timeline-Webinar-Draft.pptx" in this folder.</pre><button class="copy-btn">Copy</button></div></div>
+<p>Claude produces a real PowerPoint file. Open it, apply Prepory branding (colors, fonts, logo), and adjust anything that needs a human touch.</p>
+
+<div class="sh">Step 3: Refine slide by slide</div>
+<div class="prompt-wrap"><div class="prompt-label">If one slide needs help</div><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">Slide 7 is too dense. Rewrite the bullets so they're 4 tight lines max, each starting with an action verb. Keep the same core message but make it scannable from the back of a room.</pre><button class="copy-btn">Copy</button></div></div>
+
+<div class="sh">One-pagers and leave-behinds</div>
+<p>For handouts at fairs, consultations, or internal training, use Cowork with the docx skill:</p>
+<div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">Use the docx skill. Draft a one-page handout about Prepory's college counseling program for high school guidance counselors who might refer students to us.
+
+They care about: how we complement their work, track record, ease of getting started.
+
+Include:
+- 2-sentence description of Prepory
+- 3-4 things we provide that a school counselor typically can't
+- Headline stat: students are 3.38x more likely to be admitted to a school with a sub-15% acceptance rate
+- Clear next step: how to refer a student
+
+Scannable with short sections. Someone should get the gist in 30 seconds.</pre><button class="copy-btn">Copy</button></div></div>
+
+<div class="callout callout-warn"><span class="callout-icon">⚠️</span><span>Review every stat on every slide. Claude sometimes inserts plausible-sounding numbers that aren't accurate. Replace any figure you didn't provide with verified Prepory data before presenting.</span></div>
+`},
+];
+
+function initApp(){
+  const mainInner = document.getElementById('main-inner');
+  const drawerNav = document.getElementById('drawer-nav');
+
+  // Render sections
+  SECTIONS.forEach((s,i)=>{
+    const sec = document.createElement('section');
+    sec.className = 'section' + (i===0?' active':'');
+    sec.id = 'sec-'+s.id;
+    sec.innerHTML = s.html;
+    mainInner.appendChild(sec);
+  });
+
+  // Render drawer
+  const uniqueGroups = [...new Set(SECTIONS.map(s=>s.group))];
+  const groupMeta = {
+    'Start Here':{cls:'start',num:'01',hint:''},
+    'Claude Essentials':{cls:'essentials',num:'02',hint:'The features. Cowork, Chat, Skills, Connectors, Projects, and usage limits.'},
+    'Core Skills':{cls:'skills',num:'03',hint:'Five things Claude is great at, regardless of role.'},
+    'Specific Workflows':{cls:'workflows',num:'04',hint:'Admissions-specific playbooks. Best after Core Skills.'}
+  };
+  uniqueGroups.forEach(g=>{
+    const meta = groupMeta[g]||{cls:'',num:'',hint:''};
+    const wrap = document.createElement('div');
+    wrap.className = 'drawer-group '+meta.cls;
+    let inner = `<div class="drawer-group-label"><span class="dg-num">Part ${meta.num}</span> ${g}</div>`;
+    if(meta.hint) inner += `<div class="drawer-group-hint">${meta.hint}</div>`;
+    wrap.innerHTML = inner;
+    SECTIONS.forEach((s,i)=>{
+      if(s.group!==g) return;
+      const btn = document.createElement('button');
+      btn.className='drawer-item';
+      btn.dataset.index = i;
+      btn.innerHTML = `
+        <span class="drawer-item-emoji">${s.emoji}</span>
+        <span class="drawer-item-label">${s.label}</span>
+        ${s.highlight?'<span class="drawer-star">★</span>':''}
+      `;
+      btn.addEventListener('click',()=>go(i));
+      wrap.appendChild(btn);
+    });
+    drawerNav.appendChild(wrap);
+  });
+
+  // Add footer nav to each section
+  document.querySelectorAll('.section').forEach((sec,i)=>{
+    const prev = SECTIONS[i-1];
+    const next = SECTIONS[i+1];
+    const nav = document.createElement('div');
+    nav.className='footer-nav';
+    nav.innerHTML = `
+      ${prev?`<button class="btn-prev" data-nav="${i-1}">← ${prev.label}</button>`:'<div></div>'}
+      <span class="progress-text">${i+1} / ${SECTIONS.length}</span>
+      ${next?`<button class="btn-next" data-nav="${i+1}">Next: ${next.emoji} ${next.label} →</button>`:'<div class="complete-badge">🎉 Guide complete!</div>'}
+    `;
+    sec.appendChild(nav);
+  });
+
+  document.querySelectorAll('[data-nav]').forEach(b=>{
+    b.addEventListener('click',e=>go(parseInt(e.currentTarget.dataset.nav)));
+  });
+
+  // Copy buttons
+  document.querySelectorAll('.copy-btn').forEach(btn=>{
+    btn.addEventListener('click',async()=>{
+      const text = btn.dataset.text || btn.parentElement.querySelector('.prompt-text').innerText;
+      try{
+        if(navigator.clipboard&&navigator.clipboard.writeText){
+          await navigator.clipboard.writeText(text);
+        }else{
+          const ta=document.createElement('textarea');ta.value=text;ta.style.position='fixed';ta.style.opacity='0';
+          document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);
+        }
+        btn.classList.add('ok');const old=btn.innerText;btn.innerText='✓ Copied';
+        setTimeout(()=>{btn.classList.remove('ok');btn.innerText=old;},1800);
+      }catch(e){console.warn(e)}
+    });
+  });
+
+  // Drawer toggles
+  const btn=document.getElementById('contents-btn');
+  const drawer=document.getElementById('drawer');
+  const overlay=document.getElementById('overlay');
+  const closeBtn=document.getElementById('drawer-close');
+  const openDrawer=()=>{drawer.classList.add('open');overlay.classList.add('open');};
+  const closeDrawer=()=>{drawer.classList.remove('open');overlay.classList.remove('open');};
+  btn.addEventListener('click',openDrawer);
+  closeBtn.addEventListener('click',closeDrawer);
+  overlay.addEventListener('click',closeDrawer);
+
+  go(0,true);
+}
+
+function go(i,skipScroll){
+  document.querySelectorAll('.section').forEach((s,idx)=>s.classList.toggle('active',idx===i));
+  const cur = SECTIONS[i];
+  document.getElementById('bc-group').innerText = cur.group;
+  document.getElementById('bc-current').innerText = cur.emoji+' '+cur.label;
+  document.getElementById('bc-pill').style.display = cur.highlight?'inline-block':'none';
+  const pct = Math.round(((i+1)/SECTIONS.length)*100);
+  document.getElementById('progress-fill').style.width = pct+'%';
+  document.getElementById('drawer-prog-fill').style.width = pct+'%';
+  document.getElementById('drawer-prog-text').innerText = (i+1)+' of '+SECTIONS.length;
+  document.querySelectorAll('.drawer-item').forEach(b=>{
+    const act = parseInt(b.dataset.index)===i;
+    b.classList.toggle('active',act);
+    const dot = b.querySelector('.drawer-active-dot');
+    if(act&&!dot){
+      const d=document.createElement('span');d.className='drawer-active-dot';b.appendChild(d);
+    }else if(!act&&dot){dot.remove();}
+  });
+  document.getElementById('drawer').classList.remove('open');
+  document.getElementById('overlay').classList.remove('open');
+  if(!skipScroll) document.getElementById('main').scrollTo({top:0,behavior:'instant'});
+}
+
+// Boot
+if(document.readyState==='loading'){
+  document.addEventListener('DOMContentLoaded',initApp);
+}else{
+  initApp();
+}
+</script>
+</body>
+</html>
