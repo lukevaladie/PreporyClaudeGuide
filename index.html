@@ -651,7 +651,7 @@ const SECTIONS = [
 <div class="sh" style="font-size:11px;margin-top:28px">Part 04 · Specific Workflows</div>
 <p style="margin:-4px 0 10px;color:var(--muted);font-size:13px">Admissions-specific playbooks for recurring Prepory work.</p>
 <div class="grid-cards">
-  ${[['✍️','Admissions Essays','Brainstorm angles, decode prompts, give structured feedback.'],['🏫','School Research','Fast, on-brand briefs and comparisons.'],['👤','Student Profiles & Lists','Activity descriptions, narrative threading, resumes.'],['📊','Presentations & Decks','Webinar outlines, real .pptx files, handouts.']].map(([e,t,d])=>`<div class="use-case-card" style="display:flex;gap:14px"><span style="font-size:18px">${e}</span><div><div style="font-weight:700;color:var(--ink);font-size:14px">${t}</div><div style="font-size:13px;color:var(--muted);margin-top:3px">${d}</div></div></div>`).join('')}
+  ${[['✍️','Admissions Essays','Brainstorm angles, decode prompts, give structured feedback.'],['🏫','School Research','Fast, on-brand briefs and comparisons.'],['👤','Student Profiles & Lists','Activity descriptions, narrative threading, resumes.'],['🎨','Polished Materials','Decks, PDFs, handouts, and branded charts.']].map(([e,t,d])=>`<div class="use-case-card" style="display:flex;gap:14px"><span style="font-size:18px">${e}</span><div><div style="font-weight:700;color:var(--ink);font-size:14px">${t}</div><div style="font-size:13px;color:var(--muted);margin-top:3px">${d}</div></div></div>`).join('')}
 </div>
 
 <div class="sh">The two primary ways you'll use Claude</div>
@@ -1554,10 +1554,10 @@ Compare these three across those dimensions. Note any meaningful differences in 
 
 /* SEC_PROCESS */
 {id:"process",label:"Process Documentation",group:"Core Skills",emoji:"📁",html:`
-<p>Institutional knowledge sometimes lives in people's heads or in scattered notes that only make sense to whoever wrote them. Claude is excellent at taking disorganized, messy knowledge and turning it into something structured that anyone can follow, quickly, without requiring you to be a good writer.</p>
+<p>Institutional knowledge sometimes lives in people's heads, or in scattered notes that only make sense to whoever wrote them, or worse, spread across Gmail threads, Drive docs, HubSpot records, and Monday boards with no single source of truth. Claude is excellent at taking disorganized, messy knowledge and turning it into something structured that anyone can follow, quickly, without requiring you to be a good writer.</p>
 
-<div class="sh">The ideal setup: docx skill</div>
-<p>Point Claude at a folder where you want to keep your SOPs, and ask it to use the <strong>docx skill</strong> so the output is a polished Word doc you can share with the team.</p>
+<div class="sh">The ideal setup: docx skill + the connectors where the work actually happens</div>
+<p>Point Claude at a folder where you want to keep your SOPs, and ask it to use the <strong>docx skill</strong> so the output is a polished Word doc you can share with the team. For most Prepory processes, turn on <strong>Drive</strong> (for any existing notes and templates), <strong>Gmail</strong> (for the threads where the process plays out), <strong>HubSpot</strong> (for pipeline-driven processes), and <strong>Monday</strong> (for anything tracked on a board). The source material for a good SOP is almost never in one place.</p>
 
 <div class="sh">Turning rough notes into a structured SOP</div>
 <div class="steps">
@@ -1600,9 +1600,33 @@ Here are my notes: [paste your notes]</pre><button class="copy-btn">Copy</button
 </details>
 
 <details class="acc">
-  <summary><span>Building a session-notes template</span><span class="acc-chev">▼</span></summary>
+  <summary><span>Reverse-engineering an SOP from how the work actually gets done</span><span class="acc-chev">▼</span></summary>
   <div class="acc-body">
-    <div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">Use the docx skill. Create a structured template for documenting a 1-hour college counseling session at Prepory. Fields: student background, current college list status, session focus, feedback given, action items for the student, action items for the counselor, notes for next session. Scannable, a coach should be able to fill it in within 10 minutes after a session.</pre><button class="copy-btn">Copy</button></div></div>
+    <p><strong>When to use:</strong> The process already runs, but the real "how" is spread across emails, CRM records, and board activity rather than living in anyone's head. Turn on the <strong>Drive</strong>, <strong>Gmail</strong>, <strong>HubSpot</strong>, and <strong>Monday</strong> connectors for this one.</p>
+    <div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">Use the docx skill. I need to document our SOP for [process, e.g. "new-family onboarding"], but the real process is scattered across tools. Pull from:
+
+1. Drive, any existing notes, half-written docs, or templates about this process.
+2. Gmail, the 3 most recent threads where this process actually played out with a family.
+3. HubSpot, the stage progression and logged activities on 2 recent records that went through the relevant pipeline.
+4. Monday, the typical item progression on the related board if this process is tracked there.
+
+From those, extract the actual sequence of steps, who's responsible at each one, common handoff points, and any wording or templates that already work. Produce a clean SOP that matches what we really do, not what we wish we did. Flag any inconsistencies between tools so I can reconcile them. Save as "SOP-[process].docx" in this folder.</pre><button class="copy-btn">Copy</button></div></div>
+    <div class="callout callout-warn"><span class="callout-icon">⚠️</span><span>Read the inconsistencies section carefully. If Gmail says one thing, Monday says another, and HubSpot says a third, that's a real process gap, not a Claude error.</span></div>
+  </div>
+</details>
+
+<details class="acc">
+  <summary><span>Keeping an SOP in sync with how it's really done</span><span class="acc-chev">▼</span></summary>
+  <div class="acc-body">
+    <p><strong>When to use:</strong> You wrote the SOP months ago, and the work has quietly drifted. Run this as a quarterly audit, not ad hoc. Needs the <strong>Drive</strong>, <strong>Gmail</strong>, <strong>HubSpot</strong>, and <strong>Monday</strong> connectors.</p>
+    <div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">Here's our current SOP for [process]: [link to the doc in Drive, or attach from this folder]. Compare it to how the process has actually run over the last month. Look at:
+
+- The 5 most recent Gmail threads that match this workflow
+- The most recent HubSpot records that moved through the relevant pipeline stages
+- Recent item activity on the Monday board for this process
+
+Tell me: (1) where the doc still matches reality, (2) where the actual work has drifted from the doc, (3) any new steps people are doing that aren't documented, (4) any documented steps that nobody seems to do anymore. Don't rewrite the doc, just give me a punch list of proposed edits.</pre><button class="copy-btn">Copy</button></div></div>
+    <div class="callout callout-tip"><span class="callout-icon">💡</span><span>Pair this with <strong>/schedule</strong> (see the Summarization section) to have Claude run the audit on a recurring cadence and drop the punch list into your inbox as a Gmail draft. SOPs stop rotting when the drift check is automatic.</span></div>
   </div>
 </details>
 
@@ -1620,12 +1644,12 @@ Here are my notes: [paste your notes]</pre><button class="copy-btn">Copy</button
 <div class="chapter-cover workflows">
   <div class="chapter-label"><span class="chapter-num">Part 04</span> Specific Workflows</div>
   <h2 class="chapter-title">Admissions-specific playbooks for recurring Prepory work.</h2>
-  <p class="chapter-desc">Now we get role-specific. Each of these workflows is built on the Essentials and Core Skills chapters. If something here feels unclear, chances are the answer is in an earlier section.</p>
+  <p class="chapter-desc">Role-specific tips for making the most of Claude. Each of these workflows is built on the Essentials and Core Skills chapters.</p>
   <div class="chapter-meta">
     <span class="chapter-chip">✍️ Essays</span>
     <span class="chapter-chip">🏫 School Research</span>
     <span class="chapter-chip">👤 Profiles & Lists</span>
-    <span class="chapter-chip">📊 Presentations</span>
+    <span class="chapter-chip">🎨 Polished Materials</span>
   </div>
 </div>
 <div class="warn-banner">
@@ -1726,6 +1750,7 @@ Compare these three across those dimensions. Flag anything distinctly different 
     <div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">Find merit-based scholarship opportunities for a student with this profile: first-gen college student from Georgia, 3.9 GPA, 1490 SAT, interested in pre-law, identifies as Latina. Applying to schools in the Southeast and mid-Atlantic.
 
 For each scholarship: award amount, key eligibility criteria, deadline, direct application link if available. Prioritize scholarships she could realistically compete for, not only the most prestigious. Flag anywhere I should verify deadlines or criteria.</pre><button class="copy-btn">Copy</button></div></div>
+    <div class="callout callout-tip"><span class="callout-icon">💡</span><span><strong>For a comprehensive scholarship landscape, reach for Research mode.</strong> This is one of the clearest fits for Research (Chat only, toggle it on from the + menu before sending). A quick web search gets you the top 5–10 obvious scholarships; Research spends 15–30 minutes pulling from dozens of sources and comes back with a cited brief covering national, regional, identity-based, major-specific, and school-specific awards. Worth the wait when you're building a real affordability plan for a student, overkill for "what's the Coca-Cola Scholars deadline." See the Research &amp; Explanation section for more on when Research is the right tool.</span></div>
     <div class="callout callout-warn"><span class="callout-icon">⚠️</span><span><strong>Always verify scholarship details on the official source before sharing.</strong> Deadlines and eligibility change. Claude's output is a starting list, not a definitive resource.</span></div>
   </div>
 </details>
@@ -1733,16 +1758,16 @@ For each scholarship: award amount, key eligibility criteria, deadline, direct a
 
 /* SEC_PROFILES */
 {id:"profiles",label:"Student Profiles & Lists",group:"Specific Workflows",emoji:"👤",html:`
-<p>The essay isn't the only part of the application. The activity list, resume, and overall narrative connecting everything matter just as much. Claude can help sharpen and structure all of it, especially when working inside a student Project or Cowork session pointed at their folder.</p>
+<p>Claude can help sharpen and structure a student's activity list, resume, and overall narrative connecting everything, especially when working inside a student Project or Cowork session pointed at their folder.</p>
 
 <details class="acc" open>
   <summary><span>Writing activity list descriptions</span><span class="acc-chev">▼</span></summary>
   <div class="acc-body">
     <p><strong>When to use:</strong> A student needs to describe extracurriculars within tight character limits (Common App: 150 characters per activity).</p>
-    <div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">Help me write a 150-character-or-fewer Common App activity description. Action-oriented, specific, and strong, no filler phrases like "helped with" or "participated in." Give me 5 options.
+    <p><strong>Best setup:</strong> Run this inside the student's <strong>Project</strong>, and upload Prepory's activity-description resources (our internal guide, strong past examples, and any role-specific dos and don'ts) into the project too. That way Claude is working against our actual guidelines, not a generic sense of what a good activity description looks like.</p>
+    <div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">Using Prepory's activity-description guidelines in this project, help me write a 150-character-or-fewer Common App activity description. Follow our rules on action verbs, specificity, and formatting exactly. No filler phrases like "helped with" or "participated in." Give me 5 options, and note which guideline each one is leaning on.
 
 Activity: Student co-founded a nonprofit providing free SAT prep to low-income high schoolers in Atlanta. Personally tutored 23 students, coordinated 4 volunteer tutors, raised $3,200 for materials.</pre><button class="copy-btn">Copy</button></div></div>
-    <div class="callout callout-tip"><span class="callout-icon">💡</span><span>The best descriptions are hyper-specific. "Tutored 23 students, raised $3,200, led 4 volunteers" is 10x stronger than "founded nonprofit to help underprivileged students." Push Claude for specificity if the first pass is vague.</span></div>
   </div>
 </details>
 
@@ -1757,49 +1782,70 @@ Activity: Student co-founded a nonprofit providing free SAT prep to low-income h
 - Where it could be stronger
 
 Also: are there any aspects of her profile that feel disconnected from the main narrative?</pre><button class="copy-btn">Copy</button></div></div>
-    <div class="callout callout-tip"><span class="callout-icon">💡</span><span>Use this as a brainstorming aid, not a strategy generator. The best themes always emerge from real conversation with the student. Use Claude to surface patterns you might have missed, then validate them directly.</span></div>
   </div>
 </details>
 
 <details class="acc">
-  <summary><span>Resume and CV drafting (grad and professional programs)</span><span class="acc-chev">▼</span></summary>
+  <summary><span>Resume and CV drafting</span><span class="acc-chev">▼</span></summary>
   <div class="acc-body">
     <div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">Restructure this resume for a student applying to Georgetown's Master of Science in Foreign Service (MSFS). She wants to highlight international experience, policy research, and leadership in student orgs.
 
 Make every bullet action-oriented and specific. Cut vague language like "assisted with" or "was involved in." Where she has quantifiable impact (people, budget, scale), flag where she should add that data.
 
 Current resume: [paste]</pre><button class="copy-btn">Copy</button></div></div>
-    <div class="callout callout-warn"><span class="callout-icon">⚠️</span><span>Claude inflates language. Review every bullet. "Spearheaded a cross-functional initiative" only belongs if that's actually what happened. The final resume must accurately represent real experience.</span></div>
   </div>
 </details>
 `},
 
 /* SEC_PRESENTATIONS */
-{id:"presentations",label:"Presentations & Decks",group:"Specific Workflows",emoji:"📊",html:`
-<p>Claude can meaningfully speed up presentation work: planning structure, drafting slide content, and writing speaker notes. In Cowork with the <strong>pptx skill</strong>, Claude can produce a real PowerPoint file directly into your folder, not just slide text you have to paste somewhere.</p>
+{id:"presentations",label:"Polished Materials",group:"Specific Workflows",emoji:"🎨",html:`
+<p>This section is about any polished, client-facing file you'd actually send out, decks, PDFs, branded handouts, and the charts that go inside them. Cowork handles the whole job end to end: brainstorming, structure, drafting, producing the real file in your folder.</p>
 
-<div class="callout callout-info"><span class="callout-icon">ℹ️</span><span><strong>The ideal workflow:</strong> Plan structure in Chat → build the real deck in Cowork using the pptx skill → apply Prepory branding manually. Claude handles words and structure; you handle visual polish.</span></div>
+<div class="callout callout-info"><span class="callout-icon">ℹ️</span><span><strong>Four output types, four Cowork setups:</strong></span></div>
+<ul>
+  <li><strong>Decks (.pptx)</strong> — the <strong>pptx skill</strong> produces a real PowerPoint file you can open in Keynote or PowerPoint.</li>
+  <li><strong>PDFs</strong> — Claude builds these by writing and running a small script behind the scenes. Cleaner than exporting from Word, and Claude can re-run it for the next student in seconds.</li>
+  <li><strong>Word handouts (.docx)</strong> — the <strong>docx skill</strong>, for anything a colleague will keep editing after you.</li>
+  <li><strong>Charts and visuals</strong> — Claude generates these as PNGs you can drop into any of the above.</li>
+</ul>
 
-<div class="sh">Step 1: Plan the deck in Chat</div>
-<p>Before building anything, figure out what you're saying. Chat is better for back-and-forth planning than working directly in a deck.</p>
-<div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">I'm building a 45-minute Prepory webinar called "The College Application Timeline: When to Start, What to Do, and How to Stay Sane." Audience: parents of high school sophomores and juniors, most feeling overwhelmed.
+<div class="callout callout-info"><span class="callout-icon">🛠️</span><span><strong>A note on "scripts."</strong> This section mentions Python and a couple of libraries by name (<code>reportlab</code>, <code>matplotlib</code>). Those are tools <em>Claude</em> uses, not you. You describe what you want in plain English ("a one-page scholarship summary for Priya with our brand colors"); Claude writes any code needed, runs it, and drops the finished file in your folder. You don't write, run, or read the code unless you're curious. It's the same as not needing to know how Word's file format works to use Word.</span></div>
 
-Give me a slide-by-slide outline for a 15-slide deck. For each slide: title, 3-4 bullet points of content, and a note on the best visual or data point. Tone: reassuring and clear, not panic-inducing.</pre><button class="copy-btn">Copy</button></div></div>
-<p>Iterate until the structure is right. "The first five slides are all background, move the actionable advice earlier." Claude will restructure.</p>
+<div class="sh">Decks, the pptx skill in Cowork</div>
+<p>In Cowork with the pptx skill, you can plan the outline and build the real deck in the same conversation. Start with a brainstorm ("talk me through 15 slides for a timeline webinar"), iterate until the structure is right, then tell Claude to build. The output is a real .pptx with speaker notes, saved into your folder, ready to open in PowerPoint or Keynote.</p>
 
-<div class="sh">Step 2: Build the deck in Cowork</div>
-<p>Once your outline is solid, switch to Cowork with your pptx skill and a folder selected:</p>
-<div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">Use the pptx skill. Build the 15-slide "College Application Timeline" deck based on the outline I just created (paste it here). Include speaker notes for each slide, 3-4 sentences per slide, conversational, like the presenter is talking to parents in a room. Save as "Timeline-Webinar-Draft.pptx" in this folder.</pre><button class="copy-btn">Copy</button></div></div>
-<p>Claude produces a real PowerPoint file. Open it, apply Prepory branding (colors, fonts, logo), and adjust anything that needs a human touch.</p>
+<div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">Use the pptx skill. I'm building a 45-minute Prepory webinar called "The College Application Timeline: When to Start, What to Do, and How to Stay Sane." Audience: parents of high school sophomores and juniors, most feeling overwhelmed.
 
-<div class="sh">Step 3: Refine slide by slide</div>
-<div class="prompt-wrap"><div class="prompt-label">If one slide needs help</div><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">Slide 7 is too dense. Rewrite the bullets so they're 4 tight lines max, each starting with an action verb. Keep the same core message but make it scannable from the back of a room.</pre><button class="copy-btn">Copy</button></div></div>
+First, walk me through a 15-slide outline, one line per slide with a suggested visual. We'll iterate until it looks right. Then build the deck, with speaker notes per slide (3-4 sentences each, conversational, like I'm talking to parents in a room). Save as "Timeline-Webinar-Draft.pptx" in this folder. Tone throughout: reassuring and clear, not panic-inducing.</pre><button class="copy-btn">Copy</button></div></div>
 
-<div class="sh">One-pagers and leave-behinds</div>
-<p>For handouts at fairs, consultations, or internal training, use Cowork with the docx skill:</p>
-<div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">Use the docx skill. Draft a one-page handout about Prepory's college counseling program for high school guidance counselors who might refer students to us.
+<div class="callout callout-tip"><span class="callout-icon">💡</span><span><strong>Run the visual QA loop.</strong> The first render is almost never correct. After Claude builds the deck, ask it to convert each slide to an image and inspect them visually, with the mindset "assume there are problems, find them." Claude will flag issues, fix them, and re-check. This extra pass is the single biggest quality upgrade you can get for free.</span></div>
 
-They care about: how we complement their work, track record, ease of getting started.
+<div class="prompt-wrap"><div class="prompt-label">Visual QA prompt</div><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">Convert each slide in the .pptx to an image and visually inspect. Assume there are issues, find them. Look for: overlapping elements, text overflow or cut off at edges, decorative lines colliding with wrapped titles, uneven gaps, margins below 0.5", low-contrast text or icons, leftover placeholder or lorem-ipsum text, text-only slides with no visual. List every issue by slide, fix, then re-verify the fixed slides.</pre><button class="copy-btn">Copy</button></div></div>
+
+<div class="sh">PDFs, generated fresh (not exported from Word)</div>
+<p>For PDFs that need to look precise, a branded one-pager, a data-dense scholarship report, a student profile you'd send to a school, the cleanest path in Cowork is to let Claude build the PDF from scratch rather than exporting one from Word or PowerPoint. You describe what you want in plain English; Claude handles the layout on its own and drops the finished PDF into your folder. The result is pixel-level control over positioning, fonts, and colors, without any of the export quirks Word tends to introduce.</p>
+<p>A side benefit: because Claude is building the file programmatically, the same setup is trivial to reuse for the next student. You ask, "do the same thing for Marcus with this new data," and a fresh PDF lands a minute later.</p>
+
+<div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">Build a branded one-page PDF scholarship summary for [student name] and save it in this folder. Use our brand colors ([hex codes]) and Helvetica for the type. Include:
+
+- Header with the Prepory logo (logo.png is in this folder), the student's name, and today's date
+- A table of the top 8 scholarship matches: name, award amount, key eligibility, deadline
+- A small footer reminding the reader to verify details on the official source
+
+Save as "Scholarships-[student].pdf". If any styling choices are ambiguous, make the cleanest call and flag it at the end so I can tweak.</pre><button class="copy-btn">Copy</button></div></div>
+
+<div class="callout callout-tip"><span class="callout-icon">💡</span><span>Tell Claude "use the same setup as before" for the next student and it'll regenerate the PDF in seconds with the new data. No need to re-describe the layout each time.</span></div>
+
+<div class="sh">Charts and visuals</div>
+<p>Charts that land in a deck, PDF, or webinar slide work best as PNG images that Claude generates on its own, same behind-the-scenes pattern as the PDF workflow. You describe the data and how you want it to look; Claude produces a clean, branded image at the resolution you ask for and drops it in your folder. Then you embed it wherever it needs to go.</p>
+<div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">Make a single horizontal bar chart comparing Prepory's admit rates to national averages across reach / target / safety categories. Data: [paste or point at CSV].
+
+Style: one dominant brand color (#HEXCODE), muted gridlines, 14pt labels, high enough resolution for a slide (300 DPI), no chartjunk. Save as "admit-rates-comparison.png" in this folder.</pre><button class="copy-btn">Copy</button></div></div>
+
+<div class="sh">Word handouts, when docx is the right call</div>
+<p>Choose docx when the deliverable will keep getting edited, a referral sheet a colleague will tweak next semester, an internal doc that passes around for comments, a draft that isn't final. The docx skill produces a polished Word file anyone on the team can open and change. Reach for the PDF approach above when the piece is going out in final form and you care about it looking identical on every screen.</p>
+
+<div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">Use the docx skill. Draft a one-page handout about Prepory's college counseling program for high school guidance counselors who might refer students to us. They care about: how we complement their work, our track record, and ease of getting started.
 
 Include:
 - 2-sentence description of Prepory
@@ -1807,9 +1853,13 @@ Include:
 - Headline stat: students are 3.38x more likely to be admitted to a school with a sub-15% acceptance rate
 - Clear next step: how to refer a student
 
-Scannable with short sections. Someone should get the gist in 30 seconds.</pre><button class="copy-btn">Copy</button></div></div>
+Scannable with short sections, someone should get the gist in 30 seconds. Save as "Counselor-Handout.docx" in this folder.</pre><button class="copy-btn">Copy</button></div></div>
 
-<div class="callout callout-warn"><span class="callout-icon">⚠️</span><span>Review every stat on every slide. Claude sometimes inserts plausible-sounding numbers that aren't accurate. Replace any figure you didn't provide with verified Prepory data before presenting.</span></div>
+<div class="callout callout-info"><span class="callout-icon">ℹ️</span><span><strong>Give Claude the brand kit once, not every prompt.</strong> Claude doesn't know Prepory's hex codes, fonts, or logo path unless you tell it. Drop a small <code>brand-kit.md</code> into your folder with the colors, font names, and a relative path to <code>logo.png</code>. Every deck, PDF, and chart in that folder can reference it for free.</span></div>
+
+<div class="callout callout-info"><span class="callout-icon">🧠</span><span><strong>If you're building the same thing a third time, turn it into a skill.</strong> A "Prepory scholarship PDF," a "parent leave-behind handout," a "brand-compliant webinar chart" — if you notice the same request coming back with different data each time, that's a skill-creator candidate. Describe the pattern once (layout, branding, what to include) and the skill handles it forever after. Bonus: share it org-wide and every coach gets the same polished output with a single prompt. See the Skills section for how to set this up.</span></div>
+
+<div class="callout callout-warn"><span class="callout-icon">⚠️</span><span>Review every stat, name, and date before anything goes out. Claude sometimes inserts plausible-sounding figures that aren't accurate. Replace anything you didn't provide with verified Prepory data before the deck, PDF, or handout reaches a parent, school, or colleague.</span></div>
 `},
 ];
 
@@ -1938,4 +1988,4 @@ if(document.readyState==='loading'){
 </script>
 </body>
 </html>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
