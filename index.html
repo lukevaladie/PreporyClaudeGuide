@@ -579,7 +579,7 @@ const SECTIONS = [
 <div class="hero">
   <div class="hero-eyebrow">Prepory AI Guide · v1</div>
   <h1 class="display">Using Claude at Prepory.</h1>
-  <p>A step-by-step guide for everyone on the team. No tech background needed. Start at the top and work your way through, it takes about 30 minutes, and by the end you'll know exactly how to use Claude for admissions work.</p>
+  <p>A step-by-step guide for everyone on the team. No tech background needed. Start at the top and work your way through. It takes about 30 minutes, and by the end you'll know exactly how to use Claude for admissions work.</p>
 </div>
 
 <div class="warn-banner" style="background:linear-gradient(135deg,#fef3c7,#fef9e7);border-color:var(--amber-bd)">
@@ -588,16 +588,16 @@ const SECTIONS = [
 </div>
 
 <div class="sh">Step 0. Install the Claude desktop app</div>
-<p>Before you go any further, install the Claude desktop app. It's free, takes about 60 seconds, and unlocks the <strong>best version of Claude for real work</strong>, the browser version (Chat at claude.ai) is fine for quick questions, but almost every important workflow in this guide assumes you're in the desktop app.</p>
+<p>Before you go any further, install the Claude desktop app. It's free, takes about 60 seconds, and unlocks the <strong>best version of Claude for real work</strong>. The browser version (Chat at claude.ai) is fine for quick questions, but almost every important workflow in this guide assumes you're in the desktop app.</p>
 <div class="steps">
   <div class="step"><div class="step-num">1</div><div class="step-text">Go to <a href="https://claude.ai/download" target="_blank" rel="noopener" class="ext-link">claude.ai/download</a> and download the installer for your computer (Mac or Windows).</div></div>
   <div class="step"><div class="step-num">2</div><div class="step-text">Run the installer and open the app.</div></div>
-  <div class="step"><div class="step-num">3</div><div class="step-text">Sign in with your <strong>Prepory email</strong> so you're on the team account, that's what gives you access to our connectors, projects, and higher usage limits.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-text">Sign in with your <strong>Prepory email</strong> so you're on the team account. That's what gives you access to our connectors, projects, and higher usage limits.</div></div>
   <div class="step"><div class="step-num">4</div><div class="step-text">Keep it open. You'll come back to it once you finish Prompting 101.</div></div>
 </div>
 
 <div class="sh">How this guide works</div>
-<p>The guide is split into four parts. Do them in order, each one builds on the last.</p>
+<p>The guide is split into four parts. Do them in order. Each one builds on the last.</p>
 
 <div class="sh" style="font-size:11px;color:var(--amber-txt);margin-top:28px">Part 01 · Start Here</div>
 <div class="grid-cards">
@@ -631,7 +631,7 @@ const SECTIONS = [
     <span class="tool-name">Chat</span>
     <span class="tool-where">Desktop app, browser, or mobile</span>
   </div>
-  <p style="margin:6px 0">The standard conversation experience. You can use Chat inside the desktop app (it's right next to Cowork), in a browser at claude.ai, or on your phone. Best for quick questions, writing help, research, and short one-offs on any device. Chat is a back-and-forth, one-step-at-a-time conversation, great when you want to stay in the loop on every reply. Projects, skills, and cloud connectors (Monday, Drive, Gmail, Calendar) all work in Chat too; the thing you can't do is have Claude read or write files on your computer, or turn it loose on a long multi-step task. That's Cowork.</p>
+  <p style="margin:6px 0">The standard conversation experience. You can use Chat inside the desktop app (it's right next to Cowork), in a browser at claude.ai, or on your phone. Best for quick questions, writing help, research, and short one-offs on any device. Chat is a back-and-forth, one-step-at-a-time conversation. Great when you want to stay in the loop on every reply. Projects, skills, and cloud connectors (Monday, Drive, Gmail, Calendar) all work in Chat too; the thing you can't do is have Claude read or write files on your computer, or turn it loose on a long multi-step task. That's Cowork.</p>
   <div class="tool-how"><strong>How to open:</strong> open the desktop app and click the Chat tab, or go to <a href="${L.claude}" target="_blank" rel="noopener" class="ext-link">claude.ai</a> in a browser.</div>
 </div>
 <div class="tool-card">
@@ -678,7 +678,7 @@ const SECTIONS = [
 </div>
 
 <div class="sh" style="margin-top:22px">First: what even is an LLM?</div>
-<p>If you've mostly used Google up to now, Claude is a different kind of tool, and it helps to know why. Claude is a <strong>large language model</strong> (LLM): a system trained on an enormous amount of text, books, articles, web pages, conversations, and, in the process, it learned the patterns of how language works. When you send Claude a message, it's drawing on all of that to produce the most useful continuation of your conversation it can.</p>
+<p>If you've mostly used Google up to now, Claude is a different kind of tool, and it helps to know why. Claude is a <strong>large language model</strong> (LLM): a system trained on an enormous amount of text, books, articles, web pages, and conversations. In the process, it learned the patterns of how language works. When you send Claude a message, it's drawing on all of that to produce the most useful continuation of your conversation it can.</p>
 
 <p>That's meaningfully different from what a search engine does:</p>
 <ul>
@@ -689,8 +689,8 @@ const SECTIONS = [
 
 <p><strong>A few things to keep in mind as a beginner:</strong></p>
 <ul>
-  <li>Claude's baseline knowledge comes from its training data, which has a cutoff date. For anything current (today's news, a school's latest deadline), turn on <strong>Web search</strong> in the + menu or paste the current info into your prompt. One small but important habit: <strong>tell Claude to actually search</strong>. Web search being <em>enabled</em> doesn't guarantee Claude reaches for it every time, it decides on the fly. If currency matters, add a line to your prompt like <em>"Please search the web to confirm current info before answering"</em> or <em>"Verify this against official sources."</em> That nudge makes a real difference.</li>
-  <li>Claude can be confidently wrong. It's not looking things up in a database every time, it's producing what sounds most likely based on patterns. It's getting meaningfully better at staying grounded, but it's why Principle 7 below is <em>Always review before it goes anywhere</em>.</li>
+  <li>Claude's baseline knowledge comes from its training data, which has a cutoff date. For anything current (today's news, a school's latest deadline), turn on <strong>Web search</strong> in the + menu or paste the current info into your prompt. One small but important habit: <strong>tell Claude to actually search</strong>. Web search being <em>enabled</em> doesn't guarantee Claude reaches for it every time. It decides on the fly. If currency matters, add a line to your prompt like <em>"Please search the web to confirm current info before answering"</em> or <em>"Verify this against official sources."</em> That nudge makes a real difference.</li>
+  <li>Claude can be confidently wrong. It's not looking things up in a database every time. It's producing what sounds most likely based on patterns. It's getting meaningfully better at staying grounded, but it's why Principle 7 below is <em>Always review before it goes anywhere</em>.</li>
   <li>Claude doesn't know anything about you, your students, or Prepory unless you tell it. Every new conversation starts as a blank slate, unless you're using Projects or Memory (both covered later).</li>
   <li>Claude will happily do what you ask even when what you asked wasn't quite what you meant. Good prompts reduce the gap between those two things.</li>
 </ul>
@@ -807,7 +807,7 @@ const SECTIONS = [
 <div class="chapter-cover essentials">
   <div class="chapter-label"><span class="chapter-num">Part 02</span> Claude Essentials</div>
   <h2 class="chapter-title">Core tools for making the most of Claude.</h2>
-  <p class="chapter-desc">A quick interface tour, plus Chat, Cowork, Skills, Connectors, Projects, and how to stay within usage limits. These are the building blocks, everything in the later chapters assumes you know what's in here.</p>
+  <p class="chapter-desc">A quick interface tour, plus Chat, Cowork, Skills, Connectors, Projects, and how to stay within usage limits. These are the building blocks. Everything in the later chapters assumes you know what's in here.</p>
   <div class="chapter-meta">
     <span class="chapter-chip">🧭 Getting familiar</span>
     <span class="chapter-chip">💬 Chat</span>
@@ -836,8 +836,8 @@ const SECTIONS = [
   <li><strong>Skills</strong>, turn on specific skills for this chat (docx, pptx, xlsx, pdf, etc.). Often triggers automatically.</li>
   <li><strong>Connectors</strong>, toggle Monday, Gmail, Calendar, Drive, Claude in Chrome on or off for this chat.</li>
   <li><strong>Plugins</strong>, optional bundles of tools and skills. Most coaches won't need to touch these day-to-day; Prepory admins can push team-wide ones when we have them.</li>
-  <li><strong>Research</strong>, only use this for genuinely deep research, not quick lookups. Claude spins up a multi-agent research run that can take anywhere from 5 to 45 minutes and pulls from a lot of sources. Great for "build me a full brief on XYZ scholarship landscape." Overkill for "what's WashU's Common App prompt." Note: Research is a <strong>Chat-only</strong> feature right now, it's not available inside Cowork. For everyday web lookups, just use Web search below.</li>
-  <li><strong>Web search</strong>, lets Claude look things up online. Keep this on by default. One gotcha: having it <em>enabled</em> doesn't mean Claude always uses it, it decides on the fly whether to search. For anything time-sensitive (a school's current deadline, a recent article), explicitly tell Claude to search the web in your prompt. More on this in Prompting 101.</li>
+  <li><strong>Research</strong>, only use this for genuinely deep research, not quick lookups. Claude spins up a multi-agent research run that can take anywhere from 5 to 45 minutes and pulls from a lot of sources. Great for "build me a full brief on XYZ scholarship landscape." Overkill for "what's WashU's Common App prompt." Note: Research is a <strong>Chat-only</strong> feature right now. It's not available inside Cowork. For everyday web lookups, just use Web search below.</li>
+  <li><strong>Web search</strong>, lets Claude look things up online. Keep this on by default. One gotcha: having it <em>enabled</em> doesn't mean Claude always uses it. It decides on the fly whether to search. For anything time-sensitive (a school's current deadline, a recent article), explicitly tell Claude to search the web in your prompt. More on this in Prompting 101.</li>
   <li><strong>Use style</strong>, pick a writing style preset. Handy for quickly matching tone (formal parent email vs. casual social post).</li>
 </ul>
 
@@ -848,7 +848,7 @@ const SECTIONS = [
   <li><strong>Customize</strong>, manages your personal Skills, Connectors, and Plugins at the account level. The + menu toggles these per-chat; Customize is where they're set up in the first place.</li>
   <li><strong>Artifacts</strong>, a library of artifacts Claude has produced for you across chats.</li>
   <li><strong>Pinned</strong> and <strong>Recents</strong>, pin important chats so they stay up top, and scroll/search recents for anything else.</li>
-  <li>At the bottom you should see <strong>Prepory</strong>, that's your organization. If you don't see it there, you're probably signed in with a personal email. Re-sign in with your Prepory address.</li>
+  <li>At the bottom you should see <strong>Prepory</strong>. That's your organization. If you don't see it there, you're probably signed in with a personal email. Re-sign in with your Prepory address.</li>
 </ul>
 
 <div class="sh">Settings worth knowing exist</div>
@@ -948,14 +948,14 @@ const SECTIONS = [
 /* SEC_COWORK */
 {id:"cowork",label:"Cowork",group:"Claude Essentials",emoji:"🧑‍💻",html:`
 <h2 class="display">Cowork, the main way you'll use Claude.</h2>
-<p>Cowork is Claude's desktop app experience, and it's where most of the heavy lifting at Prepory will happen. The biggest thing Cowork brings that Chat doesn't is that it's <strong>agentic</strong>, you can hand it a multi-step task and it will plan, pick the right tools, run them in sequence, check its own work, and keep going until the job is done, often for minutes at a stretch while you do something else. On top of that, Cowork pulls all of your skills, projects, and connectors (Drive, Gmail, Calendar, Claude in Chrome, plus Monday if you use it) into one surface, and it can also read and write files on your computer when that's the right tool for the job.</p>
+<p>Cowork is Claude's desktop app experience, and it's where most of the heavy lifting at Prepory will happen. The biggest thing Cowork brings that Chat doesn't is that it's <strong>agentic</strong>. You can hand it a multi-step task and it will plan, pick the right tools, run them in sequence, check its own work, and keep going until the job is done, often for minutes at a stretch while you do something else. On top of that, Cowork pulls all of your skills, projects, and connectors (Drive, Gmail, Calendar, Claude in Chrome, plus Monday if you use it) into one surface, and it can also read and write files on your computer when that's the right tool for the job.</p>
 
 <div class="callout callout-tip"><span class="callout-icon">💡</span><span><strong>The shift from Chat to Cowork is the biggest unlock in this guide.</strong> Chat is turn-by-turn, great for quick questions. Cowork is where Claude becomes a real teammate that can actually <em>do</em> things for you, like running through tomorrow's sessions and drafting a prep note for each, writing a thoughtful reply to a parent's email using context from a student's files, or building a polished deck from your rough notes while you grab lunch.</span></div>
 
 <div class="sh">What Cowork can do that Chat can't</div>
 <p>Most of Claude's features, skills, projects, and our cloud connectors (Drive, Gmail, Calendar, plus Monday if you use it) work in the browser too. What makes Cowork distinct is that it can <strong>chain those tools together and run on its own</strong>, and, when it helps, reach into files on your computer. The rhythm shift matters: in Chat, <em>you ask → it answers → you ask again</em>; in Cowork, <em>you describe the outcome → it does the whole thing → you review</em>. Tasks that used to take 30 minutes of back-and-forth become one prompt and a few minutes of your own time on other things.</p>
 <div class="grid-cards">
-  ${[['⏳','Work through long tasks on its own','Cowork is an agentic mode. Give it a job with several steps and it plans, calls connectors, reads files, makes edits, and keeps going, checking its own work as it goes. It can run for minutes at a time without you, so you hand it a task, go answer emails or take a call, and come back to a finished draft.'],['🧵','Chain connectors, skills, and projects in one run','Cowork lets Claude pull from Calendar, read a doc in Drive, draft a Gmail reply, and save a polished local file, all inside a single task. You stop bouncing between tabs and copy-paste. That orchestration is the real win.'],['🛠️','Run local tools and Claude in Chrome','Local extensions (MCP servers) and the Claude in Chrome browser agent only run via the desktop app. The browser version of Claude connects to cloud services; Cowork does cloud <em>and</em> local.'],['⏰','Run tasks on a schedule','Cowork supports scheduled tasks (type <code>/schedule</code>), so you can ask it to run a report every Monday morning or check in on a workflow nightly. One catch: scheduled tasks only run while the desktop app is open and your computer is awake, they\'re not cloud-run. Chat doesn\'t have this at all.'],['📂','Read and write files on your computer when that\'s the right tool','Most Prepory work lives in Google Drive, so this isn\'t the main event, but when a task genuinely needs a local folder (say, a dump of files a student sent you, or a polished .docx/.pptx you want saved locally), Cowork can handle it. Chat in the browser can\'t.']].map(([e,t,d])=>`<div class="use-case-card" style="display:flex;gap:14px"><span style="font-size:18px">${e}</span><div><div style="font-weight:700;color:var(--ink);font-size:14px">${t}</div><div style="font-size:13px;color:var(--muted);margin-top:3px;line-height:1.6">${d}</div></div></div>`).join('')}
+  ${[['⏳','Work through long tasks on its own','Cowork is an agentic mode. Give it a job with several steps and it plans, calls connectors, reads files, makes edits, and keeps going, checking its own work as it goes. It can run for minutes at a time without you, so you hand it a task, go answer emails or take a call, and come back to a finished draft.'],['🧵','Chain connectors, skills, and projects in one run','Cowork lets Claude pull from Calendar, read a doc in Drive, draft a Gmail reply, and save a polished local file, all inside a single task. You stop bouncing between tabs and copy-paste. That orchestration is the real win.'],['🛠️','Run local tools and Claude in Chrome','Local extensions (MCP servers) and the Claude in Chrome browser agent only run via the desktop app. The browser version of Claude connects to cloud services; Cowork does cloud <em>and</em> local.'],['⏰','Run tasks on a schedule','Cowork supports scheduled tasks (type <code>/schedule</code>), so you can ask it to run a report every Monday morning or check in on a workflow nightly. One catch: scheduled tasks only run while the desktop app is open and your computer is awake. They\'re not cloud-run. Chat doesn\'t have this at all.'],['📂','Read and write files on your computer when that\'s the right tool','Most Prepory work lives in Google Drive, so this isn\'t the main event, but when a task genuinely needs a local folder (say, a dump of files a student sent you, or a polished .docx/.pptx you want saved locally), Cowork can handle it. Chat in the browser can\'t.']].map(([e,t,d])=>`<div class="use-case-card" style="display:flex;gap:14px"><span style="font-size:18px">${e}</span><div><div style="font-weight:700;color:var(--ink);font-size:14px">${t}</div><div style="font-size:13px;color:var(--muted);margin-top:3px;line-height:1.6">${d}</div></div></div>`).join('')}
 </div>
 
 <div class="callout callout-info"><span class="callout-icon">📁</span><span><strong>A note on Drive.</strong> With the Drive connector on, Cowork can <strong>search your Drive and read your Google Docs</strong> as context for whatever it's doing. However, it can't modify your existing Docs yet.</span></div>
@@ -1027,7 +1027,7 @@ const SECTIONS = [
 </div>
 <div class="callout callout-warn"><span class="callout-icon">⚠️</span><span><strong>Scheduled doesn't mean cloud-run.</strong> If your laptop is shut or the Claude desktop app isn't open when the task is supposed to fire, it won't run. Think of scheduled tasks as <em>automate what you do at your own machine</em>, not as a true cron job that runs whether you're there or not. A laptop that stays plugged in with the app open through the day handles this fine; a laptop you close at 6pm won't run an 8am task the next morning unless you reopen the app first.</span></div>
 
-<div class="callout callout-info"><span class="callout-icon">ℹ️</span><span><strong>Cowork only sees what you give it.</strong> Connectors only touch the accounts you've authorized, and local file access is limited to the folder you've connected, nothing else on your computer is visible. A few built-in guardrails also apply: Gmail drafts are never sent automatically (you always hit send yourself), and Cowork prompts you before destructive local file actions like deleting. For other connector actions (creating a Calendar event, submitting a form via Claude in Chrome, etc.), Claude will usually narrate what it's about to do before it does it, but don't assume every step is gated, <em>read what it says it's doing</em>, especially the first few times you try a new workflow.</span></div>
+<div class="callout callout-info"><span class="callout-icon">ℹ️</span><span><strong>Cowork only sees what you give it.</strong> Connectors only touch the accounts you've authorized, and local file access is limited to the folder you've connected, nothing else on your computer is visible. A few built-in guardrails also apply: Gmail drafts are never sent automatically (you always hit send yourself), and Cowork prompts you before destructive local file actions like deleting. For other connector actions (creating a Calendar event, submitting a form via Claude in Chrome, etc.), Claude will usually narrate what it's about to do before it does it, but don't assume every step is gated. <em>Read what it says it's doing</em>, especially the first few times you try a new workflow.</span></div>
 `},
 
 /* SEC_SKILLS */
@@ -1037,13 +1037,18 @@ const SECTIONS = [
 
 <div class="callout callout-info"><span class="callout-icon">ℹ️</span><span>Skills work across Claude, Cowork, the desktop app, and claude.ai in the browser. They're often triggered automatically based on what you ask for, so you usually don't have to think about them. But knowing they exist helps you ask for the right things.</span></div>
 
-<div class="sh">Skills you'll use at Prepory</div>
+<div class="sh">Built-in skills you'll use at Prepory</div>
 <div class="grid-cards">
   ${[['📄','docx','Polished Word documents, session notes, parent one-pagers, coaching briefs, letters. Formatting, headings, and structure look professional out of the box.'],['📊','pptx','Slide decks for webinars, internal training, and family presentations. Proper layouts, speaker notes, and slide hygiene.'],['📈','xlsx','Spreadsheets, college list comparisons, application tracking, budget models. Formulas and formatting, not just flat data.'],['📑','pdf','Reading existing PDFs (school policy docs, Common Data Sets) and producing new ones (final handouts, read-only one-pagers).']].map(([e,t,d])=>`<div class="use-case-card" style="display:flex;gap:14px"><span style="font-size:18px">${e}</span><div><div style="font-weight:700;color:var(--ink);font-size:14px">${t}</div><div style="font-size:13px;color:var(--muted);margin-top:3px;line-height:1.6">${d}</div></div></div>`).join('')}
 </div>
 
 <div class="sh">How to actually use a skill</div>
-<p>Most of the time, just ask Claude for what you want and it'll pick the right skill on its own. If you want to be explicit, mention the skill by name. For skills that drive other tools (for example, a skill that uses Claude in Chrome to do something in the browser), make sure the underlying tool is also toggled on via the <strong>+ button</strong> near the message composer before you send.</p>
+<p>Most of the time, just ask Claude for what you want and it'll pick the right skill on its own. If you want to be explicit, you have three options. Pick whichever feels natural:</p>
+<div class="steps">
+  <div class="step"><div class="step-num">1</div><div class="step-text"><strong>Mention the skill by name in your prompt.</strong> Just type something like "use the docx skill to..." or "build this with pptx." Claude picks it up from the wording and runs it.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-text"><strong>Toggle it on with the + button.</strong> Click the <strong>+ button</strong> near the message composer, find the skill in the list, and flip it on for this chat. Useful when you want a skill available for the whole conversation without repeating its name every message. This is also how you enable the underlying tool for skills that drive other things (e.g., a skill that uses Claude in Chrome, toggle Claude in Chrome on first).</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-text"><strong>Invoke it with a slash command.</strong> Type <code>/</code> in the message composer and you'll see a menu of available skills. Pick one (e.g., <code>/docx</code>) and Claude runs that skill on whatever prompt you add after it. Fastest way to trigger a specific skill on demand without typing out its name.</div></div>
+</div>
 
 <div class="prompt-wrap"><div class="prompt-label">Example prompts that trigger skills</div><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">Use the docx skill to create a polished session notes document for my 3pm with Priya today. Include: summary, feedback given, action items, next-session focus. Save to this folder.</pre><button class="copy-btn">Copy</button></div></div>
 
@@ -1052,7 +1057,7 @@ const SECTIONS = [
 <div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">Create an xlsx college list tracker for this student with columns: School, Reach/Target/Safety, Deadline Type, Supplementals Required, Draft Status, Last Updated. Pre-fill rows for each of her 10 target schools.</pre><button class="copy-btn">Copy</button></div></div>
 
 <div class="sh">Creating your own custom skills with skill-creator</div>
-<p>You don't have to wait for the AI team to build a skill for you. The desktop app ships with a special skill for building skills, called <strong>skill-creator</strong>. It walks you through turning a repeated workflow into a reusable recipe that Claude can trigger automatically, in plain English, no coding.</p>
+<p>The desktop app ships with a special skill for building skills, called <strong>skill-creator</strong>. It walks you through turning a repeated workflow into a reusable recipe that Claude can trigger automatically, in plain English, no coding.</p>
 <p><strong>The best candidates for a custom skill:</strong></p>
 <ul>
   <li>Something you ask Claude for <em>the same way every time</em> (e.g., "format my weekly coaching recap using this exact structure").</li>
@@ -1066,76 +1071,25 @@ const SECTIONS = [
   <div class="step"><div class="step-num">3</div><div class="step-text"><strong>Give it examples.</strong> Paste 2–3 real inputs (your rough notes) and the exact outputs you'd want. Examples are the single biggest lever, skills with good examples are dramatically better than ones without.</div></div>
   <div class="step"><div class="step-num">4</div><div class="step-text"><strong>Answer Claude's questions.</strong> skill-creator will ask clarifying questions, tone, length, edge cases, what to avoid. Answer carefully. These become the skill's guardrails.</div></div>
   <div class="step"><div class="step-num">5</div><div class="step-text"><strong>Let Claude write and save the skill.</strong> It'll appear in your + menu afterwards, and you (or anyone you share it with) can trigger it by name.</div></div>
-  <div class="step"><div class="step-num">6</div><div class="step-text"><strong>Test and iterate.</strong> Run the skill on a fresh input, see what it produces, and if it's off, go back into skill-creator and refine. A skill gets good over 3–4 rounds of use-and-adjust, don't expect perfect on the first pass.</div></div>
+  <div class="step"><div class="step-num">6</div><div class="step-text"><strong>Test and iterate.</strong> Run the skill on a fresh input, see what it produces, and if it's off, go back into skill-creator and refine. A skill gets good over 3–4 rounds of use-and-adjust. Don't expect perfect on the first pass.</div></div>
 </div>
 <div class="callout callout-tip"><span class="callout-icon">💡</span><span>If your custom skill would be useful for the whole team, share it with the Prepory AI team. We can promote it to a company-wide skill so every coach gets it automatically.</span></div>
 
+<div class="sh">Sharing a skill org-wide or with specific people</div>
+<p>Once a skill works well for you, you rarely want to keep it to yourself. Skills can be shared at three levels: <strong>personal</strong> (just you), <strong>targeted</strong> (a few named teammates), or <strong>org-wide</strong> (everyone at Prepory gets it by default). Pick the level that matches how polished and generally-useful the skill is.</p>
+<div class="grid-cards">
+  ${[['👤','Personal','The default when you first build a skill. Only visible in your own + menu. Good for works-in-progress or skills that reflect your personal style. Iterate here until it\'s solid before sharing wider.'],['👥','Specific teammates','Share with a handful of named coworkers, useful for team-specific workflows (your pod, a specific coach group, the marketing team). They\'ll see it in their + menu and can trigger it by name, but it doesn\'t clutter the whole org.'],['🏢','Org-wide','Promoted by the Prepory AI team so every Claude user at Prepory gets it automatically, no setup on their end. Reserved for skills that are polished, documented, and clearly useful across roles (e.g., a Prepory-voice email drafter).']].map(([e,t,d])=>`<div class="use-case-card" style="display:flex;gap:14px"><span style="font-size:18px">${e}</span><div><div style="font-weight:700;color:var(--ink);font-size:14px">${t}</div><div style="font-size:13px;color:var(--muted);margin-top:3px;line-height:1.6">${d}</div></div></div>`).join('')}
+</div>
+<p><strong>How to share:</strong> Open <strong>Customize</strong> from the sidebar, find your skill under the Skills tab, and use the share controls to add specific teammates by email, or flag it for org-wide promotion. For org-wide, the Prepory AI team does a quick review (naming, description, examples, guardrails) before pushing it to everyone. This keeps the shared skill library clean and trustworthy.</p>
+<div class="callout callout-info"><span class="callout-icon">ℹ️</span><span><strong>Before you share widely:</strong> test the skill on 3–4 real inputs, tighten the description so it triggers reliably, and strip anything client-specific (names, emails, sensitive notes) from the examples. A skill that fires at the wrong time or leaks a real student's info is worse than no skill at all.</span></div>
+
 <div class="sh">We'll keep building more Prepory-specific skills</div>
-<p>The AI team is also building skills centrally. As we learn which tasks get repeated (and where Claude's default output isn't quite hitting), we'll ship skills tuned for Prepory's voice, style, and workflow. If you notice yourself giving the same instructions to Claude over and over, <strong>that's a signal, either build it yourself with skill-creator, or flag it so we can build it for everyone</strong>.</p>
+<p>As we learn which tasks get repeated (and where Claude's default output isn't quite hitting), we'll ship skills tuned for Prepory's voice, style, and workflow. If you notice yourself giving the same instructions to Claude over and over, <strong>that's a signal. Either build it yourself with skill-creator, or flag it so we can build it for everyone</strong>.</p>
 
 <div class="callout callout-tip"><span class="callout-icon">💡</span><span>Skills compose with projects. Example: the school-specific Stanford project has Stanford's Insider Brief loaded, and the docx skill makes sure the output is a polished, properly formatted Word doc. Together, they produce advice that's both Stanford-specific and ready to send.</span></div>
-`},
 
-/* SEC_CONNECTORS */
-{id:"connectors",label:"Connectors",group:"Claude Essentials",emoji:"🔌",html:`
-<h2 class="display">Connectors, plug Claude into our tools.</h2>
-<p>Connectors give Claude secure access to the apps we already use every day. Once connected, Claude can read from and (where allowed) update these tools directly in the conversation, no copy-paste, no switching windows.</p>
-
-<div class="sh">The five connectors that matter most at Prepory</div>
-
-<div class="tool-card">
-  <div class="tool-head"><span class="tool-name">Monday</span><span class="tool-where">Ops & marketing</span></div>
-  <p style="margin:6px 0">Claude can reach into Monday to help with board and pipeline work, pulling info about boards and items, posting updates, and changing column values where the connector allows it. This one is primarily for ops, managers, and marketing, most coaches won't need it on day-to-day, so only turn it on if Monday is actually part of your workflow. Exact capabilities depend on how the connector is set up for your workspace, so try a small ask first.</p>
-  <div class="tool-how"><strong>Try asking Cowork (if you use Monday):</strong> "Look at my Monday workspace and summarize where each item on my Q2 campaigns board stands right now."</div>
-</div>
-
-<div class="tool-card">
-  <div class="tool-head"><span class="tool-name">Google Drive</span><span class="tool-where">Shared resources</span></div>
-  <p style="margin:6px 0">Claude can <strong>search across your Drive and read your Google Docs</strong> for context, great for surfacing the right Insider Brief, notes, or exemplar without manually hunting for it. One thing to know: the connector reads your Drive, it doesn't modify existing Docs today. So use Drive as the place Claude <em>pulls context from</em>; for outputs, have Claude write into a Gmail draft or save a polished .docx / .pptx / .xlsx into a local folder on your computer.</p>
-  <div class="tool-how"><strong>Try asking:</strong> "Find the Stanford Insider Brief in Google Drive and summarize what it says about what the Stanford committee values most in the 'What matters most to you?' essay."</div>
-</div>
-
-<div class="tool-card">
-  <div class="tool-head"><span class="tool-name">Gmail</span><span class="tool-where">Client comms</span></div>
-  <p style="margin:6px 0">Claude can search your inbox, summarize long threads, and draft replies directly into your Gmail as drafts (never sent automatically, you always review). Perfect for catching up after PTO or drafting post-session recap emails.</p>
-  <div class="tool-how"><strong>Try asking:</strong> "Find the most recent thread with Priya's mom. Summarize what she's asked for, and draft a reply addressing each of her questions. Save as a draft in Gmail."</div>
-</div>
-
-<div class="tool-card">
-  <div class="tool-head"><span class="tool-name">Google Calendar</span><span class="tool-where">Scheduling</span></div>
-  <p style="margin:6px 0">Claude can see your upcoming sessions, find times that work, create events, and prep you for what's next on your calendar.</p>
-  <div class="tool-how"><strong>Try asking:</strong> "What do I have on my calendar tomorrow? For each student session, pull their file and give me a 2-sentence heads-up on what we're supposed to cover."</div>
-</div>
-
-<div class="tool-card">
-  <div class="tool-head"><span class="tool-name">Claude in Chrome <span style="font-size:10.5px;background:var(--accent);color:white;padding:2px 8px;border-radius:999px;margin-left:6px;letter-spacing:.4px">POWERFUL</span></span><span class="tool-where">Real browser actions</span></div>
-  <p style="margin:6px 0">Claude in Chrome is a browser agent. Instead of just fetching a page, it can actually <strong>drive your Chrome browser</strong>, open tabs, fill forms, click buttons, log into WordPress, navigate Common App, publish a page, or pull data from a site that needs you to be signed in. Think of it as "Claude can use the web the way you would."</p>
-  <div class="tool-how"><strong>Try asking:</strong> "Open the WordPress admin for staging2.prepory.com and create a new page called 'Executive Coaching for CMOs.' Use the body copy in this folder and save it as a draft."</div>
-</div>
-
-<div class="sh">Setting up the standard connectors (Monday, Drive, Gmail, Calendar)</div>
-<div class="steps">
-  <div class="step"><div class="step-num">1</div><div class="step-text">Open the Claude desktop app and head to the <strong>Connectors</strong> area (look under Settings or Customize, the exact spot can vary by app version).</div></div>
-  <div class="step"><div class="step-num">2</div><div class="step-text">Click <strong>Connect</strong> next to Monday, Google Drive, Gmail, and Google Calendar. You'll be prompted to sign in and approve the permissions Claude needs. Use your Prepory account whenever it asks.</div></div>
-  <div class="step"><div class="step-num">3</div><div class="step-text">Once connected, Claude can use the tool from any conversation. You don't need to re-authorize every time.</div></div>
-  <div class="step"><div class="step-num">4</div><div class="step-text"><strong>Enable the connector in your conversation.</strong> Open a Cowork chat and click the <strong>+ button</strong> near the message composer. You'll see a list of connectors and skills, toggle on the ones you want Claude to use for this chat.</div></div>
-  <div class="step"><div class="step-num">5</div><div class="step-text"><strong>Test it.</strong> Ask Claude "What's on my calendar this week?" or "What are my 3 most recent Monday items?", if it returns real data, you're connected.</div></div>
-</div>
-
-<div class="sh">Setting up Claude in Chrome, step by step</div>
-<p>Claude in Chrome takes three separate pieces: a Chrome extension, a desktop app setting, and a per-conversation toggle. Here's the full walkthrough.</p>
-<div class="steps">
-  <div class="step"><div class="step-num">1</div><div class="step-text"><strong>Install the Chrome extension.</strong> In Google Chrome, go to the <a href="https://chromewebstore.google.com/" target="_blank" rel="noopener" class="ext-link">Chrome Web Store</a> and search for <em>"Claude"</em>, you're looking for the official Anthropic extension (sometimes called "Claude in Chrome"). Click <strong>Add to Chrome</strong> and approve the permissions. You'll see a small Claude icon appear near your Chrome toolbar. That means it's installed.</div></div>
-  <div class="step"><div class="step-num">2</div><div class="step-text"><strong>Sign the extension in to your Prepory account.</strong> Click the extension icon and sign in with the same email you use for the desktop app. This links the browser to your team account.</div></div>
-  <div class="step"><div class="step-num">3</div><div class="step-text"><strong>Enable Claude in Chrome inside the desktop app.</strong> Open the Claude desktop app, go to the <strong>Connectors</strong> area in settings, find <em>Claude in Chrome</em>, and switch it on. You may be asked to confirm that the extension is installed.</div></div>
-  <div class="step"><div class="step-num">4</div><div class="step-text"><strong>Turn it on for a conversation using the + button.</strong> Open a Cowork chat and click the <strong>+ button</strong> near the message composer. A panel will pop up with available tools and connectors. Find <strong>Claude in Chrome</strong> and toggle it on. That plus button is the real "on switch." Without it, Claude won't drive the browser, even if the extension is installed.</div></div>
-  <div class="step"><div class="step-num">5</div><div class="step-text"><strong>Give it a first task.</strong> Make sure Chrome is open, then ask something like: <em>"Open Common App and tell me what the current personal statement prompts are."</em> You'll see Chrome pop into focus, Claude will open a new tab, and it'll narrate what it's doing as it navigates.</div></div>
-</div>
-<div class="callout callout-tip"><span class="callout-icon">💡</span><span><strong>Keep an eye on the window while it works.</strong> Claude in Chrome narrates every click and navigation in real time, and you can cancel at any point. It often pauses before things like form submissions, but don't treat that as a guarantee, watch what it's doing on anything that actually sends data or changes a record.</span></div>
-
-<div class="callout callout-warn"><span class="callout-icon">⚠️</span><span><strong>How safe are connectors? Some guardrails are built in, others aren't, so read what Claude says it's doing.</strong> A few things are gated by design: Gmail is <em>draft-only</em> via the connector (Claude can't actually send, you always hit send yourself), and Cowork prompts you before deleting local files. For other connector actions, like creating a Calendar event, updating a Monday item, or submitting a form via Claude in Chrome, Claude will usually narrate what it's about to do, but don't assume every step has a hard confirmation step. Reading, searching, and drafting happen freely; anything that changes a record in someone else's system is worth watching.</span></div>
-
-<div class="callout callout-info"><span class="callout-icon">ℹ️</span><span>More connectors will be added over time (Slack, HubSpot, and others are likely candidates). If there's a tool you use daily that would be game-changing if Claude could reach it, flag it.</span></div>
+<div class="sh">Skills vs. Projects, a quick note</div>
+<p>Both skills and projects give Claude extra context to work better on a specific task. A <strong>skill</strong> is a <em>how</em> (a reusable recipe for <em>producing</em> something well, like "make a polished .docx") and a <strong>project</strong> is a <em>what</em> (a persistent workspace full of context about a specific student, school, or deliverable). You'll often use them together: a Stanford <em>project</em> gives Claude the intel, and the docx <em>skill</em> makes sure the output is presentation-ready. The Projects section up next goes deeper on when to reach for a project.</p>
 `},
 
 /* SEC_PROJECTS */
@@ -1143,9 +1097,9 @@ const SECTIONS = [
 <h2 class="display">Projects, reusable workspaces for recurring work.</h2>
 <p>A Project is a permanent workspace <em>inside</em> Chat or Cowork, not a separate tool, with two superpowers: <strong>custom instructions</strong> (a system prompt that's always active) and <strong>reference files</strong> (documents Claude can always read). Every conversation you start inside a project automatically has both loaded. No re-uploading, no re-explaining. You can create and use projects in claude.ai, in the desktop app's Chat mode, or in Cowork.</p>
 
-<div class="callout callout-tip"><span class="callout-icon">💡</span><span><strong>Rule of thumb:</strong> if you've caught yourself typing the same context into Claude three or more times, turn it into a Project. It'll save you hours over a year.</span></div>
+<div class="callout callout-tip"><span class="callout-icon">💡</span><span><strong>Best practice:</strong> if you've caught yourself typing the same context into Claude three or more times, turn it into a Project. It'll save you hours over a year.</span></div>
 
-<div class="callout callout-info"><span class="callout-icon">ℹ️</span><span><strong>One thing to know about sharing:</strong> projects you create on <strong>claude.ai (Chat)</strong> can be shared with teammates on your Prepory plan, which is how the school-specific coach projects below get rolled out to the whole coaching team. Projects you create inside <strong>Cowork</strong> live on your own machine and don't have the same team-sharing story today, they're best thought of as your personal workspaces. If you're building something for the whole team to use, build it in Chat/claude.ai. If it's just for you, either is fine.</span></div>
+<div class="callout callout-info"><span class="callout-icon">ℹ️</span><span><strong>One thing to know about sharing:</strong> projects you create on <strong>claude.ai (Chat)</strong> can be shared with teammates on your Prepory plan, which is how the school-specific coach projects below get rolled out to the whole coaching team. Projects you create inside <strong>Cowork</strong> live on your own machine and don't have the same team-sharing story today. They're best thought of as your personal workspaces. If you're building something for the whole team to use, build it in Chat/claude.ai. If it's just for you, either is fine.</span></div>
 
 <div class="callout callout-tip"><span class="callout-icon">💡</span><span><strong>Best of both worlds:</strong> when you're inside a Chat project on claude.ai, look under the message composer for a <strong>Start a task in Cowork</strong> link. One click hands the project's custom instructions and reference files over to Cowork, so you can kick off heavier, file-based, agentic work with the same context already loaded. A coach can open the Stanford Coach Project in Chat for a quick question, or hit "Start a task in Cowork" from that same project to draft and save a full set of school-specific prep docs into a student's folder. Same intel behind both.</span></div>
 
@@ -1155,7 +1109,7 @@ const SECTIONS = [
 </div>
 
 <div class="sh">School-specific coach projects, the flagship use case</div>
-<p>The Prepory AI team is building a set of <strong>school-specific Projects</strong> for coaches. Each one is tuned for a single school and designed to give coaches fast, on-brand, on-strategy advice for that school, grounded in Prepory's insider knowledge rather than the generic public information you'd get from a web search.</p>
+<p>Program is in the process of building a set of <strong>school-specific Projects</strong> for coaches. Each one is tuned for a single school and designed to give coaches fast, on-brand, on-strategy advice for that school, grounded in Prepory's insider knowledge rather than the generic public information you'd get from a web search.</p>
 
 <div class="card" style="background:linear-gradient(135deg,var(--primary-soft),#f9fbf9);border-color:rgba(11,71,59,.12)">
   <div style="font-size:11px;font-weight:700;color:var(--accent-dk);letter-spacing:1.4px;text-transform:uppercase;margin-bottom:8px">Example project · First one rolling out</div>
@@ -1166,7 +1120,7 @@ const SECTIONS = [
     <li><em>"Here's my student's draft of the 'roommate letter' supplemental, how does it compare to the exemplars in this project, and what's the single biggest gap?"</em></li>
     <li><em>"Based on my student's profile [paste notes], which angle for the short-answer questions would likely resonate most with Stanford specifically?"</em></li>
   </ul>
-  <p style="margin-top:10px">The answers are grounded in Prepory's intel, not a generic Google search, and reflect what actually wins with Stanford admissions, not what a random AI thinks wins.</p>
+  <p style="margin-top:10px">The answers are grounded in Prepory's intel, not a generic Google search.</p>
   <div class="feature-pill" style="margin-top:10px">More school projects coming</div>
   <span style="font-size:12.5px;color:var(--muted);margin-left:6px">We're starting with Stanford and rolling out additional school-specific projects as we build them. Coaches will get access as each one launches.</span>
 </div>
@@ -1174,8 +1128,8 @@ const SECTIONS = [
 <div class="sh">Creating your own project, step by step</div>
 <div class="steps">
   <div class="step"><div class="step-num">1</div><div class="step-text">In the Claude desktop app or at <a href="${L.claude}" target="_blank" rel="noopener" class="ext-link">claude.ai</a>, click <strong>Projects</strong> in the sidebar, then <strong>New Project</strong>.</div></div>
-  <div class="step"><div class="step-num">2</div><div class="step-text"><strong>Give it a clear name.</strong> "Maya Rodriguez, Class of 2026" or "Stanford Applicants" or "Prepory Blog Drafts." Specific beats clever.</div></div>
-  <div class="step"><div class="step-num">3</div><div class="step-text"><strong>Write custom instructions.</strong> This is the "always-on" system prompt. Tell Claude who it's helping, what context to assume, what Prepory's voice sounds like, and what to avoid. A good instruction block is 4–10 sentences.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-text"><strong>Give it a clear name.</strong> "Maya Rodriguez, Class of 2026" or "Stanford Applicants" or "Prepory Blog Drafts."</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-text"><strong>Write custom instructions.</strong> This is the "always-on" system prompt. Tell Claude who it's helping, what context to assume, what Prepory's voice sounds like, and what to avoid.</div></div>
   <div class="step"><div class="step-num">4</div><div class="step-text"><strong>Upload reference files.</strong> Drag in the Insider Brief, exemplars, session notes, activity lists, or anything else Claude should always be able to reference. Claude will cite which file it's drawing from.</div></div>
   <div class="step"><div class="step-num">5</div><div class="step-text"><strong>Use the project.</strong> Start a new conversation from inside the project. Every message you send now has the custom instructions and files as context automatically.</div></div>
 </div>
@@ -1192,10 +1146,78 @@ Always flag places where something is worth verifying against the school's offic
 <div class="callout callout-tip"><span class="callout-icon">💡</span><span>The more specific your custom instructions, the more useful the project. "Help me with college stuff" gives you generic output. "Help me coach Maya, who's applying REA to Stanford for cognitive science, using the files in this project" gives you output you can actually act on.</span></div>
 `},
 
+/* SEC_CONNECTORS */
+{id:"connectors",label:"Connectors",group:"Claude Essentials",emoji:"🔌",html:`
+<h2 class="display">Connectors, plug Claude into our tools.</h2>
+<p>Connectors give Claude secure access to the apps we already use every day. Once connected, Claude can read from and (where allowed) update these tools directly in the conversation, no copy-paste, no switching windows.</p>
+
+<div class="sh">The connectors that matter most at Prepory</div>
+
+<div class="tool-card">
+  <div class="tool-head"><span class="tool-name">Google Drive</span><span class="tool-where">Shared resources</span></div>
+  <p style="margin:6px 0">Claude can <strong>search across your Drive and read your Google Docs</strong> for context. This is especially great for pulling student-specific files (session notes, essay drafts, college lists, application materials) without manually hunting for them. One thing to know: the connector reads your Drive. It doesn't modify existing Docs today. So use Drive as the place Claude <em>pulls context from</em>. For outputs, have Claude write into a Gmail draft or save a polished .docx / .pptx / .xlsx into a local folder on your computer.</p>
+  <div class="tool-how"><strong>Try asking:</strong> "Find Priya's essay drafts and session notes in Google Drive. Summarize where she is on each supplemental and flag anything that still needs work before our Friday session."</div>
+</div>
+
+<div class="tool-card">
+  <div class="tool-head"><span class="tool-name">Gmail</span><span class="tool-where">Client comms</span></div>
+  <p style="margin:6px 0">Claude can search your inbox, summarize long threads, and draft replies directly into your Gmail as drafts (never sent automatically, you always review). Perfect for catching up after PTO or drafting post-session recap emails.</p>
+  <div class="tool-how"><strong>Try asking:</strong> "Find the most recent thread with Priya's mom. Summarize what she's asked for, and draft a reply addressing each of her questions. Save as a draft in Gmail."</div>
+</div>
+
+<div class="tool-card">
+  <div class="tool-head"><span class="tool-name">Google Calendar</span><span class="tool-where">Scheduling</span></div>
+  <p style="margin:6px 0">Claude can see your upcoming sessions, find times that work, create events, and prep you for what's next on your calendar.</p>
+  <div class="tool-how"><strong>Try asking:</strong> "What do I have on my calendar tomorrow? For each student session, pull their file and give me a 2-sentence heads-up on what we're supposed to cover."</div>
+</div>
+
+<div class="tool-card">
+  <div class="tool-head"><span class="tool-name">HubSpot</span><span class="tool-where">CRM & client records</span></div>
+  <p style="margin:6px 0">Claude can reach into HubSpot to pull contact records, review deal stages, read notes and activity history, and help you draft follow-ups grounded in what's actually in the CRM. Great for catching up on where a family is in the pipeline before a call, summarizing a long contact history, or prepping notes for a check-in without switching tabs. As with Monday, exact write permissions depend on how the connector is set up for your workspace. Try a small read-only ask first to see what comes back.</p>
+  <div class="tool-how"><strong>Try asking:</strong> "Pull the HubSpot record for the Patel family. Summarize where they are in the pipeline, the last three touchpoints, and what the next logical step should be."</div>
+</div>
+
+<div class="tool-card">
+  <div class="tool-head"><span class="tool-name">Claude in Chrome</span><span class="tool-where">Real browser actions</span></div>
+  <p style="margin:6px 0">Claude in Chrome is a browser agent. Instead of just fetching a page, it can actually <strong>drive your Chrome browser</strong>, open tabs, fill forms, click buttons, log into WordPress, navigate Common App, publish a page, or pull data from a site that needs you to be signed in. Think of it as "Claude can use the web the way you would." You'll need to install the extension first: <a href="https://chromewebstore.google.com/publisher/anthropic/u308d63ea0533efcf7ba778ad42da7390" target="_blank" rel="noopener">grab it from the Chrome Web Store here</a>.</p>
+  <div class="tool-how"><strong>Try asking:</strong> "Open the WordPress admin for staging2.prepory.com and create a new page called 'Executive Coaching for CMOs.' Use the body copy in this folder and save it as a draft."</div>
+</div>
+
+<div class="tool-card">
+  <div class="tool-head"><span class="tool-name">Monday</span><span class="tool-where">Marketing & managers</span></div>
+  <p style="margin:6px 0">Claude can reach into Monday to help with board and pipeline work, pulling info about boards and items, posting updates, and changing column values where the connector allows it. This one is primarily for marketing and managers. Most coaches won't need it day-to-day, so only turn it on if Monday is actually part of your workflow. Exact capabilities depend on how the connector is set up for your workspace, so try a small ask first.</p>
+  <div class="tool-how"><strong>Try asking Cowork:</strong> "Look at my Monday workspace and summarize where each item on my Q2 campaigns board stands right now."</div>
+</div>
+
+<div class="sh">Setting up the standard connectors (Drive, Gmail, Calendar, HubSpot, Monday)</div>
+<div class="steps">
+  <div class="step"><div class="step-num">1</div><div class="step-text">Open the Claude desktop app and head to the <strong>Connectors</strong> area (look under Settings or Customize, the exact spot can vary by app version).</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-text">Click <strong>Connect</strong> next to Google Drive, Gmail, Google Calendar, HubSpot, and Monday. You'll be prompted to sign in and approve the permissions Claude needs. Use your Prepory account whenever it asks.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-text">Once connected, Claude can use the tool from any conversation. You don't need to re-authorize every time.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-text"><strong>Enable the connector in your conversation.</strong> Open a Cowork chat and click the <strong>+ button</strong> near the message composer. You'll see a list of connectors and skills, toggle on the ones you want Claude to use for this chat.</div></div>
+  <div class="step"><div class="step-num">5</div><div class="step-text"><strong>Test it.</strong> Ask Claude "What's on my calendar this week?" or "What are my 3 most recent Monday items?" If it returns real data, you're connected.</div></div>
+</div>
+
+<div class="sh">Setting up Claude in Chrome, step by step</div>
+<p>Claude in Chrome takes three separate pieces: a Chrome extension, a desktop app setting, and a per-conversation toggle. Here's the full walkthrough.</p>
+<div class="steps">
+  <div class="step"><div class="step-num">1</div><div class="step-text"><strong>Install the Chrome extension.</strong> In Google Chrome, head to the official <a href="https://chromewebstore.google.com/publisher/anthropic/u308d63ea0533efcf7ba778ad42da7390" target="_blank" rel="noopener" class="ext-link">Anthropic publisher page on the Chrome Web Store</a> and install <em>Claude for Chrome</em> (sometimes called "Claude in Chrome"). Click <strong>Add to Chrome</strong> and approve the permissions. You'll see a small Claude icon appear near your Chrome toolbar. That means it's installed.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-text"><strong>Sign the extension in to your Prepory account.</strong> Click the extension icon and sign in with the same email you use for the desktop app. This links the browser to your team account.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-text"><strong>Enable Claude in Chrome inside the desktop app.</strong> Open the Claude desktop app, go to the <strong>Connectors</strong> area in settings, find <em>Claude in Chrome</em>, and switch it on. You may be asked to confirm that the extension is installed.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-text"><strong>Turn it on for a conversation using the + button.</strong> Open a Cowork chat and click the <strong>+ button</strong> near the message composer. A panel will pop up with available tools and connectors. Find <strong>Claude in Chrome</strong> and toggle it on. That plus button is the real "on switch." Without it, Claude won't drive the browser, even if the extension is installed.</div></div>
+  <div class="step"><div class="step-num">5</div><div class="step-text"><strong>Give it a first task.</strong> Make sure Chrome is open, then ask something like: <em>"Open Common App and tell me what the current personal statement prompts are."</em> You'll see Chrome pop into focus, Claude will open a new tab, and it'll narrate what it's doing as it navigates.</div></div>
+</div>
+<div class="callout callout-tip"><span class="callout-icon">💡</span><span><strong>Keep an eye on the window while it works.</strong> Claude in Chrome narrates every click and navigation in real time, and you can cancel at any point. It often pauses before things like form submissions, but don't treat that as a guarantee. Watch what it's doing on anything that actually sends data or changes a record.</span></div>
+
+<div class="callout callout-warn"><span class="callout-icon">⚠️</span><span><strong>How safe are connectors? Some guardrails are built in, others aren't, so read what Claude says it's doing.</strong> A few things are gated by design: Gmail is <em>draft-only</em> via the connector (Claude can't actually send, you always hit send yourself), and Cowork prompts you before deleting local files. For other connector actions, like creating a Calendar event, updating a Monday item, or submitting a form via Claude in Chrome, Claude will usually narrate what it's about to do, but don't assume every step has a hard confirmation step. Reading, searching, and drafting happen freely; anything that changes a record in someone else's system is worth watching.</span></div>
+
+<div class="callout callout-info"><span class="callout-icon">ℹ️</span><span>If there's another tool you use daily that would be game-changing if Claude could reach it, flag it to the Prepory AI team. We can look at whether a connector exists (or could be added) and get it wired up for the team.</span></div>
+`},
+
 /* SEC_LIMITS */
 {id:"limits",label:"Working within usage limits",group:"Claude Essentials",emoji:"⚡",html:`
 <h2 class="display">Working within usage limits.</h2>
-<p>Every Claude account has usage limits that reset on a rolling basis. For most Prepory work you'll never notice them, but a handful of habits stretch your budget significantly, and a few small mistakes can burn through it fast. This section is short. Read it once and you'll be set.</p>
+<p>Every Claude account has two usage limits running in parallel: a short <strong>~5-hour rolling window</strong> that resets throughout the day, and a longer <strong>weekly limit</strong>. Hit the 5-hour cap and you're paused for a couple of hours. Hit the weekly cap and you're paused until the week rolls over. A handful of habits stretch your budget significantly, and a few small mistakes can burn through it fast. This section contains tips for making the most of your budget.</p>
 
 <div class="sh">The habits that save usage</div>
 
@@ -1204,19 +1226,14 @@ Always flag places where something is worth verifying against the school's offic
     ['🧵','Start a new chat when you switch topics','Long conversations keep the entire history in play every turn, which costs more and also dilutes Claude\'s focus. When you move from "draft a parent email" to "help me build a webinar outline," start a new chat.'],
     ['📁','Put repeat context in a Project, not every prompt','If you\'re pasting the same Insider Brief, activity list, or exemplar into three different chats a day, stop. Put it in a project once. Every conversation inside the project references it for free.'],
     ['📂','Use Cowork folder access instead of pasting giant files','Pasting a 10-page student file into a chat uses far more budget than pointing Cowork at the folder and asking Claude to read what it needs. Same outcome, a fraction of the cost.'],
-    ['🎯','Pick the right model for the task','Opus is the most powerful but uses the most budget. For quick drafts, copy edits, summaries, and simpler work, switch to Sonnet or Haiku, you\'ll get the job done with way less usage. Save Opus for the hard stuff: nuanced strategy, complex synthesis, high-stakes writing.'],
-    ['✂️','Keep prompts focused','A clear, specific 2-sentence prompt generates less usage than a rambling 10-paragraph one, and almost always produces better output anyway. Prompting 101, Principle 1 lives here too.'],
-    ['📦','Batch related questions in one conversation','If you have five questions about a single student, ask them in one chat (so Claude only loads the context once) instead of five separate chats.'],
+    ['🎯','Pick the right model for the task','Opus is the most powerful but uses the most budget. For quick drafts, copy edits, summaries, and simpler work, switch to Sonnet. You\'ll get the job done with way less usage. Save Opus for the hard stuff: nuanced strategy, complex synthesis, high-stakes writing.'],
+    ['✂️','Keep prompts focused','A clear, succinct prompt generates less usage than a rambling 10-paragraph one, and almost always produces better output anyway.'],
     ['⛔','Stop runaway loops fast','If Claude seems to be spinning, producing walls of repeated output, or stuck re-asking for files, cancel it. Waiting it out burns usage for nothing.']
   ].map(([e,t,d])=>`<div class="use-case-card" style="display:flex;gap:14px"><span style="font-size:18px">${e}</span><div><div style="font-weight:700;color:var(--ink);font-size:14px">${t}</div><div style="font-size:13px;color:var(--muted);margin-top:4px;line-height:1.65">${d}</div></div></div>`).join('')}
 </div>
 
 <div class="sh">If you hit a limit</div>
-<p>Claude will tell you when your limit resets, it's usually a short wait, not catastrophic. You can keep working in lighter models, switch to Chat if you were in Cowork, or just come back when the reset lands. This isn't a reason to worry, just a reason to build good habits now so you stay ahead of it.</p>
-
-<div class="callout callout-tip"><span class="callout-icon">💡</span><span><strong>The 80/20 rule:</strong> the single biggest usage-saver is using Projects and Cowork folder access instead of re-pasting the same context into Chat every day. If you only take one habit from this section, make it that one.</span></div>
-
-<div class="callout callout-info"><span class="callout-icon">ℹ️</span><span>Limits are set at the account level by Anthropic and vary by plan. If you're running into them frequently despite using these habits, flag it. We may be able to adjust your team's plan.</span></div>
+<p>If you're frequently hitting either limit, reach out to Luke. We can look at your usage patterns and explore ways to use Claude more efficiently.</p>
 `},
 
 /* SEC_BRAINSTORM */
@@ -1224,7 +1241,7 @@ Always flag places where something is worth verifying against the school's offic
 <div class="chapter-cover skills">
   <div class="chapter-label"><span class="chapter-num">Part 03</span> Core Skills</div>
   <h2 class="chapter-title">Five things Claude is great at that apply to everyone.</h2>
-  <p class="chapter-desc">These aren't tools, they're skills that transfer across roles. A coach, a marketer, and an ops lead all use brainstorming, writing, research, summarizing, and documentation. Each section shows which Claude tool fits best.</p>
+  <p class="chapter-desc">These aren't tools, they're skills that transfer across roles. A coach, a marketer, and a manager all use brainstorming, writing, research, summarizing, and documentation. Each section shows which Claude tool fits best.</p>
   <div class="chapter-meta">
     <span class="chapter-chip">💡 Brainstorming</span>
     <span class="chapter-chip">✍️ Writing</span>
@@ -1237,12 +1254,20 @@ Always flag places where something is worth verifying against the school's offic
 
 <div class="sh">Which tool to use</div>
 <div class="use-case-card" style="margin-bottom:10px">
-  <div class="use-case-task"><strong>Pure idea generation with no files involved:</strong> blog topics, email hooks, essay angles.</div>
+  <div class="use-case-task"><strong>Pure idea generation, no files or context needed:</strong> blog topic ideas, email subject-line variations, webinar titles, re-engagement hooks, discussion questions, social media angles, headline alternatives for a landing page, fresh framings for a familiar topic, names for a series.</div>
   <div class="use-case-tool">→ Chat is faster.</div>
 </div>
-<div class="use-case-card">
-  <div class="use-case-task"><strong>Brainstorming with a student's actual context:</strong> their activities, drafts, notes.</div>
+<div class="use-case-card" style="margin-bottom:10px">
+  <div class="use-case-task"><strong>Brainstorming with a student's actual context:</strong> essay angles grounded in their activities and session notes, supplemental approaches that reflect their real interests, next-session focus ideas based on where a draft stands, activity list framings that highlight their strongest narrative, school-fit arguments built from their profile.</div>
   <div class="use-case-tool">→ Cowork (pointed at their folder) or a student Project.</div>
+</div>
+<div class="use-case-card" style="margin-bottom:10px">
+  <div class="use-case-task"><strong>Brainstorming with Prepory context:</strong> content calendar ideas grounded in what's already on the blog, re-engagement angles after reading an actual email thread, ways to reposition an existing webpage after reading the current copy, follow-up campaigns built from Monday or HubSpot activity, new lead-magnet ideas anchored in past webinar performance.</div>
+  <div class="use-case-tool">→ Cowork with the right connectors on, or a Prepory-specific Project.</div>
+</div>
+<div class="use-case-card">
+  <div class="use-case-task"><strong>Brainstorming internal/team decisions:</strong> structuring a tough conversation, mapping pros/cons of a workflow change, naming a new coaching program, stress-testing an idea before a meeting, surfacing counterarguments you'll need to address.</div>
+  <div class="use-case-tool">→ Chat works great. Add files or a Project only if there's real context Claude needs.</div>
 </div>
 
 <div class="sh">Brainstorming essay topics with a student, step by step</div>
@@ -1257,7 +1282,7 @@ Always flag places where something is worth verifying against the school's offic
 Suggest 5 different essay angles she could explore instead. Focus on angles that would feel specific and fresh, not Common App clichés. For each, write one sentence on what the essay might explore and why it could be compelling.</pre><button class="copy-btn">Copy</button></div></div>
 
 <div class="steps">
-  <div class="step"><div class="step-num">3</div><div class="step-text"><strong>Read the results and react.</strong> Some will feel off, that's fine. Maybe one suggests the time she fixed a broken pipe at the hardware store using robotics logic. That sparks something.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-text"><strong>Read the results and react.</strong> Some will feel off. That's fine. Maybe one suggests the time she fixed a broken pipe at the hardware store using robotics logic. That sparks something.</div></div>
   <div class="step"><div class="step-num">4</div><div class="step-text"><strong>Go deeper on what clicks.</strong> Stay in the same conversation. Ask: "I like the hardware store angle. What are 4 specific scenes or moments she could write about to make this feel vivid and concrete?"</div></div>
   <div class="step"><div class="step-num">5</div><div class="step-text"><strong>Use the output as conversation fuel in your next session.</strong> Don't read the list to Priya. Instead: "What if instead of robotics, you wrote about that moment at the store when you figured out the pipe?" Claude gave you the seed. Your coaching makes it personal.</div></div>
 </div>
@@ -1330,7 +1355,7 @@ Warm, reassuring tone. Karen is nervous about this cycle. Under 200 words. Save 
 </div>
 
 <div class="sh">Repurposing content across channels</div>
-<p>You just published a blog post and need versions for LinkedIn, Instagram, and email. Don't rewrite three times, feed it to Claude:</p>
+<p>You just published a blog post and need versions for LinkedIn, Instagram, and email. Don't rewrite three times. Feed it to Claude:</p>
 
 <div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">Prepory's brand voice: warm, knowledgeable, mentor-like. We don't talk down to families and never use scare tactics about admissions odds. We're the confident, reassuring expert in the room.
 
@@ -1525,7 +1550,7 @@ Here are my notes: [paste your notes]</pre><button class="copy-btn">Copy</button
 <div class="chapter-cover workflows">
   <div class="chapter-label"><span class="chapter-num">Part 04</span> Specific Workflows</div>
   <h2 class="chapter-title">Admissions-specific playbooks for recurring Prepory work.</h2>
-  <p class="chapter-desc">Now we get role-specific. Each of these workflows is built on the Essentials and Core Skills chapters, if something here feels unclear, chances are the answer is in an earlier section.</p>
+  <p class="chapter-desc">Now we get role-specific. Each of these workflows is built on the Essentials and Core Skills chapters. If something here feels unclear, chances are the answer is in an earlier section.</p>
   <div class="chapter-meta">
     <span class="chapter-chip">✍️ Essays</span>
     <span class="chapter-chip">🏫 School Research</span>
@@ -1590,7 +1615,7 @@ Constructive, actionable feedback. Quote specific passages when flagging issues.
     <div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">Do a mechanical copy-editing pass on this essay. For each issue: quote the exact sentence, identify the problem (grammar error / awkward phrasing / unnecessary wordiness / repeated word), and suggest a cleaner alternative. Present as a numbered list so the student can review each suggestion individually.
 
 Do NOT rewrite whole paragraphs. Flag specific sentences only. Essay: [paste]</pre><button class="copy-btn">Copy</button></div></div>
-    <div class="callout callout-warn"><span class="callout-icon">⚠️</span><span>Present suggestions as a list for the student to review. They (or you in suggesting mode) should apply each change manually, the student owns the final text.</span></div>
+    <div class="callout callout-warn"><span class="callout-icon">⚠️</span><span>Present suggestions as a list for the student to review. They (or you in suggesting mode) should apply each change manually. The student owns the final text.</span></div>
   </div>
 </details>
 `},
@@ -1843,4 +1868,4 @@ if(document.readyState==='loading'){
 </script>
 </body>
 </html>
-                                                                                                                                                                                                                                                                                                                                                                                                                                  
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
