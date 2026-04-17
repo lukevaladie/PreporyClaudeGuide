@@ -584,7 +584,7 @@ const SECTIONS = [
 
 <div class="warn-banner" style="background:linear-gradient(135deg,#fef3c7,#fef9e7);border-color:var(--amber-bd)">
   <div class="warn-banner-title" style="color:var(--amber-txt)">⭐ Don't skip Prompting 101</div>
-  <p style="margin:0;color:var(--amber-txt);font-size:14px;line-height:1.65">Right after you install the desktop app in Step 0 below, head to Prompting 101. It takes about 10 minutes and covers the handful of principles that determine whether Claude gives you something genuinely useful or something you have to throw away and redo. Everything else in this guide builds on it.</p>
+  <p style="margin:0;color:var(--amber-txt);font-size:14px;line-height:1.65">Right after you install the desktop app in Step 0 below, head to Prompting 101. It takes about 10 minutes and covers the handful of principles that determine whether Claude gives you something useful. Everything else in this guide builds on it.</p>
 </div>
 
 <div class="sh">Step 0. Install the Claude desktop app</div>
@@ -595,7 +595,6 @@ const SECTIONS = [
   <div class="step"><div class="step-num">3</div><div class="step-text">Sign in with your <strong>Prepory email</strong> so you're on the team account, that's what gives you access to our connectors, projects, and higher usage limits.</div></div>
   <div class="step"><div class="step-num">4</div><div class="step-text">Keep it open. You'll come back to it once you finish Prompting 101.</div></div>
 </div>
-<div class="callout callout-info"><span class="callout-icon">ℹ️</span><span><strong>Why the desktop app?</strong> It unlocks Cowork mode.</span></div>
 
 <div class="sh">How this guide works</div>
 <p>The guide is split into four parts. Do them in order, each one builds on the last.</p>
@@ -611,7 +610,7 @@ const SECTIONS = [
 <div class="sh" style="font-size:11px;margin-top:28px">Part 02 · Claude Essentials</div>
 <p style="margin:-4px 0 10px;color:var(--muted);font-size:13px">The features and tools that make Claude actually useful for Prepory work.</p>
 <div class="grid-cards">
-  ${[['🧑‍💻','Cowork','The desktop app experience that runs files, connectors, skills, and projects together. Where most real work happens.'],['💬','Chat (Claude.ai)','Quick Q&A, drafting, and research in the browser. Great for fast one-offs.'],['🧠','Skills','Pre-built playbooks that make Claude way better at specific tasks like writing Word docs or decks. Also: how to create your own.'],['🔌','Connectors','Plug Claude directly into Monday, Google Drive, Gmail, Calendar, and Claude in Chrome for real browser actions.'],['📁','Projects','Reusable workspaces with custom instructions and files, including our school-specific coach projects.'],['⚡','Working within usage limits','A handful of small habits that keep you from hitting the ceiling.']].map(([e,t,d])=>`<div class="use-case-card" style="display:flex;gap:14px"><span style="font-size:18px">${e}</span><div><div style="font-weight:700;color:var(--ink);font-size:14px">${t}</div><div style="font-size:13px;color:var(--muted);margin-top:3px">${d}</div></div></div>`).join('')}
+  ${[['🧭','Getting familiar with Claude','A quick tour of the interface, model picker, the + menu, sidebar, and settings, so the rest of the guide clicks.'],['💬','Chat (Claude.ai)','Quick Q&A, drafting, and research in the browser. Great for fast one-offs and turn-by-turn conversations.'],['🧑‍💻','Cowork','The desktop app experience that runs files, connectors, skills, and projects together, and can work through multi-step tasks on its own while you do something else.'],['🧠','Skills','Pre-built playbooks that make Claude way better at specific tasks like writing Word docs or decks. Also: how to create your own.'],['🔌','Connectors','Plug Claude directly into Monday, Google Drive, Gmail, Calendar, and Claude in Chrome for real browser actions.'],['📁','Projects','Reusable workspaces with custom instructions and files, including our school-specific coach projects.'],['⚡','Working within usage limits','A handful of small habits that keep you from hitting the ceiling.']].map(([e,t,d])=>`<div class="use-case-card" style="display:flex;gap:14px"><span style="font-size:18px">${e}</span><div><div style="font-weight:700;color:var(--ink);font-size:14px">${t}</div><div style="font-size:13px;color:var(--muted);margin-top:3px">${d}</div></div></div>`).join('')}
 </div>
 
 <div class="sh" style="font-size:11px;margin-top:28px">Part 03 · Core Skills</div>
@@ -626,22 +625,22 @@ const SECTIONS = [
   ${[['✍️','Admissions Essays','Brainstorm angles, decode prompts, give structured feedback.'],['🏫','School Research','Fast, on-brand briefs and comparisons.'],['👤','Student Profiles & Lists','Activity descriptions, narrative threading, resumes.'],['📊','Presentations & Decks','Webinar outlines, real .pptx files, handouts.']].map(([e,t,d])=>`<div class="use-case-card" style="display:flex;gap:14px"><span style="font-size:18px">${e}</span><div><div style="font-weight:700;color:var(--ink);font-size:14px">${t}</div><div style="font-size:13px;color:var(--muted);margin-top:3px">${d}</div></div></div>`).join('')}
 </div>
 
-<div class="sh">The two ways you'll use Claude</div>
-<div class="tool-card">
-  <div class="tool-head">
-    <span class="tool-name">Cowork <span style="font-size:10.5px;background:var(--accent);color:white;padding:2px 8px;border-radius:999px;margin-left:6px;letter-spacing:.4px">PRIMARY</span></span>
-    <span class="tool-where">Claude Desktop App</span>
-  </div>
-  <p style="margin:6px 0">A desktop experience built for real work, not just chat. Cowork can read from a folder on your computer, create Word docs and slide decks, talk to your connectors (Monday, Gmail, Drive, Calendar, Claude in Chrome), run skills, and use your projects. This is where coaches, ops, and most of the team will spend their time.</p>
-  <div class="tool-how"><strong>How to open:</strong> You already installed the desktop app in Step 0 above. Inside the app, click the Cowork icon, select a folder to work in (e.g., a student's folder), and you're ready.</div>
-</div>
+<div class="sh">The two primary ways you'll use Claude</div>
 <div class="tool-card">
   <div class="tool-head">
     <span class="tool-name">Chat</span>
     <span class="tool-where">Desktop app, browser, or mobile</span>
   </div>
-  <p style="margin:6px 0">The standard conversation experience. You can use Chat inside the desktop app (it's right next to Cowork), in a browser at claude.ai, or on your phone. Best for quick questions, writing help, research, and short one-offs on any device. Projects, skills, and cloud connectors (Monday, Drive, Gmail, Calendar) all work in Chat too; the thing you can't do is have Claude read or write files on your computer. That's Cowork.</p>
+  <p style="margin:6px 0">The standard conversation experience. You can use Chat inside the desktop app (it's right next to Cowork), in a browser at claude.ai, or on your phone. Best for quick questions, writing help, research, and short one-offs on any device. Chat is a back-and-forth, one-step-at-a-time conversation, great when you want to stay in the loop on every reply. Projects, skills, and cloud connectors (Monday, Drive, Gmail, Calendar) all work in Chat too; the thing you can't do is have Claude read or write files on your computer, or turn it loose on a long multi-step task. That's Cowork.</p>
   <div class="tool-how"><strong>How to open:</strong> open the desktop app and click the Chat tab, or go to <a href="${L.claude}" target="_blank" rel="noopener" class="ext-link">claude.ai</a> in a browser.</div>
+</div>
+<div class="tool-card">
+  <div class="tool-head">
+    <span class="tool-name">Cowork <span style="font-size:10.5px;background:var(--accent);color:white;padding:2px 8px;border-radius:999px;margin-left:6px;letter-spacing:.4px">PRIMARY</span></span>
+    <span class="tool-where">Claude Desktop App</span>
+  </div>
+  <p style="margin:6px 0">A desktop experience built for real work, not just chat. Cowork can read from a folder on your computer, create Word docs and slide decks, talk to your connectors (Monday, Gmail, Drive, Calendar, Claude in Chrome), run skills, and use your projects. The biggest shift vs. Chat: Cowork is <strong>agentic</strong>. You can hand it a multi-step task and it will plan, run tools, read files, make decisions, and keep going on its own for minutes at a time while you do something else. You check in at the end instead of babysitting every reply.</p>
+  <div class="tool-how"><strong>How to open:</strong> You already installed the desktop app in Step 0 above. Inside the app, click the Cowork icon, select a folder to work in (e.g., a student's folder), and you're ready.</div>
 </div>
 
 <div class="callout callout-info">
@@ -678,6 +677,28 @@ const SECTIONS = [
   <p style="margin:0;color:var(--amber-txt);font-size:14.5px;line-height:1.7">Seven principles. If Claude ever gives you something generic, off-tone, or just wrong, the fix is almost always in one of these. Read all seven before you open any tool.</p>
 </div>
 
+<div class="sh" style="margin-top:22px">First: what even is an LLM?</div>
+<p>If you've mostly used Google up to now, Claude is a different kind of tool, and it helps to know why. Claude is a <strong>large language model</strong> (LLM): a system trained on an enormous amount of text, books, articles, web pages, conversations, and, in the process, it learned the patterns of how language works. When you send Claude a message, it's drawing on all of that to produce the most useful continuation of your conversation it can.</p>
+
+<p>That's meaningfully different from what a search engine does:</p>
+<ul>
+  <li><strong>Google retrieves</strong> a list of web pages that match your keywords. You click through and read.</li>
+  <li><strong>Claude responds</strong> directly, in natural language, tailored to your exact ask.</li>
+</ul>
+<p>Claude is genuinely good at the same stuff you use Google for, factual questions, definitions, "what year did X happen," "how does Y actually work", and it often saves you a pile of clicks by just answering in one shot. On top of that, it can do things a search engine can't: draft this email, summarize this 40-page doc, brainstorm ten angles, critique this essay, explain this concept at an 8th-grade reading level, adapt this content for a parent audience, turn my rough notes into a polished brief. Think of it as a smart, well-read collaborator who can also look things up, not just a fancier search bar.</p>
+
+<p><strong>A few things to keep in mind as a beginner:</strong></p>
+<ul>
+  <li>Claude's baseline knowledge comes from its training data, which has a cutoff date. For anything current (today's news, a school's latest deadline), turn on <strong>Web search</strong> in the + menu or paste the current info into your prompt. One small but important habit: <strong>tell Claude to actually search</strong>. Web search being <em>enabled</em> doesn't guarantee Claude reaches for it every time, it decides on the fly. If currency matters, add a line to your prompt like <em>"Please search the web to confirm current info before answering"</em> or <em>"Verify this against official sources."</em> That nudge makes a real difference.</li>
+  <li>Claude can be confidently wrong. It's not looking things up in a database every time, it's producing what sounds most likely based on patterns. It's getting meaningfully better at staying grounded, but it's why Principle 7 below is <em>Always review before it goes anywhere</em>.</li>
+  <li>Claude doesn't know anything about you, your students, or Prepory unless you tell it. Every new conversation starts as a blank slate, unless you're using Projects or Memory (both covered later).</li>
+  <li>Claude will happily do what you ask even when what you asked wasn't quite what you meant. Good prompts reduce the gap between those two things.</li>
+</ul>
+
+<p>So the job of a good prompt is to give Claude enough context, constraints, and direction that it produces what you actually want, ideally on the first try. The seven principles below are how to do that.</p>
+
+<div class="sh" style="margin-top:28px">The seven principles</div>
+
 <details class="acc" open>
   <summary><span>Principle 1. Vague input gets vague output</span><span class="acc-chev">▼</span></summary>
   <div class="acc-body">
@@ -703,7 +724,7 @@ const SECTIONS = [
     <p>One sentence at the start of your prompt changes everything:</p>
     <div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">I'm a college admissions counselor at Prepory. I'm working with a high school junior, strong stats, applying to schools like Georgetown, Emory, and Tufts, who is struggling to find an essay topic that doesn't feel cliché. Help me...</pre><button class="copy-btn" data-text="I'm a college admissions counselor at Prepory. I'm working with a high school junior, strong stats, applying to schools like Georgetown, Emory, and Tufts, who is struggling to find an essay topic that doesn't feel cliché. Help me...">Copy</button></div></div>
     <div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">I'm on Prepory's sales team. I'm following up with a parent who attended our 'College Admissions 101' webinar last Tuesday but hasn't booked a consultation. Help me draft a follow-up email that...</pre><button class="copy-btn" data-text="I'm on Prepory's sales team. I'm following up with a parent who attended our 'College Admissions 101' webinar last Tuesday but hasn't booked a consultation. Help me draft a follow-up email that...">Copy</button></div></div>
-    <p style="margin-top:12px"><strong>Pro tip:</strong> If you find yourself repeating the same context ("I'm a Prepory coach working with a Stanford applicant...") in every conversation, that's a signal to turn it into a <strong>Project</strong> (covered later in the guide). Projects hold that context automatically so you never have to re-type it.</p>
+    <p style="margin-top:12px">If you find yourself repeating the same context ("I'm a Prepory coach working with a Stanford applicant...") in every conversation, that's a signal to turn it into a <strong>Project</strong> (covered later in the guide). Projects hold that context automatically so you never have to re-type it.</p>
   </div>
 </details>
 
@@ -739,7 +760,7 @@ const SECTIONS = [
       <li>Prepory's approach → <a href="${L.curriculum}" target="_blank" rel="noopener" class="ext-link">Curriculum Guides</a></li>
       <li>Brand voice → paste existing Prepory copy you like into the conversation</li>
     </ul>
-    <p>Even better: in <strong>Cowork</strong>, point Claude at the folder that holds your exemplars and it can read them itself. In <strong>Projects</strong>, upload them once and they're always available.</p>
+    <p>Even better: set up a <strong>Project</strong> (inside Chat or Cowork) with your exemplars uploaded once, so they're available to every new conversation without re-pasting. Or, in Cowork, point Claude at a folder that already holds them and Claude will read them directly.</p>
   </div>
 </details>
 
@@ -767,93 +788,81 @@ const SECTIONS = [
 <details class="acc">
   <summary><span>Principle 7. Always review before it goes anywhere</span><span class="acc-chev">▼</span></summary>
   <div class="acc-body">
-    <p>Non-negotiable. Claude can be confidently, fluently wrong. Every output needs a human read before it reaches a student, parent, client, or your social feed.</p>
+    <p>Claude has gotten much better at staying grounded, current models are significantly less prone to hallucinations, inflation, and filler than the AI of even a year ago. But "much better" isn't "perfect," and for Prepory work the cost of a confident mistake landing in front of a student or parent is high. Every output still needs a human read before it reaches a student, parent, client, or your social feed. Treat it as proofreading a smart colleague's draft, not as fact-checking a chaos machine.</p>
     <p><strong>What to check:</strong></p>
     <ul>
-      <li><strong>Accuracy</strong>. If there's a specific number or claim you didn't provide, verify it.</li>
+      <li><strong>Accuracy</strong>. If there's a specific number or claim you didn't provide, verify it. Claude is usually right, but "usually" isn't good enough for a published claim about a school.</li>
       <li><strong>Tone</strong>. Does it sound like Prepory? Like you? Or like a generic AI assistant?</li>
       <li><strong>Inflation</strong>. Claude can overstate. "Led a team of cross-functional stakeholders" might mean "sent a Slack message to three people." Scale it to reality.</li>
       <li><strong>Filler phrases</strong>, "In today's competitive landscape," "a passion for making a difference." Cut these on sight.</li>
-      <li><strong>Hallucinations</strong>. Claude occasionally invents programs, scholarships, or quotes. If something sounds suspiciously specific and you didn't provide it, look it up.</li>
+      <li><strong>Hallucinations</strong>. Rarer than they used to be, but still possible, especially around very specific facts Claude wasn't given (names of programs, scholarships, quotes, statistics). If something sounds suspiciously specific and you didn't provide it, look it up.</li>
     </ul>
     <div class="callout callout-tip"><span class="callout-icon">💡</span><span>Quick test: read it out loud. If any sentence could appear in any college admissions blog anywhere on the internet, it's too generic. Rewrite with one specific, true detail and it'll immediately be better.</span></div>
   </div>
 </details>
 `},
 
-/* SEC_COWORK */
-{id:"cowork",label:"Cowork",group:"Claude Essentials",emoji:"🧑‍💻",html:`
+/* SEC_FAMILIAR */
+{id:"familiar",label:"Getting familiar with Claude",group:"Claude Essentials",emoji:"🧭",html:`
 <div class="chapter-cover essentials">
   <div class="chapter-label"><span class="chapter-num">Part 02</span> Claude Essentials</div>
-  <h2 class="chapter-title">The features that make Claude actually useful for Prepory.</h2>
-  <p class="chapter-desc">Cowork, Chat, Skills, Connectors, Projects, and how to stay within usage limits. These are the building blocks, everything in the later chapters assumes you know what's in here.</p>
+  <h2 class="chapter-title">Core tools for making the most of Claude.</h2>
+  <p class="chapter-desc">A quick interface tour, plus Chat, Cowork, Skills, Connectors, Projects, and how to stay within usage limits. These are the building blocks, everything in the later chapters assumes you know what's in here.</p>
   <div class="chapter-meta">
-    <span class="chapter-chip">🧑‍💻 Cowork</span>
+    <span class="chapter-chip">🧭 Getting familiar</span>
     <span class="chapter-chip">💬 Chat</span>
+    <span class="chapter-chip">🧑‍💻 Cowork</span>
     <span class="chapter-chip">🧠 Skills</span>
     <span class="chapter-chip">🔌 Connectors</span>
     <span class="chapter-chip">📁 Projects</span>
     <span class="chapter-chip">⚡ Usage limits</span>
   </div>
 </div>
-<h2 class="display">Cowork, the main way you'll use Claude.</h2>
-<p>Cowork is Claude's desktop app experience, and it's where most of the real work at Prepory will happen. Unlike the browser, Cowork can read the files on your computer, write new files directly into a folder you choose (Word docs, slide decks, spreadsheets), talk to your connectors (Monday, Drive, Gmail, Calendar), use skills, and use projects, all in one place.</p>
+<h2 class="display">Getting familiar with Claude.</h2>
+<p>Before we dig into specific tools, a quick tour of the interface. The layout is largely the same in Chat and Cowork, so most of what's here applies to both.</p>
 
-<div class="callout callout-tip"><span class="callout-icon">💡</span><span><strong>The shift from Chat to Cowork is the biggest unlock in this guide.</strong> Chat is great for quick questions, but Cowork is where Claude becomes a real teammate that can actually do things for you, like creating a full prep packet for a student, updating a Monday board after a session, or building a polished deck from your rough notes.</span></div>
-
-<div class="sh">What Cowork can do that Chat can't</div>
-<p>A lot of Claude features, skills, projects, and cloud connectors like Monday, Drive, Gmail, and Calendar, work in the browser too. What makes Cowork distinct is <strong>direct access to a folder on your computer</strong>. That single capability changes everything downstream.</p>
+<div class="sh">Choosing a model</div>
+<p>Near the message box you'll see the current model name, something like <em>"Opus 4.7 · Adaptive."</em> Click it to switch. Three main choices:</p>
 <div class="grid-cards">
-  ${[['📂','Read a folder from your computer','Point Claude at a student\'s folder and it can read every file in there, session notes, drafts, activity lists, parent emails, and reason across all of them, without you dragging anything in. Chat in the browser can accept file uploads, but it can\'t read or write directly to a folder on your computer.'],['📄','Create real files into that folder','Claude can write .docx, .pptx, .xlsx, and .pdf files directly into your folder. These aren\'t copy-paste outputs, they\'re real, formatted, shareable documents you can open in Word, PowerPoint, Excel, etc.'],['🛠️','Run tools that live on your computer','Local extensions (MCP servers) that read local files, launch local apps, or control Claude in Chrome only run via the desktop app. The browser connects to cloud services; Cowork does both.'],['🧵','Keep everything in one place','Because Cowork combines folder access + skills + projects + connectors in one surface, you stop bouncing between tabs, downloads, and copy-paste. That integration is the real win, not any single feature.']].map(([e,t,d])=>`<div class="use-case-card" style="display:flex;gap:14px"><span style="font-size:18px">${e}</span><div><div style="font-weight:700;color:var(--ink);font-size:14px">${t}</div><div style="font-size:13px;color:var(--muted);margin-top:3px;line-height:1.6">${d}</div></div></div>`).join('')}
+  ${[['🦅','Opus','Most capable. Use for nuanced, high-stakes work, complex strategy, tricky essay edits, deep synthesis across lots of files. Uses the most of your budget, so save it for when you actually need it.'],['🐦','Sonnet · Your default','Smart enough for almost all Prepory work and uses significantly less budget than Opus. Make this your everyday driver.'],['🐤','Haiku · Skip it','Fastest and cheapest, but underpowered for real coaching and content work. Don\'t use it for Prepory tasks, the savings aren\'t worth the quality hit.']].map(([e,t,d])=>`<div class="use-case-card" style="display:flex;gap:14px"><span style="font-size:18px">${e}</span><div><div style="font-weight:700;color:var(--ink);font-size:14px">${t}</div><div style="font-size:13px;color:var(--muted);margin-top:3px;line-height:1.6">${d}</div></div></div>`).join('')}
 </div>
+<p style="margin-top:12px"><strong>Adaptive thinking</strong> (the toggle in the same menu): when it's on, Claude decides on its own when a task is complex enough to pause and "think" longer before answering. Leave it on. It's free accuracy when you need it and costs nothing when you don't.</p>
 
-<div class="sh">Getting started with Cowork, step by step</div>
-<p style="margin-top:-4px">Assuming you already installed the desktop app (Step 0 in the Welcome section), here's the rest:</p>
-<div class="steps">
-  <div class="step"><div class="step-num">1</div><div class="step-text"><strong>Open the desktop app and find the Cowork tab.</strong> Once you're signed in with your Prepory email, look for the <strong>Cowork</strong> option (the app has a mode selector with both Chat and Cowork). Click it to enter Cowork mode. If you don't see it, make sure you're fully signed in and on the latest version of the desktop app.</div></div>
-  <div class="step"><div class="step-num">2</div><div class="step-text"><strong>Select a folder to work in.</strong> Cowork will ask which folder on your computer to use. This is the folder Claude can read from and write to, nothing else on your computer is visible. For student work, pick (or create) a folder per student, something like <em>Students/Maya-Rodriguez</em>. You can change the folder any time.</div></div>
-  <div class="step"><div class="step-num">3</div><div class="step-text"><strong>Start a new conversation.</strong> Just like Chat, you'll see a message box. The difference is that Claude now has eyes on your folder and can use tools. Try a small first prompt like: <em>"What files do you see in this folder?"</em>, a quick sanity check that everything is wired up.</div></div>
-  <div class="step"><div class="step-num">4</div><div class="step-text"><strong>Ask Claude to do something that uses the folder.</strong> For example: <em>"Read Maya's activity list and her Common App draft, and flag which activities aren't being leveraged in the essay yet."</em> Claude will open the files, read them, and answer, no copy-paste needed.</div></div>
-  <div class="step"><div class="step-num">5</div><div class="step-text"><strong>Let Claude produce files for you.</strong> Ask for something like: <em>"Create a one-page brief summarizing where Maya stands on each of her target schools, with next steps for our session tomorrow."</em> Claude will write a real Word doc into the folder and give you a link to open it. You click it and the doc opens on your computer.</div></div>
-  <div class="step"><div class="step-num">6</div><div class="step-text"><strong>Turn on tools when you need them.</strong> Near the message composer you'll see a <strong>+ button</strong>. This is where you enable connectors (Monday, Drive, Gmail, Calendar, Claude in Chrome) and skills for the current conversation. Click it, toggle what you want, and Claude can use those tools in your next message.</div></div>
-</div>
+<div class="sh">The + menu (under the message box)</div>
+<p>The "+" button near the message composer is where you turn tools on and off for your next message. Quick tour:</p>
+<ul>
+  <li><strong>Add files or photos</strong> / <strong>Add from Google Drive</strong>, drop a one-off file into the conversation.</li>
+  <li><strong>Add to project</strong>, moves the current chat into a project so it lives alongside your other work there. Useful when a quick question turns into something worth keeping.</li>
+  <li><strong>Skills</strong>, turn on specific skills for this chat (docx, pptx, xlsx, pdf, etc.). Often triggers automatically.</li>
+  <li><strong>Connectors</strong>, toggle Monday, Gmail, Calendar, Drive, Claude in Chrome on or off for this chat.</li>
+  <li><strong>Plugins</strong>, optional bundles of tools and skills. Most coaches won't need to touch these day-to-day; Prepory admins can push team-wide ones when we have them.</li>
+  <li><strong>Research</strong>, only use this for genuinely deep research, not quick lookups. Claude spins up a multi-agent research run that can take anywhere from 5 to 45 minutes and pulls from a lot of sources. Great for "build me a full brief on XYZ scholarship landscape." Overkill for "what's WashU's Common App prompt." Note: Research is a <strong>Chat-only</strong> feature right now, it's not available inside Cowork. For everyday web lookups, just use Web search below.</li>
+  <li><strong>Web search</strong>, lets Claude look things up online. Keep this on by default. One gotcha: having it <em>enabled</em> doesn't mean Claude always uses it, it decides on the fly whether to search. For anything time-sensitive (a school's current deadline, a recent article), explicitly tell Claude to search the web in your prompt. More on this in Prompting 101.</li>
+  <li><strong>Use style</strong>, pick a writing style preset. Handy for quickly matching tone (formal parent email vs. casual social post).</li>
+</ul>
 
-<div class="sh">Real Prepory examples of Cowork in action</div>
+<div class="sh">The left sidebar</div>
+<ul>
+  <li><strong>New chat</strong>, starts a fresh conversation.</li>
+  <li><strong>Projects</strong>, your reusable workspaces. On the Projects page you'll see three tabs: <strong>Your projects</strong> (personal), <strong>Team</strong> (shared Prepory projects, this is where the school-specific coach projects will live), and <strong>Shared with you</strong> (projects individual people shared with you directly).</li>
+  <li><strong>Customize</strong>, manages your personal Skills, Connectors, and Plugins at the account level. The + menu toggles these per-chat; Customize is where they're set up in the first place.</li>
+  <li><strong>Artifacts</strong>, a library of artifacts Claude has produced for you across chats.</li>
+  <li><strong>Pinned</strong> and <strong>Recents</strong>, pin important chats so they stay up top, and scroll/search recents for anything else.</li>
+  <li>At the bottom you should see <strong>Prepory</strong>, that's your organization. If you don't see it there, you're probably signed in with a personal email. Re-sign in with your Prepory address.</li>
+</ul>
 
-<details class="acc" open>
-  <summary><span>Pre-session prep packet for a student</span><span class="acc-chev">▼</span></summary>
-  <div class="acc-body">
-    <p>You have a 4pm session with a student tomorrow and 15 minutes to prep. Instead of reading through three months of session notes, you ask Cowork:</p>
-    <div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">Read everything in this folder about Priya. Create a one-page prep brief for tomorrow's session with: (1) where she stands on each target school, (2) the 2-3 open action items she still owes us, (3) anything from last session I specifically said I'd follow up on. Save it as "Priya-prep-2026-04-17.docx" in this folder.</pre><button class="copy-btn">Copy</button></div></div>
-    <p>Claude reads the session notes, drafts, and any other files, then writes a formatted .docx prep brief into the folder. You open it, skim, and walk into the session ready.</p>
-  </div>
-</details>
+<div class="sh">Settings worth knowing exist</div>
+<p>Under Settings you'll find <strong>Profile</strong> (what Claude calls you, plus a "personal preferences" text box for things Claude should always know about how you like to work), <strong>Usage</strong> (remaining budget), <strong>Capabilities</strong> (feature toggles like Memory), <strong>Connectors</strong> (account-level connector setup, distinct from the per-chat + menu), <strong>Cowork</strong> (Cowork-specific options), and <strong>Organization settings</strong> (Prepory-wide config, usually admin-only). You don't need to touch any of this on day one, but knowing where it lives saves you a frustrating hunt later.</p>
 
-<details class="acc">
-  <summary><span>Drafting session follow-up emails</span><span class="acc-chev">▼</span></summary>
-  <div class="acc-body">
-    <p>Right after a session, ask Cowork:</p>
-    <div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">Using my session notes from today in this folder, draft a follow-up email to Priya and her parents. Recap what we covered, list the 3 action items she agreed to, and mention our next session is next Thursday at 4pm. Warm and encouraging tone. Then save it as a Gmail draft.</pre><button class="copy-btn">Copy</button></div></div>
-    <p>With the Gmail connector enabled, Cowork creates a draft in your Gmail ready for you to review and send. You never leave the app.</p>
-  </div>
-</details>
-
-<details class="acc">
-  <summary><span>Building a slide deck from rough notes</span><span class="acc-chev">▼</span></summary>
-  <div class="acc-body">
-    <p>You dump your messy notes for a parent webinar into a doc, then ask:</p>
-    <div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">Turn my notes in timeline-webinar-notes.md into a 15-slide presentation for parents of rising juniors. Use the pptx skill so the deck looks polished. Tone: warm and reassuring, not scary. Include speaker notes for each slide. Save as "Timeline-Webinar-Draft.pptx" in this folder.</pre><button class="copy-btn">Copy</button></div></div>
-    <p>Claude uses the pptx skill to produce a real PowerPoint file in your folder. You open it in PowerPoint or Keynote, apply Prepory branding, and you're 80% there.</p>
-  </div>
-</details>
-
-<div class="callout callout-info"><span class="callout-icon">ℹ️</span><span><strong>Cowork doesn't see anything you don't give it.</strong> It only reads the folders you've connected. Your other files, desktop, and documents stay completely private. If you want Claude to see a new file, move it into a connected folder.</span></div>
+<div class="callout callout-tip"><span class="callout-icon">💡</span><span>Don't try to memorize any of this. You'll pick it up fast. The point is that when later sections say "in the + menu" or "under Customize," you already know where to look.</span></div>
 `},
 
 /* SEC_CHAT */
 {id:"chat",label:"Chat (Claude.ai)",group:"Claude Essentials",emoji:"💬",html:`
-<h2 class="display">Chat for quick questions and content work.</h2>
+<h2 class="display">Chat for quick questions, content work, and team collaboration.</h2>
 <p>Chat is the standard Claude conversation experience. You can use it in the browser at claude.ai, on mobile, or right inside the desktop app (the desktop app has both Chat and Cowork). It's fast, lightweight, and perfect for things you don't need a folder for. Chat can use projects, skills, and cloud connectors (Monday, Drive, Gmail, Calendar) just like Cowork. The one thing it can't do is read or write files on your computer; that's what Cowork is for.</p>
+
+<p>Chat also plays a second, important role: <strong>it's where our shared team projects live.</strong> The school-specific coach projects (Stanford, and the ones coming after) are built in claude.ai so any Prepory coach can open them and work with the same Insider Briefs, exemplars, and coaching playbooks. If Cowork is where your individual work gets done, Chat is where team context gets shared. And when you need to go heavier than quick Q&A, a Chat project has a <strong>Start a task in Cowork</strong> button that hands the project's context (custom instructions + files) straight over to Cowork for agentic, file-based work. We cover the full handoff in the Projects section.</p>
 
 <div class="sh">When to use Chat vs. Cowork</div>
 <div class="grid-cards">
@@ -881,6 +890,10 @@ const SECTIONS = [
     <div class="use-case-task"><strong>Use Claude in Chrome to drive your browser:</strong> publish a WP page, fill a form, use a site that needs login.</div>
     <div class="use-case-tool">→ Cowork (with the Chrome extension + toggled on).</div>
   </div>
+  <div class="use-case-card">
+    <div class="use-case-task"><strong>A long, multi-step job you want to walk away from:</strong> "Prep briefs for every student I have tomorrow, save each as a .docx, update Monday with a line each."</div>
+    <div class="use-case-tool">→ Cowork. It can plan and run the whole thing on its own. Chat needs you steering every step.</div>
+  </div>
 </div>
 
 <div class="sh">Getting started with Chat</div>
@@ -892,6 +905,26 @@ const SECTIONS = [
 </div>
 
 <div class="callout callout-note"><span class="callout-icon">📌</span><span><strong>By default, each new Chat starts fresh.</strong> Two exceptions worth knowing: if you have <strong>Memory</strong> enabled on your account, Claude can carry your preferences and ongoing context across conversations. And if you're inside a <strong>Project</strong>, all of its custom instructions and files are loaded automatically every time. If you find yourself re-explaining the same context every day (your role, a student, a school), that's the signal to either turn on memory or build a project.</span></div>
+
+<div class="sh">Keep chats focused, start fresh often</div>
+<p>Counterintuitive habit that makes Claude sharper: <strong>don't let a single conversation sprawl.</strong> A few reasons:</p>
+<ul>
+  <li><strong>The whole chat gets re-read every turn.</strong> Every message you send, Claude re-processes the entire conversation history. Long chats are slower, use more of your budget, and eventually bump into the context window (a finite memory limit per conversation).</li>
+  <li><strong>Attention gets diluted.</strong> When a chat has 40 messages covering six different topics, Claude's focus on your current ask suffers. Stray context from earlier can bleed into answers where it doesn't belong.</li>
+  <li><strong>Topic drift is real.</strong> A chat that started as "draft a parent email" and morphed into "help me outline a webinar" will produce worse output on both than two separate chats would.</li>
+</ul>
+<p><strong>Start a new chat when:</strong></p>
+<ul>
+  <li>You're switching topics.</li>
+  <li>A chat is getting long (past ~20 back-and-forths) and Claude's responses feel less sharp than they were earlier.</li>
+  <li>You're moving from ideation to execution, brainstorming to drafting, drafting to final polish. A fresh chat with just the artifact you care about beats dragging a messy brainstorm along.</li>
+</ul>
+<p><strong>It's fine to keep going when:</strong></p>
+<ul>
+  <li>You're iterating on the same thing, refining a draft, tightening a specific piece, continuing the same brainstorm. That's exactly what chat continuity is for.</li>
+  <li>You just need a quick follow-up on the last response.</li>
+</ul>
+<div class="callout callout-tip"><span class="callout-icon">💡</span><span>If you constantly find yourself re-pasting the same context when you start a new chat, that's the signal to build a <strong>Project</strong>. You get a fresh, focused chat every time <em>with</em> your reusable context auto-loaded. Covered in the Projects section.</span></div>
 
 <div class="sh">Two hidden-gem features in Chat</div>
 
@@ -910,6 +943,80 @@ const SECTIONS = [
     <p>For ongoing work with the same files, use Cowork (pointed at a folder) or a Project (files stay uploaded forever) instead of re-uploading each time.</p>
   </div>
 </details>
+`},
+
+/* SEC_COWORK */
+{id:"cowork",label:"Cowork",group:"Claude Essentials",emoji:"🧑‍💻",html:`
+<h2 class="display">Cowork, the main way you'll use Claude.</h2>
+<p>Cowork is Claude's desktop app experience, and it's where most of the heavy lifting at Prepory will happen. The biggest thing Cowork brings that Chat doesn't is that it's <strong>agentic</strong>, you can hand it a multi-step task and it will plan, pick the right tools, run them in sequence, check its own work, and keep going until the job is done, often for minutes at a stretch while you do something else. On top of that, Cowork pulls all of your skills, projects, and connectors (Monday, Drive, Gmail, Calendar, Claude in Chrome) into one surface, and it can also read and write files on your computer when that's the right tool for the job.</p>
+
+<div class="callout callout-tip"><span class="callout-icon">💡</span><span><strong>The shift from Chat to Cowork is the biggest unlock in this guide.</strong> Chat is turn-by-turn, great for quick questions. Cowork is where Claude becomes a real teammate that can actually <em>do</em> things for you, like running through tomorrow's sessions and drafting a prep note for each, updating a Monday board after a meeting, or building a polished deck from your rough notes while you grab lunch.</span></div>
+
+<div class="sh">What Cowork can do that Chat can't</div>
+<p>Most of Claude's features, skills, projects, and the cloud connectors we care about (Monday, Drive, Gmail, Calendar) work in the browser too. What makes Cowork distinct is that it can <strong>chain those tools together and run on its own</strong>, and, when it helps, reach into files on your computer. The rhythm shift matters: in Chat, <em>you ask → it answers → you ask again</em>; in Cowork, <em>you describe the outcome → it does the whole thing → you review</em>. Tasks that used to take 30 minutes of back-and-forth become one prompt and a few minutes of your own time on other things.</p>
+<div class="grid-cards">
+  ${[['⏳','Work through long tasks on its own','Cowork is an agentic mode. Give it a job with several steps and it plans, calls connectors, reads files, makes edits, and keeps going, checking its own work as it goes. It can run for minutes at a time without you, so you hand it a task, go answer emails or take a call, and come back to a finished draft.'],['🧵','Chain connectors, skills, and projects in one run','Cowork lets Claude pull from Calendar, read a doc in Drive, update a Monday item, and draft a Gmail reply, all inside a single task. You stop bouncing between tabs and copy-paste. That orchestration is the real win.'],['🛠️','Run local tools and Claude in Chrome','Local extensions (MCP servers) and the Claude in Chrome browser agent only run via the desktop app. The browser version of Claude connects to cloud services; Cowork does cloud <em>and</em> local.'],['⏰','Run tasks on a schedule','Cowork supports scheduled tasks (type <code>/schedule</code>), so you can ask it to run a report every Monday morning or check in on a workflow nightly. One catch: scheduled tasks only run while the desktop app is open and your computer is awake, they\'re not cloud-run. Chat doesn\'t have this at all.'],['📂','Read and write files on your computer when that\'s the right tool','Most Prepory work lives in Google Drive, so this isn\'t the main event, but when a task genuinely needs a local folder (say, a dump of files a student sent you, or a polished .docx/.pptx you want saved locally), Cowork can handle it. Chat in the browser can\'t.']].map(([e,t,d])=>`<div class="use-case-card" style="display:flex;gap:14px"><span style="font-size:18px">${e}</span><div><div style="font-weight:700;color:var(--ink);font-size:14px">${t}</div><div style="font-size:13px;color:var(--muted);margin-top:3px;line-height:1.6">${d}</div></div></div>`).join('')}
+</div>
+
+<div class="callout callout-info"><span class="callout-icon">📁</span><span><strong>A note on Drive.</strong> With the Drive connector on, Cowork can <strong>search your Drive and read your Google Docs</strong> as context for whatever it's doing. However, it can't modify your existing Docs yet.</span></div>
+
+<div class="sh">What this looks like in practice</div>
+<p style="margin-top:-4px">Examples of the kinds of jobs Cowork turns into a single prompt:</p>
+<div class="grid-cards">
+  ${[['📚','Tasks that touch many files','"Read the last three months of session notes for every student in my Monday pipeline and flag anyone whose essay progress has stalled." Cowork will open each file, extract what it needs, and come back with one report. In Chat you\'d have to paste files one at a time.'],['🔁','Tasks with multiple steps','"Pull tomorrow\'s sessions from my Calendar, for each student find their files in Drive and skim the latest session notes, and post a one-line prep summary in a Monday update on their row." One Calendar call, four Drive lookups, four Monday updates, all from one prompt.'],['📧','Tasks that end in a delivered artifact','"Draft personalized follow-up emails for every student I saw this week and save them all as Gmail drafts." Cowork plans the list, writes each one, and creates the drafts. You review and hit send.'],['🗓️','Recurring work, on a schedule','"Every Monday at 8am, check my Calendar for the week, pull each student\'s latest notes from Drive, and save a weekly focus memo as a Gmail draft for me to review." You set it once with <code>/schedule</code> and it runs each Monday, as long as your desktop app is open.']].map(([e,t,d])=>`<div class="use-case-card" style="display:flex;gap:14px"><span style="font-size:18px">${e}</span><div><div style="font-weight:700;color:var(--ink);font-size:14px">${t}</div><div style="font-size:13px;color:var(--muted);margin-top:3px;line-height:1.6">${d}</div></div></div>`).join('')}
+</div>
+<div class="callout callout-tip"><span class="callout-icon">💡</span><span><strong>Prompt for agentic work differently.</strong> In Chat you give Claude one step at a time. In Cowork, describe the <em>whole outcome</em> up front, including how you want the work saved, which tools to use, and what "done" looks like. The more specific the finish line, the less babysitting you'll need.</span></div>
+
+<div class="sh">Getting started with Cowork, step by step</div>
+<p style="margin-top:-4px">Assuming you already installed the desktop app (Step 0 in the Welcome section), here's the rest:</p>
+<div class="steps">
+  <div class="step"><div class="step-num">1</div><div class="step-text"><strong>Open the desktop app and find the Cowork tab.</strong> Once you're signed in with your Prepory email, look for the <strong>Cowork</strong> option (the app has a mode selector with both Chat and Cowork). Click it to enter Cowork mode. If you don't see it, make sure you're fully signed in and on the latest version of the desktop app.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-text"><strong>Turn on the tools you want for this conversation.</strong> Near the message composer you'll see a <strong>+ button</strong>. This is where you toggle on connectors (Monday, Drive, Gmail, Calendar, Claude in Chrome) and skills for the current chat. For most Prepory work, you'll want Drive, Gmail, and Calendar enabled at minimum.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-text"><strong>(Optional) Point Cowork at a folder on your computer.</strong> If the task involves local files, Cowork can ask which folder to use. That folder is all Claude can see, nothing else on your computer is visible. For most Prepory work this is optional, since our docs live in Drive, but it's handy when a student sends you a stack of files or you want polished .docx / .pptx outputs saved locally.</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-text"><strong>Start a conversation with a real task.</strong> Try something that chains a couple of tools, like: <em>"Pull tomorrow's student sessions from my Calendar. For each one, find their files in Drive, skim the most recent session notes, and give me a one-paragraph prep note I can read before each session."</em> You'll see Claude plan, call each tool, and come back with the work done.</div></div>
+  <div class="step"><div class="step-num">5</div><div class="step-text"><strong>Let Claude produce deliverables.</strong> Ask for something like: <em>"Draft a follow-up email to Priya's parents recapping today's session and our next steps, and save it as a Gmail draft."</em> Cowork writes the draft into Gmail and you review before sending. Or, if you want a polished local file: <em>"Turn my notes into a 1-page brief and save it as a .docx in this folder."</em></div></div>
+  <div class="step"><div class="step-num">6</div><div class="step-text"><strong>Review what it did, then iterate.</strong> Cowork narrates each step as it goes (which file it opened, which connector it called). Skim that trail. If something went sideways, just say so, and it'll course-correct. Agentic doesn't mean hands-off forever; it means you're reviewing the finished work instead of every turn.</div></div>
+</div>
+
+<div class="sh">Real Prepory examples of Cowork in action</div>
+
+<details class="acc" open>
+  <summary><span>Drafting session follow-up emails straight into Gmail</span><span class="acc-chev">▼</span></summary>
+  <div class="acc-body">
+    <p>Right after a session, ask Cowork:</p>
+    <div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">Find today's session notes for Priya in my Drive (in the Priya Patel folder). Draft a follow-up email to Priya and her parents: recap what we covered, list the 3 action items she agreed to, and confirm our next session is next Thursday at 4pm. Warm and encouraging tone. Save as a Gmail draft, don't send.</pre><button class="copy-btn">Copy</button></div></div>
+    <p>With Drive and Gmail connectors enabled, Cowork pulls the notes from Drive, writes the email, and drops it into your Gmail as a draft for you to review and send. You never copy-paste, you never leave the app.</p>
+  </div>
+</details>
+
+<details class="acc">
+  <summary><span>End-of-week roll-up across Calendar, Drive, and Monday</span><span class="acc-chev">▼</span></summary>
+  <div class="acc-body">
+    <p>Friday afternoon, instead of manually reviewing your week, ask Cowork:</p>
+    <div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">Look at my Calendar for this week. For every student session I had, find the corresponding student's folder in Drive, read my session notes from this week, and write a 2-sentence status update on each student. Then post each update as a new comment on that student's row in my Monday board.</pre><button class="copy-btn">Copy</button></div></div>
+    <p>Cowork plans it: Calendar → per-student Drive lookup → read notes → write a summary → post to Monday. One prompt, three connectors, and a full weekly status done while you grab coffee. This is the kind of task Chat can't do, because every step would need you to copy something from one tool and paste it into the next.</p>
+  </div>
+</details>
+
+<details class="acc">
+  <summary><span>Pre-session prep packet for a student</span><span class="acc-chev">▼</span></summary>
+  <div class="acc-body">
+    <p>You have a 4pm session tomorrow and 15 minutes to prep. Instead of reading three months of session notes, ask Cowork:</p>
+    <div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">Search Drive for Priya Patel's recent session notes, activity list, and latest essay draft, and read them. Create a one-page prep brief for tomorrow's 4pm session covering: (1) where she stands on each target school, (2) the 2–3 open action items she still owes us, (3) anything from last session I specifically said I'd follow up on. Save it as "Priya-prep-2026-04-17.docx" in this folder.</pre><button class="copy-btn">Copy</button></div></div>
+    <p>Claude pulls the files from Drive, reasons across all of them, and writes a formatted .docx prep brief into your local folder. You open it, skim, and walk into the session ready.</p>
+  </div>
+</details>
+
+<details class="acc">
+  <summary><span>Building a slide deck from rough notes</span><span class="acc-chev">▼</span></summary>
+  <div class="acc-body">
+    <p>You dump your messy notes for a parent webinar into a doc, then ask:</p>
+    <div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">Turn my notes in timeline-webinar-notes.md into a 15-slide presentation for parents of rising juniors. Use the pptx skill so the deck looks polished. Tone: warm and reassuring, not scary. Include speaker notes for each slide. Save as "Timeline-Webinar-Draft.pptx" in this folder.</pre><button class="copy-btn">Copy</button></div></div>
+    <p>Claude uses the pptx skill to produce a real PowerPoint file in your folder. You open it in PowerPoint or Keynote, apply Prepory branding, and you're 80% there.</p>
+  </div>
+</details>
+
+<div class="callout callout-info"><span class="callout-icon">ℹ️</span><span><strong>Cowork only sees what you give it.</strong> Connectors only touch the accounts you've authorized, and local file access is limited to the folder you've connected, nothing else on your computer is visible. A few built-in guardrails also apply: Gmail drafts are never sent automatically (you always hit send yourself), and Cowork prompts you before destructive local file actions like deleting. For other connector actions (posting to Monday, creating a Calendar event, etc.), Claude will usually narrate what it's about to do before it does it, but don't assume every step is gated, <em>read what it says it's doing</em>, especially the first few times you try a new workflow.</span></div>
 `},
 
 /* SEC_SKILLS */
@@ -973,7 +1080,7 @@ const SECTIONS = [
 
 <div class="tool-card">
   <div class="tool-head"><span class="tool-name">Google Drive</span><span class="tool-where">Shared resources</span></div>
-  <p style="margin:6px 0">Claude can search across Drive, open docs, and pull specific passages from them. Great for surfacing the right Insider Brief, curriculum doc, or exemplar without manually hunting for it.</p>
+  <p style="margin:6px 0">Claude can <strong>search across your Drive and read your Google Docs</strong> for context, great for surfacing the right Insider Brief, session notes, or exemplar without manually hunting for it. One thing to know: the connector reads your Drive, it doesn't modify existing Docs today. So use Drive as the place Claude <em>pulls context from</em>; for outputs, have Claude write into Gmail drafts, Monday updates, or a local folder on your computer.</p>
   <div class="tool-how"><strong>Try asking:</strong> "Find the Stanford Insider Brief in Google Drive and summarize what it says about what the Stanford committee values most in the 'What matters most to you?' essay."</div>
 </div>
 
@@ -1013,9 +1120,9 @@ const SECTIONS = [
   <div class="step"><div class="step-num">4</div><div class="step-text"><strong>Turn it on for a conversation using the + button.</strong> Open a Cowork chat and click the <strong>+ button</strong> near the message composer. A panel will pop up with available tools and connectors. Find <strong>Claude in Chrome</strong> and toggle it on. That plus button is the real "on switch." Without it, Claude won't drive the browser, even if the extension is installed.</div></div>
   <div class="step"><div class="step-num">5</div><div class="step-text"><strong>Give it a first task.</strong> Make sure Chrome is open, then ask something like: <em>"Open Common App and tell me what the current personal statement prompts are."</em> You'll see Chrome pop into focus, Claude will open a new tab, and it'll narrate what it's doing as it navigates.</div></div>
 </div>
-<div class="callout callout-tip"><span class="callout-icon">💡</span><span><strong>Keep an eye on the window while it works.</strong> Claude in Chrome tells you every click and navigation in real time. If it's about to do something you don't want, you can cancel. For anything that submits a form or sends data, it'll pause and ask for confirmation.</span></div>
+<div class="callout callout-tip"><span class="callout-icon">💡</span><span><strong>Keep an eye on the window while it works.</strong> Claude in Chrome narrates every click and navigation in real time, and you can cancel at any point. It often pauses before things like form submissions, but don't treat that as a guarantee, watch what it's doing on anything that actually sends data or changes a record.</span></div>
 
-<div class="callout callout-warn"><span class="callout-icon">⚠️</span><span><strong>Claude will check in before doing something destructive.</strong> Things like sending an email, deleting a Monday item, declining a calendar invite, or submitting a form in Chrome typically require your explicit confirmation. Reading, searching, and drafting happen more freely. How often Claude asks for permission can be adjusted in your connector settings, so if you've loosened it, pay extra attention to what's about to happen.</span></div>
+<div class="callout callout-warn"><span class="callout-icon">⚠️</span><span><strong>How safe are connectors? Some guardrails are built in, others aren't, so read what Claude says it's doing.</strong> A few things are gated by design: Gmail is <em>draft-only</em> via the connector (Claude can't actually send, you always hit send yourself), and Cowork prompts you before deleting local files. For other connector actions, like creating a Calendar event, updating a Monday item, or submitting a form via Claude in Chrome, Claude will usually narrate what it's about to do, but don't assume every step has a hard confirmation step. Reading, searching, and drafting happen freely; anything that changes a record in someone else's system is worth watching.</span></div>
 
 <div class="callout callout-info"><span class="callout-icon">ℹ️</span><span>More connectors will be added over time (Slack, HubSpot, and others are likely candidates). If there's a tool you use daily that would be game-changing if Claude could reach it, flag it.</span></div>
 `},
@@ -1023,9 +1130,13 @@ const SECTIONS = [
 /* SEC_PROJECTS */
 {id:"projects",label:"Projects",group:"Claude Essentials",emoji:"📁",html:`
 <h2 class="display">Projects, reusable workspaces for recurring work.</h2>
-<p>A Project is a permanent workspace inside Claude with two superpowers: <strong>custom instructions</strong> (a system prompt that's always active) and <strong>reference files</strong> (documents Claude can always read). Every conversation you start inside a project automatically has both loaded. No re-uploading, no re-explaining.</p>
+<p>A Project is a permanent workspace <em>inside</em> Chat or Cowork, not a separate tool, with two superpowers: <strong>custom instructions</strong> (a system prompt that's always active) and <strong>reference files</strong> (documents Claude can always read). Every conversation you start inside a project automatically has both loaded. No re-uploading, no re-explaining. You can create and use projects in claude.ai, in the desktop app's Chat mode, or in Cowork.</p>
 
 <div class="callout callout-tip"><span class="callout-icon">💡</span><span><strong>Rule of thumb:</strong> if you've caught yourself typing the same context into Claude three or more times, turn it into a Project. It'll save you hours over a year.</span></div>
+
+<div class="callout callout-info"><span class="callout-icon">ℹ️</span><span><strong>One thing to know about sharing:</strong> projects you create on <strong>claude.ai (Chat)</strong> can be shared with teammates on your Prepory plan, which is how the school-specific coach projects below get rolled out to the whole coaching team. Projects you create inside <strong>Cowork</strong> live on your own machine and don't have the same team-sharing story today, they're best thought of as your personal workspaces. If you're building something for the whole team to use, build it in Chat/claude.ai. If it's just for you, either is fine.</span></div>
+
+<div class="callout callout-tip"><span class="callout-icon">💡</span><span><strong>Best of both worlds:</strong> when you're inside a Chat project on claude.ai, look under the message composer for a <strong>Start a task in Cowork</strong> link. One click hands the project's custom instructions and reference files over to Cowork, so you can kick off heavier, file-based, agentic work with the same context already loaded. A coach can open the Stanford Coach Project in Chat for a quick question, or hit "Start a task in Cowork" from that same project to draft and save a full set of school-specific prep docs into a student's folder. Same intel behind both.</span></div>
 
 <div class="sh">What projects unlock</div>
 <div class="grid-cards">
@@ -1613,7 +1724,7 @@ function initApp(){
   const uniqueGroups = [...new Set(SECTIONS.map(s=>s.group))];
   const groupMeta = {
     'Start Here':{cls:'start',num:'01',hint:''},
-    'Claude Essentials':{cls:'essentials',num:'02',hint:'The features. Cowork, Chat, Skills, Connectors, Projects, and usage limits.'},
+    'Claude Essentials':{cls:'essentials',num:'02',hint:'A quick tour, plus Chat, Cowork, Skills, Connectors, Projects, and usage limits.'},
     'Core Skills':{cls:'skills',num:'03',hint:'Five things Claude is great at, regardless of role.'},
     'Specific Workflows':{cls:'workflows',num:'04',hint:'Admissions-specific playbooks. Best after Core Skills.'}
   };
@@ -1721,3 +1832,4 @@ if(document.readyState==='loading'){
 </script>
 </body>
 </html>
+                                                                                                                                                                                                                                                                                                                                                                                                                                  
