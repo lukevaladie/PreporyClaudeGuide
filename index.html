@@ -436,6 +436,35 @@ h3.subhead{font-size:18px;font-weight:700;margin:24px 0 10px;color:var(--ink);le
 .use-case-task strong{color:var(--ink);font-weight:600}
 .use-case-tool{color:var(--primary);font-weight:600;font-size:14px}
 
+/* Tool recommendation cards — brainstorming "Which tool to use" */
+.tool-rec{
+  background:var(--card);border:1px solid var(--line);border-radius:12px;
+  padding:16px 18px 14px;margin-bottom:10px;box-shadow:var(--shadow-sm);
+  transition:border-color .2s;
+}
+.tool-rec:hover{border-color:var(--line-2)}
+.tool-rec-label{
+  font-size:10.5px;font-weight:700;letter-spacing:1.3px;
+  text-transform:uppercase;color:var(--muted);margin-bottom:8px;
+}
+.tool-rec-body{color:var(--ink-2);font-size:14px;line-height:1.65;margin:0 0 12px}
+.tool-rec-use{
+  padding-top:11px;border-top:1px dashed var(--line);
+  font-size:13px;color:var(--muted);line-height:1.95;
+}
+.pill-primary{
+  display:inline-block;
+  background:var(--primary);color:#fff;
+  font-size:11px;font-weight:600;padding:3px 11px;border-radius:999px;
+  letter-spacing:.02em;margin-right:4px;
+}
+.pill-connector{
+  display:inline-block;
+  background:var(--bg-2);color:var(--ink);
+  font-size:10.5px;font-weight:500;padding:2px 9px;border-radius:999px;
+  border:1px solid var(--line);margin:0 2px;
+}
+
 .feature-pill{
   display:inline-flex;align-items:center;gap:6px;
   background:var(--primary-soft);color:var(--primary);
@@ -1241,7 +1270,7 @@ Always flag places where something is worth verifying against the school's offic
 <div class="chapter-cover skills">
   <div class="chapter-label"><span class="chapter-num">Part 03</span> Core Skills</div>
   <h2 class="chapter-title">Five things Claude is great at that apply to everyone.</h2>
-  <p class="chapter-desc">These aren't tools, they're skills that transfer across roles. A coach, a marketer, and a manager all use brainstorming, writing, research, summarizing, and documentation. Each section shows which Claude tool fits best.</p>
+  <p class="chapter-desc">These aren't tools. They're skills that transfer across roles. A coach, a marketer, and a manager all use brainstorming, writing, research, summarizing, and documentation. Each section shows the setup that tends to work best.</p>
   <div class="chapter-meta">
     <span class="chapter-chip">💡 Brainstorming</span>
     <span class="chapter-chip">✍️ Writing</span>
@@ -1252,38 +1281,40 @@ Always flag places where something is worth verifying against the school's offic
 </div>
 <p>Generating ideas fast is one of Claude's strongest skills. What might take you 45 minutes of staring at a blank doc takes about 90 seconds. The key: treat the output as raw material, not finished product. You filter, refine, and decide. Claude just gets you past the blank page.</p>
 
-<div class="sh">Which tool to use</div>
-<div class="use-case-card" style="margin-bottom:10px">
-  <div class="use-case-task"><strong>Pure idea generation, no files or context needed:</strong> blog topic ideas, email subject-line variations, webinar titles, re-engagement hooks, discussion questions, social media angles, headline alternatives for a landing page, fresh framings for a familiar topic, names for a series.</div>
-  <div class="use-case-tool">→ Chat is faster.</div>
+<div class="sh">Three kinds of brainstorming</div>
+
+<div class="tool-rec">
+  <div class="tool-rec-label">Pure idea generation</div>
+  <p class="tool-rec-body">Blog topic ideas, email subject-line variations, webinar titles, re-engagement hooks, discussion questions, social angles, landing-page headline alternatives, fresh framings for familiar topics, names for a series.</p>
+  <div class="tool-rec-use">No setup required. Just ask.</div>
 </div>
-<div class="use-case-card" style="margin-bottom:10px">
-  <div class="use-case-task"><strong>Brainstorming with a student's actual context:</strong> essay angles grounded in their activities and session notes, supplemental approaches that reflect their real interests, next-session focus ideas based on where a draft stands, activity list framings that highlight their strongest narrative, school-fit arguments built from their profile.</div>
-  <div class="use-case-tool">→ Cowork (pointed at their folder) or a student Project.</div>
+
+<div class="tool-rec">
+  <div class="tool-rec-label">Student-specific brainstorming</div>
+  <p class="tool-rec-body">Essay angles grounded in a student's activities and session notes, supplemental approaches that reflect real interests, next-session focus ideas based on where a draft stands, activity-list framings that highlight their strongest narrative, school-fit arguments built from their profile.</p>
+  <div class="tool-rec-use">A student <strong>Project</strong> with their materials loaded works best. Or pull the files directly via the <strong>Drive</strong> connector, since student folders live there.</div>
 </div>
-<div class="use-case-card" style="margin-bottom:10px">
-  <div class="use-case-task"><strong>Brainstorming with Prepory context:</strong> content calendar ideas grounded in what's already on the blog, re-engagement angles after reading an actual email thread, ways to reposition an existing webpage after reading the current copy, follow-up campaigns built from Monday or HubSpot activity, new lead-magnet ideas anchored in past webinar performance.</div>
-  <div class="use-case-tool">→ Cowork with the right connectors on, or a Prepory-specific Project.</div>
-</div>
-<div class="use-case-card">
-  <div class="use-case-task"><strong>Brainstorming internal/team decisions:</strong> structuring a tough conversation, mapping pros/cons of a workflow change, naming a new coaching program, stress-testing an idea before a meeting, surfacing counterarguments you'll need to address.</div>
-  <div class="use-case-tool">→ Chat works great. Add files or a Project only if there's real context Claude needs.</div>
+
+<div class="tool-rec">
+  <div class="tool-rec-label">Prepory-context brainstorming</div>
+  <p class="tool-rec-body">Content calendar ideas grounded in what's on the blog, re-engagement angles after reading an actual email thread, ways to reposition an existing webpage, follow-up campaigns built from Monday or HubSpot activity, lead-magnet ideas anchored in past webinar performance.</p>
+  <div class="tool-rec-use">Turn on the connector that matches your data source: <strong>Drive</strong> for past posts and internal docs, <strong>Gmail</strong> for a real thread, <strong>HubSpot</strong> for contact and pipeline, <strong>Monday</strong> for board activity, <strong>Chrome</strong> for live pages.</div>
 </div>
 
 <div class="sh">Brainstorming essay topics with a student, step by step</div>
 <p>You're working with Priya, rural Georgia, first-gen, robotics captain, weekend hardware store job, applying for mechanical engineering. She keeps wanting to write about robotics. You think it's too predictable.</p>
 <div class="steps">
-  <div class="step"><div class="step-num">1</div><div class="step-text">Open Claude (Chat or Cowork). If you have a Priya project, use that. Claude already knows her. Otherwise, spend 60 seconds writing out what you know about her before typing anything else.</div></div>
+  <div class="step"><div class="step-num">1</div><div class="step-text">Open Claude. If you have a Priya Chat Project, use that. Her session notes, activity list, and drafts are already loaded, so Claude can ground every idea in what she actually does and says. If her files live in Drive but aren't in a project yet, open Cowork with the <strong>Drive connector</strong> on and tell Claude where to find them. If you have neither, start a fresh Chat and spend 60 seconds writing out what you know about her before typing the real prompt. This is the exact moment Projects pay off. If you catch yourself pasting the same context in two or three times, go build the project first. You'll save the time back by the end of the week.</div></div>
   <div class="step"><div class="step-num">2</div><div class="step-text">Ask for a handful of options with a specific ask:</div></div>
 </div>
 
-<div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">I'm a Prepory admissions counselor working with Priya. She grew up in rural Georgia, is first-gen, captains the robotics team, and works at her family's hardware store on weekends. She's applying to Georgia Tech, Purdue, and Clemson for mechanical engineering. She keeps wanting to write about robotics but I think the topic is too predictable for her.
+<div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">I'm a Prepory admissions coach working with Priya. She grew up in rural Georgia, is first-gen, captains the robotics team, and works at her family's hardware store on weekends. She's applying to Georgia Tech, Purdue, and Clemson for mechanical engineering. She keeps wanting to write about robotics but I think the topic is too predictable for her.
 
 Suggest 5 different essay angles she could explore instead. Focus on angles that would feel specific and fresh, not Common App clichés. For each, write one sentence on what the essay might explore and why it could be compelling.</pre><button class="copy-btn">Copy</button></div></div>
 
 <div class="steps">
   <div class="step"><div class="step-num">3</div><div class="step-text"><strong>Read the results and react.</strong> Some will feel off. That's fine. Maybe one suggests the time she fixed a broken pipe at the hardware store using robotics logic. That sparks something.</div></div>
-  <div class="step"><div class="step-num">4</div><div class="step-text"><strong>Go deeper on what clicks.</strong> Stay in the same conversation. Ask: "I like the hardware store angle. What are 4 specific scenes or moments she could write about to make this feel vivid and concrete?"</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-text"><strong>Go deeper on what clicks.</strong> Stay in the same conversation so Claude keeps the earlier context in play. Ask: "I like the hardware store angle. What are 4 specific scenes or moments she could write about to make this feel vivid and concrete?" (When the next topic is genuinely different, start a fresh chat instead of extending this one. Long threads get more expensive and less focused.)</div></div>
   <div class="step"><div class="step-num">5</div><div class="step-text"><strong>Use the output as conversation fuel in your next session.</strong> Don't read the list to Priya. Instead: "What if instead of robotics, you wrote about that moment at the store when you figured out the pipe?" Claude gave you the seed. Your coaching makes it personal.</div></div>
 </div>
 
@@ -1296,6 +1327,7 @@ Suggest 5 different essay angles she could explore instead. Focus on angles that
 
 For each: a working title, one-sentence description, and which platform it's best for (blog, LinkedIn, Instagram, or email). We've recently published about essay topic selection and test-optional policies, avoid those.</pre><button class="copy-btn">Copy</button></div></div>
     <p>Follow up with: "Expand on ideas #2 and #4. For each, give me a more detailed outline: key points, strong opening hook, and a CTA."</p>
+    <p><strong>Tip:</strong> turn on the <strong>Google Drive connector</strong> and point Claude at the folder of past Prepory blog posts. Now Claude can actually scan what we've already covered and suggest fresh angles instead of accidental repeats. Drop the output into a <strong>marketing Project</strong> with brand voice baked in, so the next round of ideas comes out on-voice by default.</p>
   </div>
 </details>
 
@@ -1305,6 +1337,7 @@ For each: a working title, one-sentence description, and which platform it's bes
     <div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">I'm on Prepory's sales team. A parent attended our 'Ivy League Admissions Myths' webinar three weeks ago, opened our follow-up email, but never booked a consultation. Her daughter is a rising senior applying to Brown, Dartmouth, and Northwestern.
 
 Give me 5 different angles for a re-engagement email. For each, explain what emotional trigger or practical concern it addresses and suggest a one-sentence hook.</pre><button class="copy-btn">Copy</button></div></div>
+    <p><strong>Tip:</strong> skip the hypothetical. Ask Claude to pull the actual contact record from <strong>HubSpot</strong> and the real follow-up thread from <strong>Gmail</strong>, then brainstorm angles grounded in what that specific parent has already engaged with. The best angle is almost always the one that picks up a thread the parent left hanging.</p>
   </div>
 </details>
 
@@ -1314,35 +1347,40 @@ Give me 5 different angles for a re-engagement email. For each, explain what emo
     <div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">I'm trying to figure out how to structure a 60-minute 'college list building' session with a student who has a 3.6 GPA, 1350 SAT, and wants to study environmental science. She has no schools on her list yet and is getting paralyzed by the number of options.
 
 Give me 5 different ways I could structure this conversation, each one prioritizing a different starting point. For each, explain the tradeoff.</pre><button class="copy-btn">Copy</button></div></div>
+    <p><strong>Tip:</strong> if this is a real student, run it inside her <strong>Project</strong>, or turn on the <strong>Drive connector</strong> and point Claude at her session notes, so the session plan is tailored to what she's actually said in past conversations, not a generic 3.6/1350 profile.</p>
   </div>
 </details>
 
 <div class="callout callout-tip"><span class="callout-icon">💡</span><span>If ideas feel generic, your prompt is probably too vague. Add a real constraint: a specific student, deadline, or thing you want to avoid. The output will sharpen immediately.</span></div>
+
+<div class="callout callout-info"><span class="callout-icon">ℹ️</span><span><strong>Brainstorming the same kind of thing every week?</strong> Things like content ideas for parents of seniors, re-engagement angles, or session structures for stuck students are strong candidates for a custom skill. Once you've run the prompt successfully 3 or 4 times and know what "good" looks like, turn it into a skill with <strong>skill-creator</strong> so you (or the whole team, if you share it) can trigger it by name or with a slash command. See the Skills section for the how.</span></div>
 `},
 
 /* SEC_WRITING */
 {id:"writing",label:"Writing & Editing",group:"Core Skills",emoji:"✍️",html:`
 <p>Writing is what most people think of first when they think of Claude. Whether it's an email to an anxious parent, a blog post about FAFSA changes, or a follow-up sequence for prospective families, Claude can give you a strong first draft in minutes. Know which tool to use, and always edit before it goes anywhere.</p>
 
-<div class="sh">Which tool, and when</div>
+<div class="sh">Setups worth knowing</div>
 <div class="grid-cards">
   <div class="use-case-card">
     <div class="use-case-task"><strong>Emails to clients, based on your notes and past threads:</strong></div>
-    <div class="use-case-tool">→ Cowork with the Gmail connector. Ask it to draft directly into Gmail.</div>
+    <div class="use-case-tool">→ Turn on the Gmail connector. Ask Claude to draft directly into Gmail.</div>
   </div>
   <div class="use-case-card">
     <div class="use-case-task"><strong>A session notes doc, one-pager, or internal memo:</strong></div>
-    <div class="use-case-tool">→ Cowork + docx skill. Real Word doc in your folder.</div>
+    <div class="use-case-tool">→ Use the docx skill. Real Word doc saved to your folder.</div>
   </div>
   <div class="use-case-card">
     <div class="use-case-task"><strong>Social copy, subject lines, quick marketing iterations:</strong></div>
-    <div class="use-case-tool">→ Chat. Fast back-and-forth, copy out when you're happy.</div>
+    <div class="use-case-tool">→ Just ask. No setup, fast back-and-forth, copy out when you're happy.</div>
   </div>
 </div>
 
-<div class="sh">Drafting a parent email in Cowork</div>
+<div class="callout callout-tip"><span class="callout-icon">💡</span><span><strong>Going back and forth with a lot of edits?</strong> Cowork is usually the better fit. It can keep the draft in a file on your computer and iteratively edit that file in place as you refine, so you're not scrolling up through a long thread trying to find the latest version. When you're happy, copy it over to Gmail, LinkedIn, or wherever it needs to go.</span></div>
+
+<div class="sh">Drafting a parent email</div>
 <div class="steps">
-  <div class="step"><div class="step-num">1</div><div class="step-text">Open Cowork with the student's folder selected. If you have the Gmail connector set up, Claude can read recent threads and write drafts directly into Gmail.</div></div>
+  <div class="step"><div class="step-num">1</div><div class="step-text">Open Claude with the student's folder selected. If you have the Gmail connector set up, Claude can read recent threads and write drafts directly into Gmail.</div></div>
   <div class="step"><div class="step-num">2</div><div class="step-text">Ask for what you need with full context:</div></div>
 </div>
 
@@ -1357,6 +1395,8 @@ Warm, reassuring tone. Karen is nervous about this cycle. Under 200 words. Save 
 <div class="sh">Repurposing content across channels</div>
 <p>You just published a blog post and need versions for LinkedIn, Instagram, and email. Don't rewrite three times. Feed it to Claude:</p>
 
+<div class="callout callout-info"><span class="callout-icon">ℹ️</span><span><strong>Worth doing once:</strong> put Prepory's brand voice, our dos and don'ts, and a couple of exemplar posts into a <strong>marketing Project</strong>. Then every writing session inside that project already knows the voice, no re-pasting the brand-voice paragraph each time. Same idea for the weekly parent newsletter or LinkedIn thought-leadership posts, a project per recurring deliverable.</span></div>
+
 <div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">Prepory's brand voice: warm, knowledgeable, mentor-like. We don't talk down to families and never use scare tactics about admissions odds. We're the confident, reassuring expert in the room.
 
 Turn this blog post into:
@@ -1367,20 +1407,32 @@ Turn this blog post into:
 Blog post: [paste your post here]</pre><button class="copy-btn">Copy</button></div></div>
 
 <div class="sh">Tightening existing drafts</div>
+<p>Copy-editing passes are light work, so this is a great place to switch to <strong>Sonnet</strong> instead of Opus to reduce the chances of hitting your usage limits.</p>
+<p>Notice that both prompts below end with an ask for a short overview of what Claude changed. Skimming a 5-bullet changelog is way faster than looking for the changes line by line, and it makes it obvious if Claude quietly rewrote something it shouldn't have or missed the point of a sentence. You can then push back on specific calls ("keep the original opening, redo the rest") instead of accepting or rejecting the whole pass.</p>
 <details class="acc">
   <summary><span>Sharpen a draft without restructuring</span><span class="acc-chev">▼</span></summary>
   <div class="acc-body">
-    <div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">Edit this for clarity and concision. Cut filler words, tighten sentences, and flag anywhere it sounds like AI wrote it. Don't change the structure, just make the writing sharper. Here: [paste]</pre><button class="copy-btn">Copy</button></div></div>
+    <div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">Edit this for clarity and concision. Cut filler words, tighten sentences, and flag anywhere it sounds like AI wrote it. Don't change the structure, just make the writing sharper.
+
+After the edited version, give me a short bulleted overview of the meaningful changes you made and why, so I can quickly see what shifted without re-reading the whole thing.
+
+Here: [paste]</pre><button class="copy-btn">Copy</button></div></div>
   </div>
 </details>
 <details class="acc">
   <summary><span>Hit a specific word count</span><span class="acc-chev">▼</span></summary>
   <div class="acc-body">
-    <div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">This draft is running too long. I need it under 200 words. Cut what's least essential while keeping the core message and the specific Stanford reference. Here: [paste]</pre><button class="copy-btn">Copy</button></div></div>
+    <div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">This draft is running too long. I need it under 200 words. Cut what's least essential while keeping the core message and the specific Stanford reference.
+
+After the trimmed version, give me a short bulleted overview of what you cut or condensed and why, so I can quickly check nothing important got lost.
+
+Here: [paste]</pre><button class="copy-btn">Copy</button></div></div>
   </div>
 </details>
 
 <div class="callout callout-warn"><span class="callout-icon">⚠️</span><span>Always review AI-written copy for accuracy before it goes anywhere. If there's a stat or specific claim you didn't provide, verify it.</span></div>
+
+<div class="callout callout-info"><span class="callout-icon">ℹ️</span><span><strong>Writing the same kind of thing every week?</strong> Post-session parent recap emails, weekly newsletters, webinar promo copy, these are classic skill-creator candidates. If you've written the prompt three or four times and the output is reliably what you want, that's the signal to wrap it up as a skill and share it with the team. Then anyone can trigger it by name or via slash command.</span></div>
 `},
 
 /* SEC_RESEARCH */
@@ -1391,24 +1443,24 @@ Blog post: [paste your post here]</pre><button class="copy-btn">Copy</button></d
 <div class="grid-cards">
   <div class="use-case-card">
     <div class="use-case-task"><strong>Broad public research:</strong> a school's culture, current trends, what's changed with Common App.</div>
-    <div class="use-case-tool">→ Chat (or Cowork) with <strong>web search</strong>. Fast, wide-net. Verify specific stats.</div>
+    <div class="use-case-tool">→ Turn on <strong>web search</strong>. Fast, wide-net. Verify specific stats.</div>
   </div>
   <div class="use-case-card">
     <div class="use-case-task"><strong>Sites that need a login, a form, or can't be pulled with a plain search:</strong> the Common App portal, your WordPress admin, a school's internal portal, a page behind a paywall you subscribe to.</div>
-    <div class="use-case-tool">→ Cowork with <strong>Claude in Chrome</strong>. It drives your browser the way you would.</div>
+    <div class="use-case-tool">→ Use <strong>Claude in Chrome</strong>. It drives your browser the way you would.</div>
   </div>
   <div class="use-case-card">
     <div class="use-case-task"><strong>Source-grounded research:</strong> questions about documents you've uploaded (Insider Brief, Common Data Set, student file).</div>
-    <div class="use-case-tool">→ A school Project, or Cowork with the folder.</div>
+    <div class="use-case-tool">→ A school Project with the files loaded, or point Claude at the folder.</div>
   </div>
   <div class="use-case-card">
     <div class="use-case-task"><strong>Private internal research:</strong> Monday data, Drive docs, Gmail threads.</div>
-    <div class="use-case-tool">→ Cowork with connectors.</div>
+    <div class="use-case-tool">→ Turn on the relevant connectors.</div>
   </div>
 </div>
 
 <div class="sh">Web search vs. Claude in Chrome, how to choose</div>
-<p>Both tools reach the web, but they do very different things. The short version: <strong>web search</strong> is Claude reading the public internet quickly. <strong>Claude in Chrome</strong> is Claude actually <em>using</em> your browser, clicking, scrolling, signing in, filling things out. Pick based on whether the task is "read" or "do."</p>
+<p>Both tools reach the web, but they do very different things. <strong>Web search</strong> is Claude reading the public internet quickly. <strong>Claude in Chrome</strong> is Claude actually <em>using</em> your browser, clicking, scrolling, signing in, filling things out. Pick based on whether the task is "read" or "do," and whether it requires accessing login-gated pages.</p>
 <div class="grid-cards">
   <div class="use-case-card">
     <div class="use-case-task"><strong>Use web search when:</strong></div>
@@ -1432,16 +1484,20 @@ Blog post: [paste your post here]</pre><button class="copy-btn">Copy</button></d
 </div>
 <div class="callout callout-tip"><span class="callout-icon">💡</span><span><strong>Default to web search first.</strong> It's faster and cheaper. Only reach for Claude in Chrome when search can't get what you need, or when the task is actually a <em>browser action</em>, not a lookup.</span></div>
 
+<div class="sh">When to reach for Research mode</div>
+<p><strong>Research</strong> is a third option, available in Chat (not Cowork). Instead of one search, Claude spins up a multi-agent run that can take anywhere from 5 to 45 minutes and pulls from dozens, sometimes hundreds, of sources. The output is a long, cited brief. To use it, start a new Chat and toggle <strong>Research</strong> on in the + menu before sending your prompt.</p>
+<p>Reserve it for heavy, slow research where the extra depth is actually worth the wait, things like a full brief on the scholarship landscape for a specific major, a comprehensive look at how a policy change is being interpreted across schools, or a deep dive into trends in a field a student is exploring. It's overkill for "what's WashU's Common App prompt" or "what's Tulane's public health program known for", regular web search handles those in seconds.</p>
+<div class="callout callout-warn"><span class="callout-icon">⚠️</span><span>Research runs burn a meaningful chunk of your weekly usage because of how many sources and sub-searches it spawns. Use it intentionally, not as a default. If web search can answer your question in 30 seconds, that's the right tool.</span></div>
+
 <div class="sh">Quick school overview before a session</div>
 <p>You have a session in an hour with a student interested in Tulane for public health. You want to go in prepared without 45 minutes of website reading.</p>
 <div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">I have a coaching session in an hour with a student interested in Tulane for public health. She's also drawn to New Orleans culture and community engagement.
 
 Give me a concise coaching brief: academic strengths in public health, what makes Tulane's culture distinctive, notable experiential learning or community engagement opportunities, and what their admissions committee tends to value. Only the things I'd use in conversation. Flag anything I should verify on their website.</pre><button class="copy-btn">Copy</button></div></div>
-
-<div class="callout callout-note"><span class="callout-icon">📌</span><span>Want this even better? Drop Tulane's Insider Brief and Common Data Set into a school Project. Every answer from that project is grounded in Prepory's intel plus the official data, not just what's floating around the web.</span></div>
+<p>Before running this from scratch, check the <strong>Team</strong> tab on the Projects page. If there's a Prepory-wide project for this school (or the school-specific coach projects are live), start the conversation there instead. Every answer will already be grounded in our Insider Brief, Common Data Set, and internal intel, so you'll get a sharper brief without pulling the same material in yourself. If no project exists yet, you can get most of the way there by uploading the Insider Brief and Common Data Set directly into the chat, or turning on the <strong>Google Drive connector</strong> and pointing Claude at the folder where those documents live.</p>
 
 <div class="sh">Using Claude as a thinking partner</div>
-<p>One of the most underused modes: asking Claude to help you think through a decision, not just look things up.</p>
+<p>One of the most underused modes: asking Claude to help you think through a decision, not just look things up. No files needed, no connectors, just talk through the problem.</p>
 <div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">I'm building a college list for a student with a 3.7 GPA, 1480 SAT, interested in film production, first-gen, from Texas. She wants to be in or near a city. Strong emotional pull to NYU but worried about cost.
 
 Help me think through a balanced list of ~10 schools (3 reach, 4 target, 3 safety) with brief reasoning for each. Note where financial aid may be a key factor. Then recommend whether she should burn her ED shot on NYU or save it for a school likely to give better aid.</pre><button class="copy-btn">Copy</button></div></div>
@@ -1459,23 +1515,27 @@ Compare these three across those dimensions. Note any meaningful differences in 
 {id:"summarize",label:"Summarizing & Distilling",group:"Core Skills",emoji:"📋",html:`
 <p>Condensing long information is one of Claude's fastest, most reliable wins. A 40-email thread. Eight pages of meeting notes. Five school documents you need to synthesize before a session. Claude cuts through all of it, and this is a great first thing to try if you've never used these tools.</p>
 
-<div class="sh">Which tool, by situation</div>
+<div class="sh">Setups by situation</div>
 <div class="grid-cards">
   <div class="use-case-card">
     <div class="use-case-task"><strong>Summarize a long email thread:</strong></div>
-    <div class="use-case-tool">→ Cowork with Gmail connector, or forward the thread to Chat and ask.</div>
+    <div class="use-case-tool">→ Turn on the <strong>Gmail connector</strong>, or forward the thread in and ask.</div>
   </div>
   <div class="use-case-card">
     <div class="use-case-task"><strong>Summarize a single document:</strong></div>
-    <div class="use-case-tool">→ Drag it into Chat, or ask Cowork to read it from your folder.</div>
+    <div class="use-case-tool">→ Drag it in, or point Claude at the file in your folder. For scanned PDFs, add the <strong>pdf skill</strong>.</div>
   </div>
   <div class="use-case-card">
     <div class="use-case-task"><strong>Synthesize across multiple docs:</strong></div>
-    <div class="use-case-tool">→ A Project with all files uploaded, or Cowork on a folder containing them.</div>
+    <div class="use-case-tool">→ A <strong>Project</strong> with all files uploaded, or point Claude at a folder containing them.</div>
+  </div>
+  <div class="use-case-card">
+    <div class="use-case-task"><strong>Summarize activity in Monday or HubSpot:</strong></div>
+    <div class="use-case-tool">→ Turn on the <strong>Monday</strong> or <strong>HubSpot connector</strong>. Ask for pipeline status, recent deal activity, or a rollup of board items.</div>
   </div>
 </div>
 
-<div class="sh">Summarizing an email thread via Cowork</div>
+<div class="sh">Summarizing an email thread</div>
 <div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">Open my most recent thread with Priya's parents in Gmail. Summarize in 5 sentences: (1) key context, (2) any decisions that were made, (3) any open asks from them I haven't responded to yet.</pre><button class="copy-btn">Copy</button></div></div>
 
 <div class="sh">Summarizing a single doc</div>
@@ -1486,18 +1546,22 @@ Compare these three across those dimensions. Note any meaningful differences in 
 <div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">Across all my session notes with Maya from the past month: what themes keep coming up in her concerns about the process? What action items were agreed on that haven't been revisited? What's the current state of her college list?</pre><button class="copy-btn">Copy</button></div></div>
 
 <div class="callout callout-tip"><span class="callout-icon">💡</span><span>The most useful summaries are specific. "Summarize this" gives you a generic overview. "What action items were agreed on and who owns each?" gives you something you can act on immediately.</span></div>
+
+<div class="callout callout-info"><span class="callout-icon">ℹ️</span><span><strong>Recurring summary? Schedule it.</strong> A Monday-morning rollup of the past week's HubSpot pipeline, a nightly summary of any new Gmail threads from parents, a weekly Monday board digest, these are exactly what Cowork's <strong>/schedule</strong> command was built for. Set it once and the report lands in your inbox (or your folder) on a schedule. Works only while the desktop app is open, so plan around that.</span></div>
+
+<div class="callout callout-info"><span class="callout-icon">ℹ️</span><span><strong>If it's the same summary format every time,</strong> that's another skill-creator candidate. A "weekly parent-comms digest" or "session notes → action items" skill pays for itself quickly if you run it often.</span></div>
 `},
 
 /* SEC_PROCESS */
 {id:"process",label:"Process Documentation",group:"Core Skills",emoji:"📁",html:`
-<p>Most institutional knowledge at Prepory lives in people's heads or in scattered notes that only make sense to whoever wrote them. Claude is excellent at taking disorganized, messy knowledge and turning it into something structured that anyone can follow, quickly, without requiring you to be a good writer.</p>
+<p>Institutional knowledge sometimes lives in people's heads or in scattered notes that only make sense to whoever wrote them. Claude is excellent at taking disorganized, messy knowledge and turning it into something structured that anyone can follow, quickly, without requiring you to be a good writer.</p>
 
-<div class="sh">The ideal setup: Cowork + docx skill</div>
-<p>Open Cowork, point it at a folder where you want to keep your SOPs, and ask Claude to use the <strong>docx skill</strong> so the output is a polished Word doc you can share with the team.</p>
+<div class="sh">The ideal setup: docx skill</div>
+<p>Point Claude at a folder where you want to keep your SOPs, and ask it to use the <strong>docx skill</strong> so the output is a polished Word doc you can share with the team.</p>
 
 <div class="sh">Turning rough notes into a structured SOP</div>
 <div class="steps">
-  <div class="step"><div class="step-num">1</div><div class="step-text"><strong>Dump everything you know</strong> into a text file or directly into Cowork. Bullet points, fragments, whatever. 5–10 minutes of brain dump is enough.</div></div>
+  <div class="step"><div class="step-num">1</div><div class="step-text"><strong>Dump everything you know</strong> into a text file or straight into Claude. Bullet points, fragments, whatever. 5–10 minutes of brain dump is enough.</div></div>
   <div class="step"><div class="step-num">2</div><div class="step-text"><strong>Ask Claude to structure it</strong> using the docx skill:</div></div>
 </div>
 
@@ -1543,6 +1607,12 @@ Here are my notes: [paste your notes]</pre><button class="copy-btn">Copy</button
 </details>
 
 <div class="callout callout-tip"><span class="callout-icon">💡</span><span>Process documentation is one of the highest-leverage Claude tasks at Prepory. A SOP you write once can be followed by anyone. Thirty minutes documenting a process now saves hundreds of hours re-explaining it later.</span></div>
+
+<div class="callout callout-info"><span class="callout-icon">ℹ️</span><span><strong>Two ways to make an SOP even more useful once it's written:</strong></span></div>
+<ul>
+  <li><strong>Drop it into a relevant Project.</strong> A coach-onboarding Project with all of Prepory's coaching SOPs as reference files turns Claude into a teammate who can answer "how do we handle X?" instantly, grounded in the real docs.</li>
+  <li><strong>If the process is repeated often enough, turn it into a skill.</strong> "Draft a post-session recap email" or "build a college-list tracker from these notes" are processes and skills at the same time, a well-documented SOP is already 80% of the input skill-creator needs. Once it's a skill, it's shareable across the team via the + menu or a slash command.</li>
+</ul>
 `},
 
 /* SEC_ESSAYS */
@@ -1868,4 +1938,4 @@ if(document.readyState==='loading'){
 </script>
 </body>
 </html>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
