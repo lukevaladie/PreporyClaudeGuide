@@ -613,11 +613,11 @@ const SECTIONS = [
 
 <div class="warn-banner" style="background:linear-gradient(135deg,#fef3c7,#fef9e7);border-color:var(--amber-bd)">
   <div class="warn-banner-title" style="color:var(--amber-txt)">⭐ Don't skip Prompting 101</div>
-  <p style="margin:0;color:var(--amber-txt);font-size:14px;line-height:1.65">Right after you install the desktop app in Step 0 below, head to Prompting 101. It takes about 10 minutes and covers the handful of principles that determine whether Claude gives you something useful. Everything else in this guide builds on it.</p>
+  <p style="margin:0;color:var(--amber-txt);font-size:14px;line-height:1.65">Right after you install the desktop app in Step 0 below, head to Prompting 101. It takes about 5 minutes and covers the handful of principles that determine whether Claude gives you something useful. Everything else in this guide builds on it.</p>
 </div>
 
 <div class="sh">Step 0. Install the Claude desktop app</div>
-<p>Before you go any further, install the Claude desktop app. It's free, takes about 60 seconds, and unlocks the <strong>best version of Claude for real work</strong>. The browser version (Chat at claude.ai) is fine for quick questions, but many of the important workflows in this guide assumes you're in the desktop app.</p>
+<p>Before you go any further, install the Claude desktop app. It's free, takes about 60 seconds, and unlocks the <strong>best version of Claude for real work</strong>. The browser version (Chat at claude.ai) is fine for quick questions, but many of the important workflows in this guide assume you're in the desktop app.</p>
 <div class="steps">
   <div class="step"><div class="step-num">1</div><div class="step-text">Go to <a href="https://claude.ai/download" target="_blank" rel="noopener" class="ext-link">claude.ai/download</a> and download the installer for your computer (Mac or Windows).</div></div>
   <div class="step"><div class="step-num">2</div><div class="step-text">Run the installer and open the app.</div></div>
@@ -639,7 +639,7 @@ const SECTIONS = [
 <div class="sh" style="font-size:11px;margin-top:28px">Part 02 · Claude Essentials</div>
 <p style="margin:-4px 0 10px;color:var(--muted);font-size:13px">The features and tools that make Claude actually useful for Prepory work.</p>
 <div class="grid-cards">
-  ${[['🧭','Getting familiar with Claude','A quick tour of the interface, model picker, the + menu, sidebar, and settings, so the rest of the guide clicks.'],['💬','Chat (Claude.ai)','Quick Q&A, drafting, and research in the browser. Great for fast one-offs and turn-by-turn conversations.'],['🧑‍💻','Cowork','The desktop app experience that runs files, connectors, skills, and projects together, and can work through multi-step tasks on its own while you do something else.'],['🧠','Skills','Pre-built playbooks that make Claude way better at specific tasks like writing Word docs or decks. Also: how to create your own.'],['🔌','Connectors','Plug Claude directly into Monday, Google Drive, Gmail, Calendar, and Claude in Chrome for real browser actions.'],['📁','Projects','Reusable workspaces with custom instructions and files, including our school-specific coach projects.'],['⚡','Working within usage limits','A handful of small habits that keep you from hitting the ceiling.']].map(([e,t,d])=>`<div class="use-case-card" style="display:flex;gap:14px"><span style="font-size:18px">${e}</span><div><div style="font-weight:700;color:var(--ink);font-size:14px">${t}</div><div style="font-size:13px;color:var(--muted);margin-top:3px">${d}</div></div></div>`).join('')}
+  ${[['🧭','Getting familiar with Claude','A quick tour of the interface, model picker, the + menu, sidebar, and settings.'],['💬','Chat (Claude.ai)','Quick Q&A, drafting, and research in the browser. Great for fast one-offs and turn-by-turn conversations.'],['🧑‍💻','Cowork','The desktop app experience that runs files, connectors, skills, and projects together, and can work through multi-step tasks on its own while you do something else.'],['🧠','Skills','Pre-built playbooks that make Claude way better at specific tasks like writing Word docs or decks. Also: how to create your own.'],['🔌','Connectors','Plug Claude directly into Monday, Google Drive, Gmail, Calendar, and Claude in Chrome for real browser actions.'],['📁','Projects','Reusable workspaces with custom instructions and files, including the school-specific coach projects coming soon.'],['⚡','Working within usage limits','A handful of small habits that keep you from hitting the ceiling.']].map(([e,t,d])=>`<div class="use-case-card" style="display:flex;gap:14px"><span style="font-size:18px">${e}</span><div><div style="font-weight:700;color:var(--ink);font-size:14px">${t}</div><div style="font-size:13px;color:var(--muted);margin-top:3px">${d}</div></div></div>`).join('')}
 </div>
 
 <div class="sh" style="font-size:11px;margin-top:28px">Part 03 · Core Skills</div>
@@ -852,7 +852,7 @@ const SECTIONS = [
 <div class="sh">Choosing a model</div>
 <p>Near the message box you'll see the current model name, something like <em>"Opus 4.7 · Adaptive."</em> Click it to switch. Three main choices:</p>
 <div class="grid-cards">
-  ${[['🦅','Opus · Start here','Most capable. Great for nuanced essay feedback, complex strategy, and deep synthesis across lots of files. Start with Opus as your default for a new task, but if you find a specific workflow is burning through your weekly usage faster than you\'d like, drop that one down to Sonnet.'],['🐦','Sonnet · When Opus is burning through your limits','Smart enough for most Prepory work and uses significantly less budget than Opus. The right call when a particular workflow (lots of back-and-forth summarization, repetitive reformatting) is chewing through your quota on Opus.'],['🐤','Haiku · Skip it','Fastest and cheapest, but underpowered for real coaching and content work. Don\'t use it for Prepory tasks, the savings aren\'t worth the quality hit.']].map(([e,t,d])=>`<div class="use-case-card" style="display:flex;gap:14px"><span style="font-size:18px">${e}</span><div><div style="font-weight:700;color:var(--ink);font-size:14px">${t}</div><div style="font-size:13px;color:var(--muted);margin-top:3px;line-height:1.6">${d}</div></div></div>`).join('')}
+  ${[['🦅','Opus · Start here','Most capable. Great for nuanced essay feedback, complex strategy, and deep synthesis across lots of files. Start with Opus as your default for a new task, but if you find a specific workflow is burning through your limits faster than you\'d like, drop that one down to Sonnet.'],['🐦','Sonnet · When Opus is burning through your limits','Smart enough for most Prepory work and puts significantly less pressure on your usage limits than Opus. The right call when a particular workflow (lots of back-and-forth summarization, repetitive reformatting) is using up your quota on Opus.'],['🐤','Haiku · Skip it','Fastest and cheapest, but underpowered for real coaching and content work. Don\'t use it for Prepory tasks, the savings aren\'t worth the quality hit.']].map(([e,t,d])=>`<div class="use-case-card" style="display:flex;gap:14px"><span style="font-size:18px">${e}</span><div><div style="font-weight:700;color:var(--ink);font-size:14px">${t}</div><div style="font-size:13px;color:var(--muted);margin-top:3px;line-height:1.6">${d}</div></div></div>`).join('')}
 </div>
 <p style="margin-top:12px"><strong>Adaptive thinking</strong> (the toggle in the same menu): when it's on, Claude decides on its own when a task is complex enough to pause and "think" longer before answering. Leave it on. It's free accuracy when you need it and costs nothing when you don't.</p>
 
@@ -880,7 +880,7 @@ const SECTIONS = [
 </ul>
 
 <div class="sh">Settings worth knowing exist</div>
-<p>Under Settings you'll find <strong>Profile</strong> (what Claude calls you, plus a "personal preferences" text box for things Claude should always know about how you like to work), <strong>Usage</strong> (remaining budget), <strong>Capabilities</strong> (feature toggles like Memory, detailed below), <strong>Connectors</strong> (account-level connector setup, distinct from the per-chat + menu), and <strong>Cowork</strong> (Cowork-specific options). You don't need to change any of these, but feel free to take a look for additional customization options.</p>
+<p>Under Settings you'll find <strong>Profile</strong> (what Claude calls you, plus a "personal preferences" text box for things Claude should always know about how you like to work), <strong>Usage</strong> (where you can check your limits), <strong>Capabilities</strong> (feature toggles like Memory, detailed below), <strong>Connectors</strong> (account-level connector setup, distinct from the per-chat + menu), and <strong>Cowork</strong> (Cowork-specific options). You don't need to change any of these, but feel free to take a look for additional customization options.</p>
 
 <div class="sh">Memory, what it is and isn't</div>
 <p>Under <strong>Settings → Capabilities</strong> there's a <strong>Memory</strong> toggle worth understanding before you flip it on. When enabled, Claude builds a running <strong>memory summary</strong> from your past chats, a condensed synthesis it references at the start of every new standalone conversation. The summary refreshes roughly every 24 hours.</p>
@@ -903,7 +903,7 @@ const SECTIONS = [
 <h2 class="display">Chat for quick questions, content work, and team collaboration.</h2>
 <p>Chat is the standard Claude conversation experience. You can use it in the browser at claude.ai, on mobile, or right inside the desktop app (the desktop app has both Chat and Cowork). It's fast, lightweight, and perfect for things you don't need a folder for. Chat can use projects, skills, and cloud connectors (Monday, Drive, Gmail, Calendar) just like Cowork. The one thing it can't do is read or write files on your computer; that's what Cowork is for.</p>
 
-<p>Chat also plays a second, important role: <strong>it's where our shared team projects live.</strong> The school-specific coach projects (Stanford, and the ones coming after) are built in claude.ai so any Prepory coach can open them and work with the same Insider Briefs, exemplars, and coaching playbooks. If Cowork is where your individual work gets done, Chat is where team context gets shared. And when you need to go heavier than quick Q&A, a Chat project has a <strong>Start a task in Cowork</strong> button that hands the project's context (custom instructions + files) straight over to Cowork for agentic, file-based work. We cover the full handoff in the Projects section.</p>
+<p>Chat also plays a second, important role: <strong>it's where our shared team projects live.</strong> The school-specific coach projects will be built in claude.ai so any Prepory coach can open them and work with the same Insider Briefs, exemplars, and coaching playbooks. If Cowork is where your individual work gets done, Chat is where team context gets shared. And when you need to go heavier than quick Q&A, a Chat project has a <strong>Start a task in Cowork</strong> button that hands the project's context (custom instructions + files) straight over to Cowork for agentic, file-based work. We cover the full handoff in the Projects section.</p>
 
 <div class="sh">When to use Chat vs. Cowork</div>
 <div class="grid-cards">
@@ -950,7 +950,7 @@ const SECTIONS = [
 <div class="sh">Keep chats focused, start fresh often</div>
 <p>Counterintuitive habit that makes Claude sharper: <strong>don't let a single conversation sprawl.</strong> A few reasons:</p>
 <ul>
-  <li><strong>The whole chat gets re-read every turn.</strong> Every message you send, Claude re-processes the entire conversation history. Long chats are slower, use more of your budget, and eventually bump into the context window (a finite memory limit per conversation).</li>
+  <li><strong>The whole chat gets re-read every turn.</strong> Every message you send, Claude re-processes the entire conversation history. Long chats are slower, use more of your usage limits, and eventually bump into the context window (a finite memory limit per conversation).</li>
   <li><strong>Attention gets diluted.</strong> When a chat has 40 messages covering six different topics, Claude's focus on your current ask suffers. Stray context from earlier can bleed into answers where it doesn't belong.</li>
   <li><strong>Topic drift is real.</strong> A chat that started as "draft a parent email" and morphed into "help me outline a webinar" will produce worse output on both than two separate chats would.</li>
 </ul>
@@ -1080,7 +1080,7 @@ const SECTIONS = [
 
 <div class="sh">Built-in skills you'll use at Prepory</div>
 <div class="grid-cards">
-  ${[['📄','docx','Polished Word documents, session notes, parent one-pagers, coaching briefs, letters. Formatting, headings, and structure look professional out of the box.'],['📊','pptx','Slide decks for webinars, internal training, and family presentations. Proper layouts, speaker notes, and slide hygiene.'],['📈','xlsx','Spreadsheets, college list comparisons, application tracking, budget models. Formulas and formatting, not just flat data.'],['📑','pdf','Reading existing PDFs (school policy docs, Common Data Sets) and producing new ones (final handouts, read-only one-pagers).']].map(([e,t,d])=>`<div class="use-case-card" style="display:flex;gap:14px"><span style="font-size:18px">${e}</span><div><div style="font-weight:700;color:var(--ink);font-size:14px">${t}</div><div style="font-size:13px;color:var(--muted);margin-top:3px;line-height:1.6">${d}</div></div></div>`).join('')}
+  ${[['📄','docx','Polished Word documents, session notes, parent one-pagers, coaching briefs, letters. Formatting, headings, and structure look professional out of the box.'],['📊','pptx','Slide decks for webinars, internal training, and family presentations. Proper layouts, speaker notes, and slide hygiene.'],['📈','xlsx','Spreadsheets, college list comparisons, application tracking, cost models. Formulas and formatting, not just flat data.'],['📑','pdf','Reading existing PDFs (school policy docs, Common Data Sets) and producing new ones (final handouts, read-only one-pagers).']].map(([e,t,d])=>`<div class="use-case-card" style="display:flex;gap:14px"><span style="font-size:18px">${e}</span><div><div style="font-weight:700;color:var(--ink);font-size:14px">${t}</div><div style="font-size:13px;color:var(--muted);margin-top:3px;line-height:1.6">${d}</div></div></div>`).join('')}
 </div>
 
 <div class="sh">How to actually use a skill</div>
@@ -1127,10 +1127,10 @@ const SECTIONS = [
 <div class="sh">We'll keep building more Prepory-specific skills</div>
 <p>As we learn which tasks get repeated (and where Claude's default output isn't quite hitting), we'll ship skills tuned for Prepory's voice, style, and workflow. If you notice yourself giving the same instructions to Claude over and over, <strong>that's a signal. Either build it yourself with skill-creator, or flag it so we can build it for everyone</strong>.</p>
 
-<div class="callout callout-tip"><span class="callout-icon">💡</span><span>Skills compose with projects. Example: the school-specific Stanford project has Stanford's Insider Brief loaded, and the docx skill makes sure the output is a polished, properly formatted Word doc. Together, they produce advice that's both Stanford-specific and ready to send.</span></div>
+<div class="callout callout-tip"><span class="callout-icon">💡</span><span>Skills compose with projects. When school-specific projects are live, you might pair one with the docx skill so Claude has the right admissions context and the output becomes a polished, properly formatted Word doc.</span></div>
 
 <div class="sh">Skills vs. Projects, a quick note</div>
-<p>Both skills and projects give Claude extra context to work better on a specific task. A <strong>skill</strong> is a <em>how</em> (a reusable recipe for <em>producing</em> something well, like "make a polished .docx") and a <strong>project</strong> is a <em>what</em> (a persistent workspace full of context about a specific student, school, or deliverable). You'll often use them together: a Stanford <em>project</em> gives Claude the intel, and the docx <em>skill</em> makes sure the output is presentation-ready. The Projects section up next goes deeper on when to reach for a project.</p>
+<p>Both skills and projects give Claude extra context to work better on a specific task. A <strong>skill</strong> is a <em>how</em> (a reusable recipe for <em>producing</em> something well, like "make a polished .docx") and a <strong>project</strong> is a <em>what</em> (a persistent workspace full of context about a specific student, school, or deliverable). Once school-specific projects are available, you'll often use them with skills: the project gives Claude the intel, and the docx <em>skill</em> makes sure the output is presentation-ready. The Projects section up next goes deeper on when to reach for a project.</p>
 `},
 
 /* SEC_PROJECTS */
@@ -1142,7 +1142,7 @@ const SECTIONS = [
 
 <div class="callout callout-info"><span class="callout-icon">ℹ️</span><span><strong>One thing to know about sharing:</strong> projects you create on <strong>claude.ai (Chat)</strong> can be shared with teammates on your Prepory plan, which is how the school-specific coach projects mentioned below will get rolled out to the whole coaching team. Projects you create inside <strong>Cowork</strong> live on your own machine and don't have the same team-sharing story today. They're best thought of as your personal workspaces. If you're building something for the whole team to use, build it in Chat/claude.ai. If it's just for you, either is fine.</span></div>
 
-<div class="callout callout-tip"><span class="callout-icon">💡</span><span><strong>Best of both worlds:</strong> when you're inside a Chat project on claude.ai, look under the message composer for a <strong>Start a task in Cowork</strong> link. One click hands the project's custom instructions and reference files over to Cowork, so you can kick off heavier, file-based, agentic work with the same context already loaded. A coach can open the Stanford Coach Project in Chat for a quick question, or hit "Start a task in Cowork" from that same project to draft and save a full set of school-specific prep docs into a student's folder. Same intel behind both.</span></div>
+<div class="callout callout-tip"><span class="callout-icon">💡</span><span><strong>Best of both worlds:</strong> when you're inside a Chat project on claude.ai, look under the message composer for a <strong>Start a task in Cowork</strong> link. One click hands the project's custom instructions and reference files over to Cowork, so you can kick off heavier, file-based, agentic work with the same context already loaded. Once shared school-specific projects launch, coaches will be able to start in Chat for a quick question or hand the same context to Cowork for longer file-based prep work.</span></div>
 
 <div class="sh">What projects unlock</div>
 <div class="grid-cards">
@@ -1153,17 +1153,17 @@ const SECTIONS = [
 <p>Program is in the process of building a set of <strong>school-specific Projects</strong> for coaches. Each one is tuned for a single school and designed to give coaches fast, on-brand, on-strategy advice for that school, grounded in Prepory's insider knowledge rather than the generic public information you'd get from a web search.</p>
 
 <div class="card" style="background:linear-gradient(135deg,var(--primary-soft),#f9fbf9);border-color:rgba(11,71,59,.12)">
-  <div style="font-size:11px;font-weight:700;color:var(--accent-dk);letter-spacing:1.4px;text-transform:uppercase;margin-bottom:8px">Example project · First one rolling out</div>
-  <h3 class="subhead" style="margin:0 0 8px">🌲 Stanford Coach Project</h3>
-  <p style="margin:0">A dedicated project loaded with Stanford's Insider Brief, exemplar essays that have worked in past cycles, Prepory's Stanford-specific coaching playbook, and the current year's prompts. Any coach working with a Stanford applicant can open this project and ask questions like:</p>
+  <div style="font-size:11px;font-weight:700;color:var(--accent-dk);letter-spacing:1.4px;text-transform:uppercase;margin-bottom:8px">Coming soon · school-specific coach projects</div>
+  <h3 class="subhead" style="margin:0 0 8px">What each school project will include</h3>
+  <p style="margin:0">These projects are not live yet. As Program builds them, each one is expected to bundle the school's Insider Brief, relevant exemplar essays, Prepory coaching notes or playbooks, and the current year's prompts. Once a school project is available, coaches will be able to open it and ask questions like:</p>
   <ul style="margin-top:10px">
-    <li><em>"What does Stanford's committee actually want to see in the 'What matters most to you?' essay, and what are 3 common ways students miss the mark?"</em></li>
-    <li><em>"Here's my student's draft of the 'roommate letter' supplemental, how does it compare to the exemplars in this project, and what's the single biggest gap?"</em></li>
-    <li><em>"Based on my student's profile [paste notes], which angle for the short-answer questions would likely resonate most with Stanford specifically?"</em></li>
+    <li><em>"What does this school's committee actually want to see in this supplement, and what are 3 common ways students miss the mark?"</em></li>
+    <li><em>"Here's my student's draft, how does it compare to the exemplars in this project, and what's the single biggest gap?"</em></li>
+    <li><em>"Based on my student's profile [paste notes], which angle for the short-answer questions would likely resonate most with this school specifically?"</em></li>
   </ul>
-  <p style="margin-top:10px">The answers are grounded in Prepory's intel, not a generic Google search.</p>
-  <div class="feature-pill" style="margin-top:10px">More school projects coming</div>
-  <span style="font-size:12.5px;color:var(--muted);margin-left:6px">We're starting with Stanford and rolling out additional school-specific projects as we build them. Coaches will get access as each one launches.</span>
+  <p style="margin-top:10px">The goal is answers grounded in Prepory's intel, not a generic Google search.</p>
+  <div class="feature-pill" style="margin-top:10px">School projects coming</div>
+  <span style="font-size:12.5px;color:var(--muted);margin-left:6px">Coaches will get access as each school-specific project launches. Until then, upload the relevant Insider Brief and exemplars directly into the chat or project you're using.</span>
 </div>
 
 <div class="sh">Creating your own project, step by step</div>
@@ -1196,7 +1196,7 @@ Always flag places where something is worth verifying against the school's offic
 
 <div class="tool-card">
   <div class="tool-head"><span class="tool-name">Google Drive</span><span class="tool-where">Shared resources</span></div>
-  <p style="margin:6px 0">Claude can <strong>search across your Drive and read your Google Docs</strong> for context. This is especially great for pulling student-specific files (session notes, essay drafts, college lists, application materials) without manually hunting for them. One thing to know: the connector reads your Drive. It doesn't modify existing Docs today. So use Drive as the place Claude <em>pulls context from</em>. For outputs, have Claude write into a Gmail draft or save a polished .docx / .pptx / .xlsx into a local folder on your computer.</p>
+  <p style="margin:6px 0">Claude can <strong>search across your Drive and read your Google Docs</strong> for context. This is especially great for pulling student-specific files (session notes, essay drafts, college lists, application materials) without manually hunting for them. One thing to know: the connector reads text from Drive files. It won't process embedded images, comments, or suggestions inside those docs, and it doesn't modify existing Docs today. So use Drive as the place Claude <em>pulls context from</em>. For outputs, have Claude write into a Gmail draft or save a polished .docx / .pptx / .xlsx into a local folder on your computer.</p>
   <div class="tool-how"><strong>Try asking:</strong> "Find Priya's essay drafts and session notes in Google Drive. Summarize where she is on each supplemental and flag anything that still needs work before our Friday session."</div>
 </div>
 
@@ -1258,16 +1258,16 @@ Always flag places where something is worth verifying against the school's offic
 /* SEC_LIMITS */
 {id:"limits",label:"Working within usage limits",group:"Claude Essentials",emoji:"⚡",html:`
 <h2 class="display">Working within usage limits.</h2>
-<p>Every Claude account has two usage limits running in parallel: a short <strong>~5-hour rolling window</strong> that resets throughout the day, and a longer <strong>weekly limit</strong>. Hit the 5-hour cap and you're paused for a couple of hours. Hit the weekly cap and you're paused until the week rolls over. A handful of habits stretch your budget significantly, and a few small mistakes can burn through it fast. This section contains tips for making the most of your budget.</p>
+<p>Your Claude account has two usage limits running in parallel: a short <strong>~5-hour rolling window</strong> and a longer <strong>weekly limit</strong>. The 5-hour window is the one you'll notice day to day: use Claude heavily for a stretch, and you may need to wait until that session resets before sending more. The weekly limit is the bigger ceiling across the week, especially for heavier model and tool use. Hit that one and you're paused until the weekly reset. A handful of habits stretch your usage limits significantly, and a few small mistakes can burn through them fast.</p>
 
 <div class="sh">The habits that save usage</div>
 
 <div class="grid-cards">
   ${[
     ['🧵','Start a new chat when you switch topics','Long conversations keep the entire history in play every turn, which costs more and also dilutes Claude\'s focus. When you move from "draft a parent email" to "help me build a webinar outline," start a new chat.'],
-    ['📁','Put repeat context in a Project, not every prompt','If you\'re pasting the same Insider Brief, activity list, or exemplar into three different chats a day, stop. Put it in a project once. Every conversation inside the project references it for free.'],
-    ['📂','Use Cowork folder access instead of pasting giant files','Pasting a 10-page student file into a chat uses far more budget than pointing Cowork at the folder and asking Claude to read what it needs. Same outcome, a fraction of the cost.'],
-    ['🎯','Pick the right model for the task','Opus is the most powerful but uses the most budget. For quick drafts, copy edits, summaries, and simpler work, switch to Sonnet. You\'ll get the job done with way less usage. Save Opus for the hard stuff: nuanced strategy, complex synthesis, high-stakes writing.'],
+    ['📁','Put repeat context in a Project, not every prompt','If you\'re pasting the same Insider Brief, activity list, or exemplar into three different chats a day, stop. Put it in a project once. Project content is cached when reused, so repeated work with the same files uses much less of your limits than re-uploading or re-pasting every time.'],
+    ['📂','Use Cowork folder access instead of pasting giant files','Pasting a 10-page student file into a chat uses far more of your limits than pointing Cowork at the folder and asking Claude to read what it needs. Same outcome, a fraction of the usage.'],
+    ['🎯','Pick the right model for the task','Opus is the most powerful but uses the most of your limits. For quick drafts, copy edits, summaries, and simpler work, switch to Sonnet. You\'ll get the job done with way less usage. Save Opus for the hard stuff: nuanced strategy, complex synthesis, high-stakes writing.'],
     ['✂️','Keep prompts focused','A clear, succinct prompt generates less usage than a rambling 10-paragraph one, and almost always produces better output anyway.'],
     ['⛔','Stop runaway loops fast','If Claude seems to be spinning, producing walls of repeated output, or stuck re-asking for files, cancel it. Waiting it out burns usage for nothing.']
   ].map(([e,t,d])=>`<div class="use-case-card" style="display:flex;gap:14px"><span style="font-size:18px">${e}</span><div><div style="font-weight:700;color:var(--ink);font-size:14px">${t}</div><div style="font-size:13px;color:var(--muted);margin-top:4px;line-height:1.65">${d}</div></div></div>`).join('')}
@@ -1685,14 +1685,14 @@ Tell me: (1) where the doc still matches reality, (2) where the actual work has 
   <summary><span>Decoding what a supplemental prompt is really asking</span><span class="acc-chev">▼</span></summary>
   <div class="acc-body">
     <p><strong>When to use:</strong> A school has a tricky or multi-part prompt and the student isn't sure what the committee actually wants.</p>
-    <p><strong>Best setup:</strong> The school-specific Project (for example, the Stanford Coach Project). It already has the Insider Brief + exemplars, no paste, no context-setting.</p>
-    <div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">Here's Stanford's "What matters most to you, and why?" prompt. Using the Stanford Insider Brief and exemplars in this project:
+    <p><strong>Best setup:</strong> Once school-specific Projects are live, use the relevant school project. For now, upload the school's Insider Brief and a few strong exemplars into the conversation so Claude has the same grounding.</p>
+    <div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">Here's this school's supplemental prompt. Using the Insider Brief and exemplars I uploaded:
 
-1. Break down what this prompt is really asking. What is Stanford's committee hoping to learn?
+1. Break down what this prompt is really asking. What is the committee hoping to learn?
 2. What are the 3 most common ways students miss the mark on this one?
 3. What would make a response genuinely stand out vs. blend in?
-4. Given the Insider Brief, what does Stanford value here that a student wouldn't know from just reading the question?</pre><button class="copy-btn">Copy</button></div></div>
-    <div class="callout callout-tip"><span class="callout-icon">💡</span><span>This is exactly the kind of two-step analysis (public prompt + insider intel) that school-specific Projects are designed for. Without the project, you'd have to paste the brief every time. With the project, it's baked in.</span></div>
+4. Given the Insider Brief, what does this school value here that a student wouldn't know from just reading the question?</pre><button class="copy-btn">Copy</button></div></div>
+    <div class="callout callout-tip"><span class="callout-icon">💡</span><span>This is exactly the kind of two-step analysis (public prompt + insider intel) that school-specific Projects are designed for. Until those are live, paste or upload the brief and exemplars directly.</span></div>
   </div>
 </details>
 
@@ -1730,7 +1730,7 @@ Do NOT rewrite whole paragraphs. Flag specific sentences only. Essay: [paste]</p
 {id:"schoolresearch",label:"School Research",group:"Specific Workflows",emoji:"🏫",html:`
 <p>Whether you need a quick school overview, a comparison for a student weighing offers, or scholarship research for a specific profile, Claude can meaningfully cut your research time. Just verify specific numbers against official sources before sharing with families.</p>
 
-<div class="callout callout-tip"><span class="callout-icon">💡</span><span><strong>The single biggest upgrade to school research at Prepory is using school-specific Projects.</strong> The Stanford project (and the ones that follow) will have the Insider Brief, exemplars, and common strategies already loaded, so every answer reflects real coaching intel, not just public information.</span></div>
+<div class="callout callout-tip"><span class="callout-icon">💡</span><span><strong>The single biggest upcoming upgrade to school research at Prepory is school-specific Projects.</strong> Once live, these projects will have the Insider Brief, exemplars, and common strategies loaded, so answers can reflect real coaching intel, not just public information.</span></div>
 
 <details class="acc" open>
   <summary><span>Quick school overview before a session</span><span class="acc-chev">▼</span></summary>
@@ -1802,7 +1802,7 @@ Also: are there any aspects of her profile that feel disconnected from the main 
   <div class="acc-body">
     <div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">Restructure this resume for a student applying to Georgetown's Master of Science in Foreign Service (MSFS). She wants to highlight international experience, policy research, and leadership in student orgs.
 
-Make every bullet action-oriented and specific. Cut vague language like "assisted with" or "was involved in." Where she has quantifiable impact (people, budget, scale), flag where she should add that data.
+Make every bullet action-oriented and specific. Cut vague language like "assisted with" or "was involved in." Where she has quantifiable impact (people, funding, scale), flag where she should add that data.
 
 Current resume: [paste]</pre><button class="copy-btn">Copy</button></div></div>
   </div>
