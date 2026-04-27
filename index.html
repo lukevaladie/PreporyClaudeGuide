@@ -861,7 +861,7 @@ const SECTIONS = [
 <ul>
   <li><strong>Add files or photos</strong> / <strong>Add from Google Drive</strong>, drop a one-off file into the conversation.</li>
   <li><strong>Add to project</strong>, moves the current chat into a project so it lives alongside your other work there. Useful when a quick question turns into something worth keeping.</li>
-  <li><strong>Skills</strong>, turn on specific skills for this chat (docx, pptx, xlsx, pdf, etc.). Often triggers automatically.</li>
+  <li><strong>Skills</strong>, turn on specific skills for this chat, including Claude's built-in document, presentation, spreadsheet, and PDF-related skills. Often triggers automatically.</li>
   <li><strong>Connectors</strong>, toggle Monday, Gmail, Calendar, Drive, Claude in Chrome on or off for this chat.</li>
   <li><strong>Plugins</strong>, optional bundles of tools and skills. Most coaches won't need to touch these day-to-day; Prepory admins can push team-wide ones when we have them.</li>
   <li><strong>Research</strong>, only use this for genuinely deep research, not quick lookups. Claude spins up a multi-agent research run that can take anywhere from 5 to 45 minutes and pulls from a lot of sources. Great for "build me a full brief on XYZ scholarship landscape." Overkill for "what's WashU's Common App prompt." Note: Research is a <strong>Chat-only</strong> feature right now. It's not available inside Cowork. For everyday web lookups, just use Web search below.</li>
@@ -924,7 +924,7 @@ const SECTIONS = [
     <div class="use-case-tool">→ Cowork. It can read the folder directly. Chat can't.</div>
   </div>
   <div class="use-case-card">
-    <div class="use-case-task"><strong>Produce a real document on your computer:</strong> .docx, .pptx, .xlsx saved to a folder.</div>
+    <div class="use-case-task"><strong>Produce a real document on your computer:</strong> Word documents, PowerPoint decks, or Excel spreadsheets saved to a folder.</div>
     <div class="use-case-tool">→ Cowork. Chat can generate file contents but can't save to your disk.</div>
   </div>
   <div class="use-case-card">
@@ -1052,8 +1052,8 @@ const SECTIONS = [
   <summary><span>Building a slide deck from rough notes</span><span class="acc-chev">▼</span></summary>
   <div class="acc-body">
     <p>You dump your messy notes for a parent webinar into a doc, then ask:</p>
-    <div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">Turn my notes in timeline-webinar-notes.md into a 15-slide presentation for parents of rising juniors. Use the pptx skill so the deck looks polished. Tone: warm and reassuring, not scary. Include speaker notes for each slide. Save as "Timeline-Webinar-Draft.pptx" in this folder.</pre><button class="copy-btn">Copy</button></div></div>
-    <p>Claude uses the pptx skill to produce a real PowerPoint file in your folder. You open it in PowerPoint or Keynote, apply Prepory branding, and you're 80% there.</p>
+    <div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">Turn my notes in timeline-webinar-notes.md into a 15-slide PowerPoint presentation for parents of rising juniors. Make the deck look polished. Tone: warm and reassuring, not scary. Include speaker notes for each slide. Save as "Timeline-Webinar-Draft.pptx" in this folder.</pre><button class="copy-btn">Copy</button></div></div>
+    <p>Claude uses its built-in presentation skill to produce a real PowerPoint file in your folder. You open it in PowerPoint or Keynote, apply Prepory branding, and you're 80% there.</p>
   </div>
 </details>
 
@@ -1074,28 +1074,14 @@ const SECTIONS = [
 /* SEC_SKILLS */
 {id:"skills",label:"Skills",group:"Claude Essentials",emoji:"🧠",html:`
 <h2 class="display">Skills, specialized playbooks for better outputs.</h2>
-<p>Skills are folders of instructions and examples that make Claude dramatically better at specific kinds of work. Think of them as specialized playbooks: when Claude is about to make a Word doc, the <strong>docx skill</strong> kicks in and Claude follows a well-tested recipe for making a polished, properly formatted document. Without the skill, you'd get a rough draft. With it, you get something much closer to ready-to-send.</p>
+<p>Skills are folders of instructions and examples that make Claude dramatically better at specific kinds of work. Think of them as specialized playbooks: when Claude is about to make a Word document, slide deck, spreadsheet, or PDF, it can automatically use Anthropic's built-in document and file-creation skills to follow a well-tested recipe. Without those skills, you'd get a rough draft. With them, you get something much closer to ready-to-send.</p>
 
 <div class="callout callout-info"><span class="callout-icon">ℹ️</span><span>Skills work across Claude, Cowork, the desktop app, and claude.ai in the browser. They're often triggered automatically based on what you ask for, so you usually don't have to think about them. But knowing they exist helps you ask for the right things.</span></div>
 
-<div class="sh">Built-in skills you'll use at Prepory</div>
+<div class="sh">Built-in skills Claude can use for you</div>
 <div class="grid-cards">
-  ${[['📄','docx','Polished Word documents, session notes, parent one-pagers, coaching briefs, letters. Formatting, headings, and structure look professional out of the box.'],['📊','pptx','Slide decks for webinars, internal training, and family presentations. Proper layouts, speaker notes, and slide hygiene.'],['📈','xlsx','Spreadsheets, college list comparisons, application tracking, cost models. Formulas and formatting, not just flat data.'],['📑','pdf','Reading existing PDFs (school policy docs, Common Data Sets) and producing new ones (final handouts, read-only one-pagers).']].map(([e,t,d])=>`<div class="use-case-card" style="display:flex;gap:14px"><span style="font-size:18px">${e}</span><div><div style="font-weight:700;color:var(--ink);font-size:14px">${t}</div><div style="font-size:13px;color:var(--muted);margin-top:3px;line-height:1.6">${d}</div></div></div>`).join('')}
+  ${[['📄','Word documents','Polished session notes, parent one-pagers, coaching briefs, letters, and other editable Word files. Formatting, headings, and structure look professional out of the box.'],['📊','PowerPoint decks','Slide decks for webinars, internal training, and family presentations. Proper layouts, speaker notes, and slide hygiene.'],['📈','Excel spreadsheets','College list comparisons, application tracking, cost models, and other spreadsheet files with formulas and formatting, not just flat data.'],['📑','PDFs','Reading existing PDFs (school policy docs, Common Data Sets) and producing new ones (final handouts, read-only one-pagers).']].map(([e,t,d])=>`<div class="use-case-card" style="display:flex;gap:14px"><span style="font-size:18px">${e}</span><div><div style="font-weight:700;color:var(--ink);font-size:14px">${t}</div><div style="font-size:13px;color:var(--muted);margin-top:3px;line-height:1.6">${d}</div></div></div>`).join('')}
 </div>
-
-<div class="sh">How to actually use a skill</div>
-<p>Most of the time, just ask Claude for what you want and it'll pick the right skill on its own. If you want to be explicit, you have three options. Pick whichever feels natural:</p>
-<div class="steps">
-  <div class="step"><div class="step-num">1</div><div class="step-text"><strong>Mention the skill by name in your prompt.</strong> Just type something like "use the docx skill to..." or "build this with pptx." Claude picks it up from the wording and runs it.</div></div>
-  <div class="step"><div class="step-num">2</div><div class="step-text"><strong>Toggle it on with the + button.</strong> Click the <strong>+ button</strong> near the message composer, find the skill in the list, and flip it on for this chat. Useful when you want a skill available for the whole conversation without repeating its name every message. This is also how you enable the underlying tool for skills that drive other things (e.g., a skill that uses Claude in Chrome, toggle Claude in Chrome on first).</div></div>
-  <div class="step"><div class="step-num">3</div><div class="step-text"><strong>Invoke it with a slash command.</strong> Type <code>/</code> in the message composer and you'll see a menu of available skills. Pick one (e.g., <code>/docx</code>) and Claude runs that skill on whatever prompt you add after it. Fastest way to trigger a specific skill on demand without typing out its name.</div></div>
-</div>
-
-<div class="prompt-wrap"><div class="prompt-label">Example prompts that trigger skills</div><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">Use the docx skill to create a polished session notes document for my 3pm with Priya today. Include: summary, feedback given, action items, next-session focus. Save to this folder.</pre><button class="copy-btn">Copy</button></div></div>
-
-<div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">Build a 12-slide deck for parents of rising sophomores on "when to start thinking about college." Use the pptx skill so it looks clean. Include speaker notes.</pre><button class="copy-btn">Copy</button></div></div>
-
-<div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">Create an xlsx college list tracker for this student with columns: School, Reach/Target/Safety, Deadline Type, Supplementals Required, Draft Status, Last Updated. Pre-fill rows for each of her 10 target schools.</pre><button class="copy-btn">Copy</button></div></div>
 
 <div class="sh">Creating your own custom skills with skill-creator</div>
 <p>The desktop app ships with a special skill for building skills, called <strong>skill-creator</strong>. It walks you through turning a repeated workflow into a reusable recipe that Claude can trigger automatically, in plain English, no coding.</p>
@@ -1116,6 +1102,19 @@ const SECTIONS = [
 </div>
 <div class="callout callout-tip"><span class="callout-icon">💡</span><span>If your custom skill would be useful for the whole team, let us know! We can promote it to a company-wide skill so every coach gets it automatically.</span></div>
 
+<div class="sh">How to actually use a skill</div>
+<p>Most of the time, just ask Claude for what you want and it'll pick the right skill on its own. If you want to be explicit, follow these steps:</p>
+<div class="steps">
+  <div class="step"><div class="step-num">1</div><div class="step-text"><strong>Describe the output clearly.</strong> Ask for the actual file or workflow you need: a polished Word document, a PowerPoint deck, an Excel tracker, a PDF handout, or the custom Prepory skill by name. Claude picks the relevant skill from the task.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-text"><strong>Toggle it on with the + button if needed.</strong> Click the <strong>+ button</strong> near the message composer, find the skill in the list, and flip it on for this chat. This is also how you enable the underlying tool for skills that drive other things (e.g., a skill that uses Claude in Chrome, toggle Claude in Chrome on first).</div></div>
+</div>
+
+<div class="prompt-wrap"><div class="prompt-label">Example prompts that trigger skills</div><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">Create a polished Word document for my 3pm session notes with Priya today. Include: summary, feedback given, action items, next-session focus. Save to this folder.</pre><button class="copy-btn">Copy</button></div></div>
+
+<div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">Build a 12-slide PowerPoint deck for parents of rising sophomores on "when to start thinking about college." Make it clean and presentation-ready. Include speaker notes.</pre><button class="copy-btn">Copy</button></div></div>
+
+<div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">Create an Excel college list tracker for this student with columns: School, Reach/Target/Safety, Deadline Type, Supplementals Required, Draft Status, Last Updated. Pre-fill rows for each of her 10 target schools.</pre><button class="copy-btn">Copy</button></div></div>
+
 <div class="sh">Sharing a skill org-wide or with specific people</div>
 <p>Once a skill works well for you, you rarely want to keep it to yourself. Skills can be shared at three levels: <strong>personal</strong> (just you), <strong>targeted</strong> (a few named teammates), or <strong>org-wide</strong> (everyone at Prepory gets it by default). Pick the level that matches how polished and generally-useful the skill is.</p>
 <div class="grid-cards">
@@ -1127,10 +1126,10 @@ const SECTIONS = [
 <div class="sh">We'll keep building more Prepory-specific skills</div>
 <p>As we learn which tasks get repeated (and where Claude's default output isn't quite hitting), we'll ship skills tuned for Prepory's voice, style, and workflow. If you notice yourself giving the same instructions to Claude over and over, <strong>that's a signal. Either build it yourself with skill-creator, or flag it so we can build it for everyone</strong>.</p>
 
-<div class="callout callout-tip"><span class="callout-icon">💡</span><span>Skills compose with projects. When school-specific projects are live, you might pair one with the docx skill so Claude has the right admissions context and the output becomes a polished, properly formatted Word doc.</span></div>
+<div class="callout callout-tip"><span class="callout-icon">💡</span><span>Skills compose with projects. When school-specific projects are live, you might pair one with Claude's built-in document skill so Claude has the right admissions context and the output becomes a polished, properly formatted Word document.</span></div>
 
 <div class="sh">Skills vs. Projects, a quick note</div>
-<p>Both skills and projects give Claude extra context to work better on a specific task. A <strong>skill</strong> is a <em>how</em> (a reusable recipe for <em>producing</em> something well, like "make a polished .docx") and a <strong>project</strong> is a <em>what</em> (a persistent workspace full of context about a specific student, school, or deliverable). Once school-specific projects are available, you'll often use them with skills: the project gives Claude the intel, and the docx <em>skill</em> makes sure the output is presentation-ready. The Projects section up next goes deeper on when to reach for a project.</p>
+<p>Both skills and projects give Claude extra context to work better on a specific task. A <strong>skill</strong> is a <em>how</em> (a reusable recipe for <em>producing</em> something well, like "make a polished Word document") and a <strong>project</strong> is a <em>what</em> (a persistent workspace full of context about a specific student, school, or deliverable). Once school-specific projects are available, you'll often use them with skills: the project gives Claude the intel, and Claude's built-in document skill helps make sure the output is presentation-ready. The Projects section up next goes deeper on when to reach for a project.</p>
 `},
 
 /* SEC_PROJECTS */
@@ -1158,8 +1157,8 @@ const SECTIONS = [
   <p style="margin:0">These projects are not live yet. As Program builds them, each one is expected to bundle the school's Insider Brief, relevant exemplar essays, Prepory coaching notes or playbooks, and the current year's prompts. Once a school project is available, coaches will be able to open it and ask questions like:</p>
   <ul style="margin-top:10px">
     <li><em>"What does this school's committee actually want to see in this supplement, and what are 3 common ways students miss the mark?"</em></li>
-    <li><em>"Here's my student's draft, how does it compare to the exemplars in this project, and what's the single biggest gap?"</em></li>
-    <li><em>"Based on my student's profile [paste notes], which angle for the short-answer questions would likely resonate most with this school specifically?"</em></li>
+    <li><em>"Here's my student's draft. Do they come across as somebody who would thrive at Stanford?"</em></li>
+    <li><em>"Based on my student's profile [paste notes], which of these angles for the short-answer questions would likely resonate most with this school specifically?"</em></li>
   </ul>
   <p style="margin-top:10px">The goal is answers grounded in Prepory's intel, not a generic Google search.</p>
   <div class="feature-pill" style="margin-top:10px">School projects coming</div>
@@ -1380,7 +1379,7 @@ Give me 5 different ways I could structure this conversation, each one prioritiz
   </div>
   <div class="use-case-card">
     <div class="use-case-task"><strong>A session notes doc, one-pager, or internal memo:</strong></div>
-    <div class="use-case-tool">→ Use the docx skill. Real Word doc saved to your folder.</div>
+    <div class="use-case-tool">→ Ask for a polished Word document saved to your folder.</div>
   </div>
   <div class="use-case-card">
     <div class="use-case-task"><strong>Social copy, subject lines, quick marketing iterations:</strong></div>
@@ -1535,7 +1534,7 @@ Compare these three across those dimensions. Note any meaningful differences in 
   </div>
   <div class="use-case-card">
     <div class="use-case-task"><strong>Summarize a single document:</strong></div>
-    <div class="use-case-tool">→ Drag it in, or point Claude at the file in your folder. For scanned PDFs, add the <strong>pdf skill</strong>.</div>
+    <div class="use-case-tool">→ Drag it in, or point Claude at the file in your folder. For scanned PDFs, ask Claude to use its built-in PDF handling.</div>
   </div>
   <div class="use-case-card">
     <div class="use-case-task"><strong>Synthesize across multiple docs:</strong></div>
@@ -1568,16 +1567,16 @@ Compare these three across those dimensions. Note any meaningful differences in 
 {id:"process",label:"Process Documentation",group:"Core Skills",emoji:"📁",html:`
 <p>Institutional knowledge sometimes lives in people's heads, or in scattered notes that only make sense to whoever wrote them, or worse, spread across Gmail threads, Drive docs, HubSpot records, and Monday boards with no single source of truth. Claude is excellent at taking disorganized, messy knowledge and turning it into something structured that anyone can follow, quickly, without requiring you to be a good writer.</p>
 
-<div class="sh">The ideal setup: docx skill + the connectors where the work actually happens</div>
-<p>Point Claude at a folder where you want to keep your SOPs, and ask it to use the <strong>docx skill</strong> so the output is a polished Word doc you can share with the team. For most Prepory processes, turn on <strong>Drive</strong> (for any existing notes and templates), <strong>Gmail</strong> (for the threads where the process plays out), <strong>HubSpot</strong> (for pipeline-driven processes), and <strong>Monday</strong> (for anything tracked on a board). The source material for a good SOP is almost never in one place.</p>
+<div class="sh">The ideal setup: Word document output + the connectors where the work actually happens</div>
+<p>Point Claude at a folder where you want to keep your SOPs, and ask it to create a <strong>polished Word document</strong> you can share with the team. For most Prepory processes, turn on <strong>Drive</strong> (for any existing notes and templates), <strong>Gmail</strong> (for the threads where the process plays out), <strong>HubSpot</strong> (for pipeline-driven processes), and <strong>Monday</strong> (for anything tracked on a board). The source material for a good SOP is almost never in one place.</p>
 
 <div class="sh">Turning rough notes into a structured SOP</div>
 <div class="steps">
   <div class="step"><div class="step-num">1</div><div class="step-text"><strong>Dump everything you know</strong> into a text file or straight into Claude. Bullet points, fragments, whatever. 5–10 minutes of brain dump is enough.</div></div>
-  <div class="step"><div class="step-num">2</div><div class="step-text"><strong>Ask Claude to structure it</strong> using the docx skill:</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-text"><strong>Ask Claude to structure it</strong> as a polished Word document:</div></div>
 </div>
 
-<div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">Use the docx skill. Turn these rough notes into a structured SOP (Standard Operating Procedure). For each step:
+<div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">Create a polished Word document. Turn these rough notes into a structured SOP (Standard Operating Procedure). For each step:
 1. Number + short action title
 2. Exactly what to do, assume the reader has never done this and knows nothing about Prepory
 3. Who's responsible
@@ -1615,7 +1614,7 @@ Here are my notes: [paste your notes]</pre><button class="copy-btn">Copy</button
   <summary><span>Reverse-engineering an SOP from how the work actually gets done</span><span class="acc-chev">▼</span></summary>
   <div class="acc-body">
     <p><strong>When to use:</strong> The process already runs, but the real "how" is spread across emails, CRM records, and board activity rather than living in anyone's head. Turn on the <strong>Drive</strong>, <strong>Gmail</strong>, <strong>HubSpot</strong>, and <strong>Monday</strong> connectors for this one.</p>
-    <div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">Use the docx skill. I need to document our SOP for [process, e.g. "new-family onboarding"], but the real process is scattered across tools. Pull from:
+    <div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">Create a polished Word document. I need to document our SOP for [process, e.g. "new-family onboarding"], but the real process is scattered across tools. Pull from:
 
 1. Drive, any existing notes, half-written docs, or templates about this process.
 2. Gmail, the 3 most recent threads where this process actually played out with a family.
@@ -1815,18 +1814,18 @@ Current resume: [paste]</pre><button class="copy-btn">Copy</button></div></div>
 
 <div class="callout callout-info"><span class="callout-icon">ℹ️</span><span><strong>Four output types, four Cowork setups:</strong></span></div>
 <ul>
-  <li><strong>Decks (.pptx)</strong> — the <strong>pptx skill</strong> produces a real PowerPoint file you can open in Keynote or PowerPoint.</li>
+  <li><strong>PowerPoint decks</strong> — Claude's built-in presentation skill produces a real PowerPoint file you can open in Keynote or PowerPoint.</li>
   <li><strong>PDFs</strong> — Claude builds these by writing and running a small script behind the scenes. Cleaner than exporting from Word, and Claude can re-run it for the next student in seconds.</li>
-  <li><strong>Word handouts (.docx)</strong> — the <strong>docx skill</strong>, for anything a colleague will keep editing after you.</li>
+  <li><strong>Word handouts</strong> — Claude's built-in document skill, for anything a colleague will keep editing after you.</li>
   <li><strong>Charts and visuals</strong> — Claude generates these as PNGs you can drop into any of the above.</li>
 </ul>
 
 <div class="callout callout-info"><span class="callout-icon">🛠️</span><span><strong>A note on "scripts."</strong> This section mentions Python and a couple of libraries by name (<code>reportlab</code>, <code>matplotlib</code>). Those are tools <em>Claude</em> uses, not you. You describe what you want in plain English ("a one-page scholarship summary for Priya with our brand colors"); Claude writes any code needed, runs it, and drops the finished file in your folder. You don't write, run, or read the code unless you're curious. It's the same as not needing to know how Word's file format works to use Word.</span></div>
 
-<div class="sh">Decks, the pptx skill in Cowork</div>
-<p>In Cowork with the pptx skill, you can plan the outline and build the real deck in the same conversation. Start with a brainstorm ("talk me through 15 slides for a timeline webinar"), iterate until the structure is right, then tell Claude to build. The output is a real .pptx with speaker notes, saved into your folder, ready to open in PowerPoint or Keynote.</p>
+<div class="sh">Decks, built as real PowerPoint files</div>
+<p>In Cowork, you can plan the outline and build the real deck in the same conversation. Start with a brainstorm ("talk me through 15 slides for a timeline webinar"), iterate until the structure is right, then tell Claude to build a PowerPoint deck. The output is a real .pptx with speaker notes, saved into your folder, ready to open in PowerPoint or Keynote.</p>
 
-<div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">Use the pptx skill. I'm building a 45-minute Prepory webinar called "The College Application Timeline: When to Start, What to Do, and How to Stay Sane." Audience: parents of high school sophomores and juniors, most feeling overwhelmed.
+<div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">Build a PowerPoint deck. I'm building a 45-minute Prepory webinar called "The College Application Timeline: When to Start, What to Do, and How to Stay Sane." Audience: parents of high school sophomores and juniors, most feeling overwhelmed.
 
 First, walk me through a 15-slide outline, one line per slide with a suggested visual. We'll iterate until it looks right. Then build the deck, with speaker notes per slide (3-4 sentences each, conversational, like I'm talking to parents in a room). Save as "Timeline-Webinar-Draft.pptx" in this folder. Tone throughout: reassuring and clear, not panic-inducing.</pre><button class="copy-btn">Copy</button></div></div>
 
@@ -1854,10 +1853,10 @@ Save as "Scholarships-[student].pdf". If any styling choices are ambiguous, make
 
 Style: one dominant brand color (#HEXCODE), muted gridlines, 14pt labels, high enough resolution for a slide (300 DPI), no chartjunk. Save as "admit-rates-comparison.png" in this folder.</pre><button class="copy-btn">Copy</button></div></div>
 
-<div class="sh">Word handouts, when docx is the right call</div>
-<p>Choose docx when the deliverable will keep getting edited, a referral sheet a colleague will tweak next semester, an internal doc that passes around for comments, a draft that isn't final. The docx skill produces a polished Word file anyone on the team can open and change. Reach for the PDF approach above when the piece is going out in final form and you care about it looking identical on every screen.</p>
+<div class="sh">Word handouts, when an editable doc is the right call</div>
+<p>Choose a Word document when the deliverable will keep getting edited, a referral sheet a colleague will tweak next semester, an internal doc that passes around for comments, a draft that isn't final. Claude can produce a polished Word file anyone on the team can open and change. Reach for the PDF approach above when the piece is going out in final form and you care about it looking identical on every screen.</p>
 
-<div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">Use the docx skill. Draft a one-page handout about Prepory's college counseling program for high school guidance counselors who might refer students to us. They care about: how we complement their work, our track record, and ease of getting started.
+<div class="prompt-wrap"><div class="prompt"><div class="prompt-rail"></div><pre class="prompt-text">Create a polished Word document. Draft a one-page handout about Prepory's college counseling program for high school guidance counselors who might refer students to us. They care about: how we complement their work, our track record, and ease of getting started.
 
 Include:
 - 2-sentence description of Prepory
